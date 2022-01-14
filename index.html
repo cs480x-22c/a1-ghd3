@@ -1,11 +1,98 @@
 <script src="https://d3js.org/d3.v6.min.js"></script>
 
+<body></body>
+
 <script>
   console.log(d3); // test if d3 is loaded
   console.log("Hayden");
-  // Add an SVG
+
+  var svg = d3.select("body")
+  .append("svg")
+  .attr("width", 1000)
+  .attr("height", 600);
+
   // Add Rectangles
+  //x, y, width, height, color
+  var brown = d3.schemeBrBG[9];
+  var rectData = [[100, 400, 60, 80, brown[0]], [290, 400, 80, 100, brown[1]], 
+  [500, 400, 60, 80, brown[2]], [700, 400, 80, 100, brown[3]]];
+  
+  svg.selectAll("rect")
+  .data(rectData)
+  .enter()
+  .append("rect")
+  .style("fill", function(d){ return d[4]; })
+  .attr("x", function(d){ return d[0]; })
+  .attr("y", function(d){ return d[1]; })
+  .attr("width", function(d){ return d[2]; })
+  .attr("height", function(d){ return d[3]; });
+
+
   // Add Circles
+  // cx, cy, r, color
+  var yellow = d3.schemeYlOrBr[9];
+  var circleData = [[130, 230, 20, yellow[1]], 
+  [330, 110, 40, yellow[2]], 
+  [530, 230, 20, yellow[3]], 
+  [740, 110, 40, yellow[4]]];
+
+  svg.selectAll("circle")
+  .data(circleData)
+  .enter()
+  .append("circle")
+  .style("fill", function(d){ return d[3]; })
+  .attr("cx", function(d){ return d[0]; })
+  .attr("cy", function(d){ return d[1]; })
+  .attr("r", function(d){ return d[2]; });
+
   // Add Lines
+  // x1, y1, x2, y2, color
+  var green = d3.schemeGreens[5];
+  var lineData = [[130, 400, 130, 250, green[1]], [330, 400, 330, 150, green[2]], 
+  [530, 400, 530, 250, green[3]], [740, 400, 740, 150, green[4]]];
+
+  svg.selectAll("line")
+  .data(lineData)
+  .enter()
+  .append("line")
+  .style("stroke-width", 5)
+  .style("stroke", function(d){ return d[4]; })
+  .attr("x1", function(d){ return d[0]; })
+  .attr("y1", function(d){ return d[1]; })
+  .attr("x2", function(d){ return d[2]; })
+  .attr("y2", function(d){ return d[3]; });
+
   // Add Polygons
+  // points
+  var red = d3.interpolateWarm;
+  var purple = d3.schemeRdPu[9];
+  var polygonData = [["100,230 110,220 110,240", red(.05)],["130,200 120,210 140,210", red(.1)],
+  ["160,230 150,220 150,240", red(.15)], ["130,260 120,250 140,250", red(.2)],
+  ["500,230 510,220 510,240", red(.25)], ["530,200 520,210 540,210", red(.3)],
+  ["560,230 550,220 550,240", red(.35)], ["530,260 520,250 540,250", red(.4)],
+  ["270,110 290,90 290,130", red(.45)], ["330,50 310,70 350,70", red(.5)],
+  ["390,110 370,90 370,130", red(.55)], ["330,170 310,150 350,150", red(.6)],
+  ["680,110 700,90 700,130", red(.65)], ["740,50 720,70 760,70", red(.7)],
+  ["800,110 780,90 780,130", red(.75)], ["740,170 720,150 760,150", red(.8)]];
+
+  svg.selectAll("polygon")
+  .data(polygonData)
+  .enter()
+  .append("polygon")
+  .style("fill", function(d){ return d[1]; })
+  .attr("points", function(d){ return d[0]; })
+  .on("click", function(event, d){
+      d3.select(this)
+      .transition()
+      .duration(800)
+      .ease(d3.easeLinear)
+      .attr("transform", function(d){
+        var points = d[0].replace(","," ");
+        var num = "" +points[4] + points[5] + points[6];
+        console.log(num);
+        var t = 550-num;
+        return "translate(0," + t + ")";
+      })
+  });
+
 </script>
