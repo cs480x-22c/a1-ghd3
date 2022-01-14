@@ -1,10 +1,70 @@
-<script src="https://d3js.org/d3.v6.min.js"></script>
+<html>
+  <head>
+    <script src="https://d3js.org/d3.v6.min.js"></script>
+  </head>
+  <body>
+    <div id="container"></div>
+    <script>
+      const colors = ['#EB2962', '#55B5E6', '#FA8E8E', '#FFA745', '#560EEB']
 
-<script>
-  console.log(d3); // test if d3 is loaded
-  // Add an SVG
-  // Add Rectangles
-  // Add Circles
-  // Add Lines
-  // Add Polygons
-</script>
+      let plotData = (data) => {
+        d3.select("svg")
+          .selectAll("line")
+          .data(data).enter()
+          .append("rect")
+          .attr('fill', colors[3])
+          .attr('x', d => 98.5 + d.idx * 10)
+          .attr('y', d => 500 + (d.level * -40) - 20 * (d.ueb - d.leb))
+          .attr('height', d => 40 * (d.ueb - d.leb))
+          .attr('width', 3)
+          .attr('rx', 1)
+          .attr('ry', 1)
+        d3.select("svg")
+          .selectAll("circle")
+          .data(data).enter()
+          .append("circle")
+          .attr('fill', colors[4])
+          .attr('cx', d => 100 + d.idx * 10)
+          .attr('cy', d => 500 + d.level * -40)
+          .attr('r', 3)
+      }
+
+      d3.csv("epa-sea-level_csv.csv", (data, idx) => {
+        return {
+          idx,
+          level: data['CSIRO Adjusted Sea Level'],
+          leb: data['Lower Error Bound'],
+          ueb: data['Upper Error Bound']
+        }
+      })
+      .then(plotData)
+
+
+      // Set background of body
+      d3.select('body')
+      .style('background-color', colors[1])
+      
+      // Add an SVG
+      let svg = d3.select('#container').append('svg')
+      .attr('width', '100%')
+      .attr('height', '100%')
+
+      // Add polygon background
+      svg.append('polygon')
+      .attr('points', '0,700 300,325 500,375 1000,250 1400,350 1600,150 1600,700')
+      .attr('fill', colors[0])
+      .attr('opacity', '70%')
+
+      // Add creator and sources
+      svg.append('rect')
+      .attr('x', 0)
+      .attr('y', 750)
+      .attr('width', 1600)
+      .attr('height', 80)
+      .attr('fill', colors[2])
+      
+    </script>
+  </body>  
+</html>
+
+
