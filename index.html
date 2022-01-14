@@ -88,7 +88,7 @@
       .ease(d3.easeLinear)
       .attr("transform", function(d){
         var points = d[0].replace(","," ");
-        var num = "" +points[4] + points[5] + points[6];
+        var num = "" + points[4] + points[5] + points[6];
         console.log(num);
         var t = 550-num;
         return "translate(0," + t + ")";
