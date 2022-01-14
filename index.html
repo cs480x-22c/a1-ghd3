@@ -1,5 +1,6 @@
-<html>
+<html lang="en">
   <head>
+    <title>CS 480X - Assignment 1 - Hello World</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poiret+One&display=swap" rel="stylesheet">
@@ -52,7 +53,7 @@
       
       let plotData = (data) => {
         let yLabels = Array(10).keys()
-        // Make the line for error bounds
+        // Make the groups for the data point + error line
         let gs = d3.select("svg")
           .selectAll("g")
           .data(data).enter()
@@ -77,6 +78,7 @@
               .transition().duration(1).ease(d3.easeLinear)
               .attr('stroke-width', 3)
           })
+        // Make the lines for error bounds
         gs.append('line')
           .attr('stroke', colors[3])
           .attr('x1', d => 100 + d.idx * 10)
@@ -85,34 +87,12 @@
           .attr('y2', d => 500 + (d.level * -40) + 20 * (d.ueb - d.leb))
           .attr('stroke-width', 3)
           .attr('stroke-linecap', 'round')
-        gs.append("circle")
+        // Make the circles for error bounds
+         gs.append("circle")
           .attr('fill', colors[4])
           .attr('cx', d => 100 + d.idx * 10)
           .attr('cy', d => 500 + d.level * -40)
           .attr('r', 3)
-        // Make circles for data points
-        // d3.select("svg")
-        //   .selectAll("circle")
-        //   .data(data).enter()
-          // .append("circle")
-          // .attr('fill', colors[4])
-          // .attr('cx', d => 100 + d.idx * 10)
-          // .attr('cy', d => 500 + d.level * -40)
-          // .attr('r', 3)
-          // .on('mouseover', function(evt, d) {
-          //   d3.select(this)
-          //     .transition()
-          //     .duration(0.5)
-          //     .ease(d3.easeLinear)
-          //     .attr('r', 5)
-          // })
-          // .on('mouseout', function(evt, d) {
-          //   d3.select(this)
-          //     .transition()
-          //     .duration(750)
-          //     .ease(d3.easeLinear)
-          //     .attr('r', 3)
-          // })
         // Make labels for x-axis (dates)
         d3.select("svg")
           .selectAll("null")
