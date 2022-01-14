@@ -18,8 +18,12 @@ Technical Achievements:
 - I used an onclick event to pluck the petals
 - I also animated the petals by using transform and translate in d3
 
+![Flowers](/images/FlowersWithPetals.png)
+
 Design Achievements:
 ---
 
 - I used the required shapes to create multiple flowers 
 - I used color schemes in d3 to easily change the colors of the parts of the flowers
+
+![Flowers](/images/Flowers.png)
