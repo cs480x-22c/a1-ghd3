@@ -3,8 +3,10 @@ Assignment 1 - Hello World: GitHub and d3
 
 ### Links
 Repository: [https://github.com/fedeit/a1-ghd3](https://github.com/fedeit/a1-ghd3)
+<br>
 README: [https://github.com/fedeit/a1-ghd3/blob/master/README.md](https://github.com/fedeit/a1-ghd3/blob/master/README.md)
-GitHub Pages: [http://fedeit.github.io/01-ghd3/index.html](http://fedeit.github.io/01-ghd3/index.html)
+<br>
+GitHub Pages: [http://fedeit.github.io/a1-ghd3/index.html](http://fedeit.github.io/a1-ghd3/index.html)
 
 ### Overview
 <i>Made by Federico Galbiati (fedeit)</i>
