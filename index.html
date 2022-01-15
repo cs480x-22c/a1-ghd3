@@ -1,10 +1,41 @@
 <script src="https://d3js.org/d3.v6.min.js"></script>
 
+<svg width = 600 height = 600></svg>
+
 <script>
   console.log(d3); // test if d3 is loaded
-  // Add an SVG
-  // Add Rectangles
+
   // Add Circles
+  d3.select('svg')
+    .append('circle')
+    .attr('cx', 20)
+    .attr('cy', 20)
+    .attr('r', 5)
+    .attr('fill', 'red');
+
+  // Add Rectangles
+  d3.select('svg')
+    .append('rect')
+    .attr('x', 100)
+    .attr('y', 100)
+    .attr('width', 10)
+    .attr('height', 50)
+    .attr('fill', 'blue');
+
   // Add Lines
+  d3.select('svg')
+    .append('line')
+    .attr('x1', 100)
+    .attr('x2', 200)
+    .attr('y1', 500)
+    .attr('y2', 300)
+    .attr('stroke', 'purple');
+
   // Add Polygons
+  d3.select('svg')
+    .append('polygon')
+    .attr('points', '250, 375, 325, 400, 450, 0')
+    .attr('stroke', 'black')
+    .attr('fill', 'green');
+  
 </script>
