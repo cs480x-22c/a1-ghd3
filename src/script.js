@@ -1,31 +1,5 @@
 import './style.css'
 import * as d3 from 'd3'
-import { polygonArea, transition } from 'd3';
-
-/**
- * Project Requirements
- * Use 4 kinds of gtaphic primitives (circle, rectangle, lines, polygons)
- * (in different colors)
- * 
- * Include source of start code
- * https://observablehq.com/@harrylove/draw-a-circle-with-d3
- * https://www.d3-graph-gallery.com/graph/shape.html
- * https://stackoverflow.com/questions/39076826/how-to-rotate-any-shape-continuously-in-d3-js/39077449
- */
-
-/**
- * Technical Achivements Draft
- * 
- * Starting learning how to use npm and webpack to run a live server
- * and also handle d3
- * 
- */
-
-/**
- * Design Achnivements Draft
- * 
- * Ability to have svg be full screne even on resize
- */
 
 /**
  * Createing SVG
@@ -128,6 +102,10 @@ const render = () => {
         .attr("ry", 25)
         .style("fill", "gray"))
 }
+
+/**
+ * Movement
+ */
 
 render()
 
