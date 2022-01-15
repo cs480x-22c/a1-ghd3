@@ -10,6 +10,10 @@ Project Description
 ---
 To create my scene I used the rectangle shape for the road, the line shape for the dashed road line, another rectangle for the car body, elpises for the car wheels and a polygon to create the cone. Each differnt object having their own shapes. The come will spawn in at a random road postion every 5 seconds and the car can move from left to right using "a" and "d". The svg has the ability to resize with the window if it is resized after everything has loaded.
 
+![road1](https://user-images.githubusercontent.com/50000930/149633853-38fe405d-7552-499f-baa4-f0bf351a7861.PNG)
+
+![road2](https://user-images.githubusercontent.com/50000930/149633878-45f94bf9-4d5c-441e-82f1-6cc73fcdf7ac.PNG)
+
 
 Technical Achivements
 ---
