@@ -21,8 +21,6 @@ Technical Achivements
 
 - Determined way to group the car and wheels so they move together
 
-- 
-
 Design Achivements
 ---
 - Making the car appear to move by animating te the center line to move downwards
