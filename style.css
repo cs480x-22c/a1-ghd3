@@ -1,7 +1,13 @@
 body {
-  background: url(/graphics/back.svg);
+  background-color: #0e1e34 repeat;
 }
 
-.forground {
-  background-image: url(/graphics/back.svg);
+.barn-image {
+  background-image: url("/graphics/back.svg");
+  background-color: #0e1e34;
+  height: 500px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
 }
