@@ -1,5 +1,5 @@
 body {
-  background-image: url(/graphics/back.svg);
+  background: url(/graphics/back.svg);
 }
 
 .forground {
