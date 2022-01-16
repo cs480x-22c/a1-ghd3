@@ -1,4 +1,7 @@
 body {
-  background: #0e1e34 repeat;
+  background-image: url(/graphics/back.svg);
+}
+
+.forground {
   background-image: url(/graphics/back.svg);
 }
