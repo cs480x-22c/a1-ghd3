@@ -1,11 +1,6 @@
 body {
-  background-color: #0e1e34 repeat;
-}
-
-.barn-image {
-  background-image: url("/graphics/back.svg");
   background-color: #0e1e34;
-  height: 500px;
+  background-image: url("/graphics/back.svg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
