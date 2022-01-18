@@ -55,9 +55,9 @@ var textblock = d3.select('svg').select('text')
     .attr('width', 200)
     .attr('fill', "#64B5F6")
     .on('click', function(d) {
-        d3.select(this).attr('fill', Blues[count_rect % 6])
-        count_rect++
-        textblock.text("# of Clicks: " + count_rect)
+      d3.select(this).attr('fill', Blues[count_rect % 6])
+      count_rect++
+      textblock.text("# of Clicks: " + count_rect)
     })
     .on("mouseover mousemove", function(e, d) {
       d3.select(this)
@@ -123,7 +123,7 @@ var angle = 90
       .attr("points", "800,570 900,650 950,580 890,350, 650,340 650,500")
       .style("fill", "#FFCC80")
       .on('click', function(e, d) {
-        d3.select(this).attr('transform', "rotate(" + angle + "," + e.layerX + "," + e.layerY + ")")
+        d3.select(this).attr('transform', "rotate(" + angle + ", 810, 400)")
         count_poly++
         angle+=90
         textblock.text("# of Clicks: " + count_poly)

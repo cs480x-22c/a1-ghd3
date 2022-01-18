@@ -3,26 +3,26 @@ Assignment 1 - Hello World: GitHub and d3 - mpkelly
 
 URL: https://mkelly1510.github.io/a1-ghd3/
 
-Screenshot 1:
+Screenshot 1: https://mkelly1510.github.io/a1-ghd3/cs4802-a1-screenshot1.png
 
-Screenshot 2: 
+Screenshot 2: https://mkelly1510.github.io/a1-ghd3/cs4802-a1-screenshot2.png
 
 Circle
 ---
 I made a circle in the top left of the svg and made it a light green color. When you hover over the circle, text will appear and tell you
-the number of times you have clicked on the circle. This text will stay near the cursor as you move it. The circle will also become slightly larger so it is more obvious when you are hovering on it. When you click on the circle, it will change through a set of colors. It'll get darker for each click then go back to the light green. Each color will appear every 6th time. The number of clicks will update.
+the number of times you have clicked on the circle. This text will stay near the cursor as you move it. The circle will also become slightly larger so it is more obvious when you are hovering on it. When you click on the circle, it'll get darker for each click then go back to the light green. It will rotate through a set of colors and each color will appear after 6 clicks starting from that same color. The number of clicks will update.
 
 Rectangle
 ---
-The rectangle is the same as the circle, except it is in shades of blue.
+The rectangle has the same functionality as the circle, except it is in shades of blue.
 
 Line
 ---
-I made a red line in the bottom left of the svg. When you click on the line, rather than changing color, the stroke-width of the line will increase by 4 pixels. Since the size is changing when you click, I decreased the opacity when you hover over the line. Then the hovering won't interfere with the size of the line when you click. The number of clicks appears the same as the circle and rectangle.
+I made a red line in the bottom left of the svg. When you click on the line, rather than changing color, the stroke-width of the line will increase by 4 pixels. Since the size changes when you click, I chose to decrease the opacity when you hover over the line. Then the hovering won't interfere with the size of the line when you click. The number of clicks appears the same as the circle and rectangle.
 
 Polygon
 ---
-I made a polygon and chose to decrease the opacity when you hover over it, like the line. When you click on the polygon it will rotate 90 degrees clockwise around the location of the cursor. The number of clicks appears the same as the others.
+I made a polygon and chose to decrease the opacity when you hover over it, like the line. When you click on the polygon it will rotate 90 degrees clockwise around a center point. The number of clicks appears the same as the others.
 
 Technical Achievement Description
 ---
