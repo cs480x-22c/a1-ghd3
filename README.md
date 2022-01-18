@@ -1,8 +1,11 @@
-Assignment 1 - Hello World: GitHub and d3 - Madyson Kelly
+Assignment 1 - Hello World: GitHub and d3 - mpkelly
 ===
 
+URL: https://mkelly1510.github.io/a1-ghd3/
 
+Screenshot 1:
 
+Screenshot 2: 
 
 Circle
 ---
@@ -19,7 +22,7 @@ I made a red line in the bottom left of the svg. When you click on the line, rat
 
 Polygon
 ---
-I made a polygon and chose to decrease the opacity when you hover over it, like the line. When you click on the polygon it will rotate 90 degrees clockwise around its center. The number of clicks appears the same as the others.
+I made a polygon and chose to decrease the opacity when you hover over it, like the line. When you click on the polygon it will rotate 90 degrees clockwise around the location of the cursor. The number of clicks appears the same as the others.
 
 Technical Achievement Description
 ---
