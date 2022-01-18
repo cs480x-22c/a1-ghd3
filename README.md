@@ -74,7 +74,7 @@ Below are some, but not necessarily all, of the key points we will consider duri
 - Different colors  
 - README Quality
     - A description of what you have created. 1-2 screenshots are recommended for the README.  
-    - A working link to the hosted files (usually the gh-pages 'live' url)  
+    - https://alexiscaira.github.io/a1-ghd3/
     - Section for Technical and Design Achievements
 
 Technical Achievement Desription -- 12  
