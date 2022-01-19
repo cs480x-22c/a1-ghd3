@@ -11,9 +11,9 @@ lines. Every object (except for the clouds) has a different
 rgb value. I used the code shown in class as a starting point
 for my project.
 
-![Daytime Image](Assignment_1_Daytime.png)
+![Daytime Image](https://github.com/timconnors33/a1-ghd3/blob/master/Assignment_1_Daytime.PNG?raw=true)
 
-![Nighttime Image](Assignment_1_Nighttime.png)
+![Nighttime Image](https://github.com/timconnors33/a1-ghd3/blob/master/Assignment_1_Nighttime.PNG?raw=true)
 
 ## Technical Achievements
 In making my project, I included multiple interactive mouse 
