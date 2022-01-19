@@ -144,6 +144,17 @@ var angle = 90
           .duration(50)
       });
 
+
+const curve = d3.line().curve(d3.curveCatmullRom);
+const data = [[100, 200], [200, 200], [400, 400], [600, 300], [800, 300]];
+
+      //Path
+      d3.select('svg')
+        .append('path')
+        .attr('d', curve(data))
+        .attr('stroke', 'black')
+        .attr('fill', 'none');
+
   // Add an SVG
   // Add Rectangles
   // Add Circles

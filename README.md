@@ -24,6 +24,10 @@ Polygon
 ---
 I made a polygon and chose to decrease the opacity when you hover over it, like the line. When you click on the polygon it will rotate 90 degrees clockwise around a center point. The number of clicks appears the same as the others.
 
+Path
+---
+I created a path that runs in between the different shapes.
+
 Technical Achievement Description
 ---
 - I made the objects interactive by changing color, increasing stroke-width, or rotating when you click on them.
@@ -35,3 +39,4 @@ Design Achievement Description
 - I chose a different color for each shape.
 - For the circle and rectangle, I found a palette of different shades of green and blue. I chose to make them larger when you hover over them and not change the opacity. Since the color is changing when you click, it would confusing if both hovering and clicking changed the shade of color.
 - For the line, I chose the opposite and decreased the opacity rather than increasing the size when you hover. Since the size is changing when you click, it would be confusing if both hovering and clicking changed the size.
+- I added a path to my design that runs in between the different shapes.
