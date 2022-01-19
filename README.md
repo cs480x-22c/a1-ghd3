@@ -84,3 +84,7 @@ Remember, it is up to *you* to define what constitutes a technical and design ac
 Be ambitious as these are designed to allow you to shape your learning.
 These are the only way to move from B to A territory.
 
+-----------------------------------
+https://www.d3-graph-gallery.com/graph/choropleth_basic.html
+https://www.d3indepth.com/geographic/
+
