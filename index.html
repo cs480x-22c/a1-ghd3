@@ -1,10 +1,90 @@
 <script src="https://d3js.org/d3.v6.min.js"></script>
 
+<svg width=1000 height=1000></svg>
+
 <script>
   console.log(d3); // test if d3 is loaded
-  // Add an SVG
-  // Add Rectangles
-  // Add Circles
-  // Add Lines
-  // Add Polygons
+
+// Add Rectangles
+  d3.select('svg')
+    .append('rect')
+    .attr('x', 400)
+    .attr('y', 400)
+    .attr('width', 200)
+    .attr('height', 200)
+    .style('fill', 'black');
+  
+// Add Lines
+  d3.select('svg')
+  	.append('line')
+  	.attr('x1', 400)
+  	.attr('y1', 400)
+  	.attr('x2', 600)
+  	.attr('y2', 600)
+  	.attr('stroke', 'white');
+  	
+d3.select('svg')
+  	.append('line')
+  	.attr('x1', 400)
+  	.attr('y1', 600)
+  	.attr('x2', 600)
+  	.attr('y2', 400)
+  	.attr('stroke', 'white');
+
+// Add Circles
+   for(let i = 0; i < 11; i++) {
+   		for(let j = 0; j < 11; j++) {
+   			d3.select('svg')
+    			.append('circle')
+    			.attr('cx', 100*i)
+    			.attr('cy', 100*j)
+    			.attr('r', 25)
+    			.style('fill', d3.rgb(20*i, 20*j, i*j));
+    	}
+   }
+
+// Add Polygons
+var mod = 462;
+var points = [
+	[25+mod, 0+mod],
+	[0+mod, 25+mod],
+	[0+mod, 50+mod],
+	[25+mod, 75+mod],
+	[50+mod, 0+mod],
+	[75+mod, 25+mod],
+	[75+mod, 50+mod],
+	[50+mod, 75+mod]
+];
+var hull = d3.polygonHull(points);
+var line = d3.line()
+    .curve(d3.curveLinearClosed);
+    
+d3.select("svg")
+    .append("path")
+    .attr("d", line(hull))
+    .style('fill', 'white');
+
+//On-Click Event
+d3.select("svg")
+	.on('click', function(evt, d) {
+		console.log(evt);
+		var coordinates = d3.pointer(evt);
+		var x = coordinates[0];
+		var y = coordinates[1];
+		var more_points = [
+			[x, y-25],
+			[x-25, y],
+			[x+25, y],
+			[x+25, y+25],
+			[x-25, y+25],
+		];
+		var hull = d3.polygonHull(more_points);
+		var line = d3.line()
+    .curve(d3.curveLinearClosed);
+		d3.select("svg")
+    		.append("path")
+    		.attr("d", line(hull))
+			.style('fill', d3.rgb((x%11)*25, (y%11)*25, ((x*y)%11)*25));
+	});
+
 </script>
