@@ -13,5 +13,4 @@ Hi! I hope you enjoyed checking out my first project! A couple things to note:
 
 That's about all. This took a lot of trial and error, but I had a lot of fun while making it, and I didn't want to just put 4 shapes on an svg and call it a day. Hope you liked it!
 
-GitHub Pages: https://github.com/JoshuaMalcarne/JoshuaMalcarne.github.io-01-ghd3/blob/cb406c788effc5a7431f45ec499faceffe1c6d47/index.html
-Note: This was the best I could do for a github pages link. The rest of what I tried didn't work, so I will be visiting the next available office hours  
+GitHub Pages: https://joshuamalcarne.github.io/a1-ghd3/
