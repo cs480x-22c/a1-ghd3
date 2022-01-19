@@ -55,9 +55,7 @@ var points = [
 	[75+mod, 50+mod],
 	[50+mod, 75+mod]
 ];
-
 var hull = d3.polygonHull(points);
-
 var line = d3.line()
     .curve(d3.curveLinearClosed);
     
@@ -67,5 +65,26 @@ d3.select("svg")
     .style('fill', 'white');
 
 //On-Click Event
+d3.select("svg")
+	.on('click', function(evt, d) {
+		console.log(evt);
+		var coordinates = d3.pointer(evt);
+		var x = coordinates[0];
+		var y = coordinates[1];
+		var more_points = [
+			[x, y-25],
+			[x-25, y],
+			[x+25, y],
+			[x+25, y+25],
+			[x-25, y+25],
+		];
+		var hull = d3.polygonHull(more_points);
+		var line = d3.line()
+    .curve(d3.curveLinearClosed);
+		d3.select("svg")
+    		.append("path")
+    		.attr("d", line(hull))
+			.style('fill', d3.rgb((x%11)*25, (y%11)*25, ((x*y)%11)*25));
+	});
 
 </script>
