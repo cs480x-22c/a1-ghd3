@@ -1,56 +1,83 @@
-<script src="https://d3js.org/d3.v6.min.js"></script>
+<script src="https://d3js.org/d3.v4.min.js"></script>
 
-Testing
-
-aaaa
-
-<svg width="600" height="600"></svg>
-
+<svg width="1100" height= "750" style =  "border:5px solid black"></svg>
 <script>
-  console.log(d3); // test if d3 is loaded
-  // Add an SVG
 
-  // Add Rectangles
-  //red rectangle
-  d3.select("svg")
-      .append('rect')
-      .attr('x', 10)
-      .attr('y', 120)
-      .attr('width', 45)
-      .attr('height', 40)
-      .attr('stroke', 'black')
-      .attr('fill', '#ff0000');
+    var bar1 = d3.select('svg').append("rect")
+        .attr("fill", "#ff0000")
+        .attr("x", 30)
+        .attr("y", 300)
+        .attr("height", 150)
+        .attr("width", 20);
 
-  //purple rectangle with rounded corners
-  d3.select("svg")
-      .append('rect')
-      .attr('x', 45)
-      .attr('y', 450)
-      .attr('width', 100)
-      .attr('height', 45)
-      .attr('stroke', 'black')
-      .attr('rx', 13)
-      .attr('fill', '#ff00ff');
+    var bar2 = d3.select('svg').append("rect")
+        .attr("fill", "#ff00ff")
+        .attr("x", 1050)
+        .attr("y", 300)
+        .attr("height", 150)
+        .attr("width", 20);
 
-  //black circle
-  // Add Circles
-  d3.select('svg')
-      .append('circle')
-      .attr('cx',400)
-      .attr('cy',500)
-      .attr('r', 100);
+    document.addEventListener('keydown', (event) =>{
+        var keyName = event.key;
 
-  // Add Lines
+        if(keyName === 's'){
+            p1Down();
+        } else if(keyName === 'w'){
+            p1Up();
+        }else if(keyName === 'i'){
+            p2Up();
+        }else if(keyName === 'k'){
+            p2Down();
+        }
+    })
 
-  // Add Polygons
+    document.addEventListener('keyup', (event) =>{
+        bar1.transition().stop();
+    })
+    document.addEventListener('keyup', (event) =>{
+        bar2.transition().stop();
+    })
+    function p1Down() {
+        bar1.transition()
+            .ease(d3.easeLinear)
+            .duration(500)
+            .attr("y",600)
+    }
+    function p1Up() {
+        bar1.transition()
+            .ease(d3.easeLinear)
+            .duration(500)
+            .attr("y",0)
+    }
+    function p2Down() {
+        bar2.transition()
+            .ease(d3.easeLinear)
+            .duration(500)
+            .attr("y",600)
+    }
+    function p2Up() {
+        bar2.transition()
+            .ease(d3.easeLinear)
+            .duration(500)
+            .attr("y",0)
+    }
 
-  //class dataset example
-  var data = [23, 80 , 47, 17, 5];
-  d3.select("svg")
-  .selectAll("circle")
-  .data(data)
-  .enter().append("circle")
-  .attr('cx', function (d) {return d;})
-  .attr('cy', function (d) {return d * 5;})
-  .attr('r', 5);
+    d3.select('svg')
+    .append('circle')
+    .attr('cx',550)
+    .attr('cy',375)
+    .attr('r', 100)
+    .attr('stroke','#000000')
+    .attr('fill', '#ffffff')
+    .attr('stroke-width', 5);
+
+    d3.select('svg')
+        .append('line')
+        .style("stroke", "#000000")
+        .style("stroke-width", 5)
+        .attr('x1',550)
+        .attr('y1',0)
+        .attr('x2',550)
+        .attr('y2',750)
+        .attr('r', 100);
 </script>
