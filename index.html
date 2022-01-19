@@ -1,10 +1,464 @@
-<script src="https://d3js.org/d3.v6.min.js"></script>
+<script src="https://d3js.org/d3.v7.min.js"></script>
+
+<div class="vis">
+    <div style="text-align:center;">
+<style>
+svg {
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: auto;
+    margin-top: auto;
+    border-style: solid;
+}
+</style>
+</div>
 
 <script>
-  console.log(d3); // test if d3 is loaded
-  // Add an SVG
-  // Add Rectangles
-  // Add Circles
-  // Add Lines
-  // Add Polygons
+    var size = 600
+    var svg = d3.select('.vis').append("svg")
+        .attr("viewBox", [0, 0, size, size])
+    var xpos = [];
+    var ypos = [];
+    var click = 0;
+    
+
+// CURSOR
+    document.getElementsByTagName("body")[0].style.cursor = "url('http://www.rw-designer.com/cursor-view/55125.png'), auto";
+    
+// LINE THICKNESS
+    svg.style('stroke-width', 10)
+    
+
+//EARS
+    //OUTER EARS
+        //OUTER EAR LEFT
+// create data
+var data = [{x: size/24, y: size/4}, {x: size/8, y: size/20}, {x: size/3.4, y: size/4.8}]
+
+// prepare a helper function
+var lineFunc = d3.line()
+  .x(function(d) { return d.x })
+  .y(function(d) { return d.y })
+
+// Add the path using this helper function
+svg.append('path')
+  .attr('d', lineFunc(data))
+  .attr('stroke', 'black')
+  .attr('fill', 'none');
+        //OUTER EAR RIGHT
+// create data
+var data = [{x: size-size/24, y: size/4}, {x: size-size/8, y: size/20}, {x: size-size/3.4, y: size/4.8}]
+
+// prepare a helper function
+var lineFunc = d3.line()
+  .x(function(d) { return d.x })
+  .y(function(d) { return d.y })
+
+// Add the path using this helper function
+svg.append('path')
+  .attr('d', lineFunc(data))
+  .attr('stroke', 'black')
+  .attr('fill', 'none');
+    //INNER EARS
+        //INNER EAR LEFT
+// create data
+var data = [{x: size/12, y: size/4}, {x: size/7.5, y: size/9.23}, {x: 150, y: 130}]
+
+// prepare a helper function
+var lineFunc = d3.line()
+  .x(function(d) { return d.x })
+  .y(function(d) { return d.y })
+
+// Add the path using this helper function
+svg.append('path')
+  .attr('d', lineFunc(data))
+  .attr('stroke', 'none')
+  .attr('fill', 'red');
+        //INNER EAR RIGHT
+// create data
+var data = [{x: size-50, y: 150}, {x: size-80, y: 65}, {x: size-150, y: 130}]
+
+// prepare a helper function
+var lineFunc = d3.line()
+  .x(function(d) { return d.x })
+  .y(function(d) { return d.y })
+
+// Add the path using this helper function
+svg.append('path')
+  .attr('d', lineFunc(data))
+  .attr('stroke', 'none')
+  .attr('fill', 'red');
+    
+    
+//NOSE
+    // create data
+var datanose = [{x: 300, y: 420}, {x: 350, y: 395}, {x: 300, y: 370}, {x: 250, y: 395}, {x: 300, y: 420}]
+
+// prepare a helper function
+var curveFunc = d3.line()
+  .curve(d3.curveBasis)              // This is where you define the type of curve. Try curveStep for instance.
+  .x(function(d) { return d.x })
+  .y(function(d) { return d.y })
+
+// Add the path using this helper function
+svg.append('path')
+  .attr('d', curveFunc(datanose))
+  .attr('stroke', 'black')
+  .attr('fill', 'black');
+    
+    
+//mouth
+//left
+    svg.append("path")
+  .attr("transform", "translate(250,410)")
+  .attr("d", d3.arc()
+    .innerRadius( 50 )
+    .outerRadius( 50)
+    .startAngle( 1.5)     // It's in radian, so Pi = 3.14 = bottom.
+    .endAngle( 4.7)       // 2*Pi = 6.28 = top
+    )
+  .attr('stroke', 'black')
+  .attr('fill', '#69b3a2');
+    //right
+    svg.append("path")
+  .attr("transform", "translate(350,410)")
+  .attr("d", d3.arc()
+    .innerRadius( 50 )
+    .outerRadius( 50)
+    .startAngle( 1.5)     // It's in radian, so Pi = 3.14 = bottom.
+    .endAngle( 4.7)       // 2*Pi = 6.28 = top
+    )
+  .attr('stroke', 'black')
+  .attr('fill', '#69b3a2');
+    
+    
+//EYES
+//LEFT EYE
+// add an arc
+svg.append("path")
+  .attr("transform", "translate(120,300)")
+  .attr("d", d3.arc()
+    .innerRadius( 100 )
+    .outerRadius( 100 )
+    .startAngle( 1.68 )     // It's in radian, so Pi = 3.14 = bottom.
+    .endAngle(4.6 )       // 2*Pi = 6.28 = top
+    )
+  .attr('stroke', 'black')
+  .attr('fill', '#69b3a2');
+//another for the top half of the eyes
+    svg.append("path")
+  .attr("transform", "translate(120,375)")
+  .attr("d", d3.arc()
+    .innerRadius( 120 )
+    .outerRadius( 120 )
+    .startAngle( 5.06)     // It's in radian, so Pi = 3.14 = bottom.
+    .endAngle( 7.5)       // 2*Pi = 6.28 = top
+    )
+  .attr('stroke', 'black')
+  .attr('fill', '#69b3a2');
+//RIGHT EYE
+    // add an arc
+svg.append("path")
+  .attr("transform", "translate(480,300)")
+  .attr("d", d3.arc()
+    .innerRadius( 100 )
+    .outerRadius( 100 )
+    .startAngle( 1.68 )     // It's in radian, so Pi = 3.14 = bottom.
+    .endAngle(4.6 )       // 2*Pi = 6.28 = top
+    )
+  .attr('stroke', 'black')
+  .attr('fill', '#69b3a2');
+//another for the top half of the eyes
+    svg.append("path")
+  .attr("transform", "translate(480,375)")
+  .attr("d", d3.arc()
+    .innerRadius( 120 )
+    .outerRadius( 120 )
+    .startAngle( 5.06)     // It's in radian, so Pi = 3.14 = bottom.
+    .endAngle( 7.5)       // 2*Pi = 6.28 = top
+    )
+  .attr('stroke', 'black')
+  .attr('fill', '#69b3a2');
+    
+    
+    
+//EYEBALLS
+//LEFT
+    // Add the path using this helper function
+svg.append('circle')
+  .attr('cx', 100) 
+  .attr('cy', 325) //eventually i want these to vary based on mouse pos
+  .attr('r', 75) //eventually i want to make these bigger once i get overlap figured out
+  .attr('stroke', 'black')
+  .attr('fill', 'black');
+//RIGHT
+    // Add the path using this helper function
+svg.append('circle')
+  .attr('cx', 450)
+  .attr('cy', 325)
+  .attr('r', 75)
+  .attr('stroke', 'black')
+  .attr('fill', 'black');
+    
+/*var rect = svg.append("rect").attr("x", 0).attr("y", 0).attr("height", size).attr("width", size).attr("fill", 'clear').attr('stroke', 'clear');
+
+rect.on("click", function() {
+    console.log("rect");
+    d3.event.stopPropagation();
+});*/
+    
+    //EYEBROWS
+//left
+    svg.append('line') //how to draw a line! thanks to https://www.d3-graph-gallery.com/graph/shape.html
+  .attr('x1', 15)
+  .attr('y1', 230)
+  .attr('x2', 225)
+  .attr('y2', 230)
+  .attr('stroke', 'black')
+//right
+    svg.append('line') //how to draw a line! thanks to https://www.d3-graph-gallery.com/graph/shape.html
+  .attr('x1', 375)
+  .attr('y1', 230)
+  .attr('x2', 590)
+  .attr('y2', 230)
+  .attr('stroke', 'black')
+    
+
+    
+// MOUSEMOVE credit to this guy on stackoverflow i guess https://stackoverflow.com/questions/16770763/mouse-position-in-d3
+    svg.on('mousemove', (event) => {
+      var coords = d3.pointer( event ); //to be used for 
+        
+   
+//WHITE EYES
+//EYES
+//LEFT EYE
+// add an arc
+svg.append("path")
+  .attr("transform", "translate(120,300)")
+  .attr("d", d3.arc()
+    .innerRadius( 0 )
+    .outerRadius( 100 )
+    .startAngle( 1.68 )     // It's in radian, so Pi = 3.14 = bottom.
+    .endAngle(4.6 )       // 2*Pi = 6.28 = top
+    )
+  .attr('stroke', 'clear')
+  .attr('fill', 'white');
+//another for the top half of the eyes
+    svg.append("path")
+  .attr("transform", "translate(120,375)")
+  .attr("d", d3.arc()
+    .innerRadius( 0 )
+    .outerRadius( 120)
+    .startAngle( 5.06)     // It's in radian, so Pi = 3.14 = bottom.
+    .endAngle( 7.5)       // 2*Pi = 6.28 = top
+    )
+  .attr('stroke', 'clear')
+  .attr('fill', 'white');
+//RIGHT EYE
+    // add an arc
+svg.append("path")
+  .attr("transform", "translate(480,300)")
+  .attr("d", d3.arc()
+    .innerRadius( 0 )
+    .outerRadius( 100 )
+    .startAngle( 1.68 )     // It's in radian, so Pi = 3.14 = bottom.
+    .endAngle(4.6 )       // 2*Pi = 6.28 = top
+    )
+  .attr('stroke', 'clear')
+  .attr('fill', 'white');
+//another for the top half of the eyes
+    svg.append("path")
+  .attr("transform", "translate(480,375)")
+  .attr("d", d3.arc()
+    .innerRadius( 0 )
+    .outerRadius( 120 )
+    .startAngle( 5.06)     // It's in radian, so Pi = 3.14 = bottom.
+    .endAngle( 7.5)       // 2*Pi = 6.28 = top
+    )
+  .attr('stroke', 'clear')
+  .attr('fill', 'white');      
+        
+        
+//EYEBALLS
+//LEFT
+    // Add the path using this helper function
+svg.append('circle')
+  .attr('cx', 90+coords[0]/10) 
+  .attr('cy', 310+coords[1]/18) //eventually i want these to vary based on mouse pos
+  .attr('r', 75) //eventually i want to make these bigger once i get overlap figured out
+  .attr('stroke', 'black')
+  .attr('fill', 'black');
+//RIGHT
+    // Add the path using this helper function
+svg.append('circle')
+  .attr('cx', 442+coords[0]/8)
+  .attr('cy', 310+coords[1]/18)
+  .attr('r', 75)
+  .attr('stroke', 'black')
+  .attr('fill', 'black');   
+//EYELIDS
+//EYES
+//LEFT EYE
+// add an arc
+svg.append("path")
+  .attr("transform", "translate(120,300)")
+  .attr("d", d3.arc()
+    .innerRadius( 100 )
+    .outerRadius( 140 )
+    .startAngle( 1.68 )     // It's in radian, so Pi = 3.14 = bottom.
+    .endAngle(4.6 )       // 2*Pi = 6.28 = top
+    )
+  .attr('stroke', 'clear')
+  .attr('fill', 'white');
+//another for the top half of the eyes
+    svg.append("path")
+  .attr("transform", "translate(120,375)")
+  .attr("d", d3.arc()
+    .innerRadius( 120 )
+    .outerRadius( 165 )
+    .startAngle( 5.06)     // It's in radian, so Pi = 3.14 = bottom.
+    .endAngle( 7.5)       // 2*Pi = 6.28 = top
+    )
+  .attr('stroke', 'clear')
+  .attr('fill', 'white');
+//RIGHT EYE
+    // add an arc
+svg.append("path")
+  .attr("transform", "translate(480,300)")
+  .attr("d", d3.arc()
+    .innerRadius( 100 )
+    .outerRadius( 140 )
+    .startAngle( 1.68 )     // It's in radian, so Pi = 3.14 = bottom.
+    .endAngle(4.6 )       // 2*Pi = 6.28 = top
+    )
+  .attr('stroke', 'clear')
+  .attr('fill', 'white');
+//another for the top half of the eyes
+    svg.append("path")
+  .attr("transform", "translate(480,375)")
+  .attr("d", d3.arc()
+    .innerRadius( 120 )
+    .outerRadius( 165 )
+    .startAngle( 5.06)     // It's in radian, so Pi = 3.14 = bottom.
+    .endAngle( 7.5)       // 2*Pi = 6.28 = top
+    )
+  .attr('stroke', 'clear')
+  .attr('fill', 'white');
+        
+//EYEBROWS
+//left
+    svg.append('line') //how to draw a line! thanks to https://www.d3-graph-gallery.com/graph/shape.html
+  .attr('x1', 15)
+  .attr('y1', 230)
+  .attr('x2', 225)
+  .attr('y2', 230)
+  .attr('stroke', 'black')
+//right
+    svg.append('line') //how to draw a line! thanks to https://www.d3-graph-gallery.com/graph/shape.html
+  .attr('x1', 375)
+  .attr('y1', 230)
+  .attr('x2', 590)
+  .attr('y2', 230)
+  .attr('stroke', 'black')
+        
+
+//EYES
+//LEFT EYE
+// add an arc
+svg.append("path")
+  .attr("transform", "translate(120,300)")
+  .attr("d", d3.arc()
+    .innerRadius( 100 )
+    .outerRadius( 100 )
+    .startAngle( 1.68 )     // It's in radian, so Pi = 3.14 = bottom.
+    .endAngle(4.6 )       // 2*Pi = 6.28 = top
+    )
+  .attr('stroke', 'black')
+  .attr('fill', '#69b3a2');
+//another for the top half of the eyes
+    svg.append("path")
+  .attr("transform", "translate(120,375)")
+  .attr("d", d3.arc()
+    .innerRadius( 120 )
+    .outerRadius( 120 )
+    .startAngle( 5.06)     // It's in radian, so Pi = 3.14 = bottom.
+    .endAngle( 7.5)       // 2*Pi = 6.28 = top
+    )
+  .attr('stroke', 'black')
+  .attr('fill', '#69b3a2');
+//RIGHT EYE
+    // add an arc
+svg.append("path")
+  .attr("transform", "translate(480,300)")
+  .attr("d", d3.arc()
+    .innerRadius( 100 )
+    .outerRadius( 100 )
+    .startAngle( 1.68 )     // It's in radian, so Pi = 3.14 = bottom.
+    .endAngle(4.6 )       // 2*Pi = 6.28 = top
+    )
+  .attr('stroke', 'black')
+  .attr('fill', '#69b3a2');
+//another for the top half of the eyes
+    svg.append("path")
+  .attr("transform", "translate(480,375)")
+  .attr("d", d3.arc()
+    .innerRadius( 120 )
+    .outerRadius( 120 )
+    .startAngle( 5.06)     // It's in radian, so Pi = 3.14 = bottom.
+    .endAngle( 7.5)       // 2*Pi = 6.28 = top
+    )
+  .attr('stroke', 'black')
+  .attr('fill', '#69b3a2');
+
+
+        // ONCLICK
+svg.on("click", function() { 
+    // Add the path using this helper function
+    svg.append('text')
+        .attr('x', coords[0])
+        .attr('y', coords[1])
+        .attr('stroke',function() {
+    return "hsl(" + Math.random() * 360 + ",100%,50%)";
+    })
+        .attr('stroke-width', 3)
+        .style("font-size", 48)
+        .text("miaou")
+    xpos.push(coords[0])
+    ypos.push(coords[1])
+    click++
+});
+    for (var i=0; i<click; i++){
+    svg.append('text')
+        .attr('x', xpos[i])
+        .attr('y', ypos[i])
+        .attr('stroke', function() {
+    return "hsl(" + Math.random() * 360 + ",100%,50%)";
+    })
+        .attr('stroke-width', 3)
+        .style("font-size", 48)
+        .text("miaou")}
+    }); 
+    
+    
+    //add layers? doesn't work
+/*    var layer1= svg.append('g');
+    var layer2= svg.append('g');
+    
+layer2.append('circle')
+    .attr('cx', 50)
+    .attr('cy', 50)
+    .attr('r', 16)
+    .attr('fill', 'red')
+
+layer1.append('rect')
+    .attr('x', 25)
+    .attr('y', 25)
+    .attr('width', 50)
+    .attr('height', 50)
+    .attr('fill', 'blue'); */
+
+        
+    //all of this should be written better, remember DRY. when i have time i will create functions based on the things i have to repeat and create variables for positions relative to the size of the svg
 </script>
+ 
