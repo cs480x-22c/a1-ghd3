@@ -7,18 +7,14 @@
     <script src="script.js"></script>
   </head>
   <body>
-    <svg>
-      <circle
-        class="target"
-        style="fill: #dfbc4b"
-        cx="80"
-        cy="80"
-        r="70"
-      ></circle>
+    <svg class="moon">
+      <circle style="fill: #dfbc4b" cx="80" cy="80" r="70"></circle>
     </svg>
 
-    <svg>
+    <svg class="stars">
       <polygon
+        width="200"
+        height="200"
         points="100,10 40,198 190,78 10,78 160,198"
         style="
           fill: #dfbc4b;
@@ -26,11 +22,10 @@
           stroke-width: 4;
           fill-rule: nonzero;
         "
-        cx="180"
       />
     </svg>
 
-    <svg height="500" width="576">
+    <svg height="500" width="576" class="spaceship">
       <polygon points="200,10 250,200 160,210" style="fill: #dfbc4b" />
 
       <ellipse
@@ -68,10 +63,172 @@
       <circle cx="330" cy="80" r="6" fill="white" />
     </svg>
 
+    <svg width="400" height="180" class="cow">
+      <rect
+        x="50"
+        y="20"
+        rx="50"
+        ry="40"
+        width="150"
+        height="95"
+        style="fill: white; stroke: black; stroke-width: 5; opacity: 1"
+      />
+
+      <circle
+        cx="105"
+        cy="55"
+        r="25"
+        stroke="black"
+        stroke-width="2"
+        fill="black"
+      />
+
+      <circle
+        cx="175"
+        cy="80"
+        r="25"
+        stroke="black"
+        stroke-width="2"
+        fill="black"
+      />
+
+      <circle
+        cx="130"
+        cy="95"
+        r="10"
+        stroke="black"
+        stroke-width="2"
+        fill="black"
+      />
+
+      <rect
+        x="25"
+        y="10"
+        rx="20"
+        ry="30"
+        width="60"
+        height="95"
+        style="fill: white; stroke: black; stroke-width: 5; opacity: 1"
+      />
+
+      <rect
+        x="70"
+        y="100"
+        rx="10"
+        ry="10"
+        width="20"
+        height="40"
+        style="fill: white; stroke: black; stroke-width: 5; opacity: 1"
+      />
+
+      <rect
+        x="160"
+        y="100"
+        rx="10"
+        ry="10"
+        width="20"
+        height="40"
+        style="fill: white; stroke: black; stroke-width: 5; opacity: 1"
+      />
+
+      <rect
+        x="25"
+        y="75"
+        rx="80"
+        ry="30"
+        width="60"
+        height="35"
+        style="fill: pink; stroke: black; stroke-width: 5; opacity: 1"
+      />
+
+      <rect
+        x="25"
+        y="5"
+        rx="30"
+        ry="20"
+        width="10"
+        height="30"
+        style="fill: #ba8b4c; stroke: black; stroke-width: 5; opacity: 1"
+      />
+
+      <rect
+        x="70"
+        y="5"
+        rx="30"
+        ry="20"
+        width="10"
+        height="30"
+        style="fill: #ba8b4c; stroke: black; stroke-width: 5; opacity: 1"
+      />
+
+      <circle
+        cx="40"
+        cy="50"
+        r="5"
+        stroke="black"
+        stroke-width="2"
+        fill="black"
+      />
+
+      <circle
+        cx="70"
+        cy="50"
+        r="5"
+        stroke="black"
+        stroke-width="2"
+        fill="black"
+      />
+
+      <circle
+        cx="40"
+        cy="95"
+        r="3"
+        stroke="black"
+        stroke-width="2"
+        fill="black"
+      />
+
+      <circle
+        cx="70"
+        cy="95"
+        r="3"
+        stroke="black"
+        stroke-width="2"
+        fill="black"
+      />
+    </svg>
+
     <script src="https://d3js.org/d3.v6.min.js"></script>
 
     <script>
       console.log(d3); // test if d3 is loaded
+
+      var svg = d3.select("#stars").append("svg");
+
+      function twinkleStars(duration) {
+        var star = svg
+          .append("stars")
+          .attr("points", "100,10 40,198 190,78 10,78 160,198")
+          .attr("fill", "#dfbc4b")
+          .attr("stroke", "#bf9a22")
+          .attr("stroke-width", 4)
+          .attr("fill-rule", "nonzero");
+
+        star
+          .transition()
+          .ease(d3.easeQuad)
+          .on("start", function repeat() {
+            d3.active(this)
+              .attr("fill", "blue")
+              .transition()
+              .duration(3000)
+              .attr("fill", "grey")
+              .transition()
+              .duration(100)
+              .on("start", repeat);
+          });
+      }
+      twinkleStars(100);
 
       // Add Rectangles
       // Add Circles
