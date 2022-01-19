@@ -1,5 +1,4 @@
 I have made a page with a grid of shapes in random colors, some of which are randomly connected by lines.
-The lines and shapes are generated with d3, but the text and the large square containing the grid are not.
 
 Hosted here: https://juniorjedi490.github.io/a1-ghd3/
 
