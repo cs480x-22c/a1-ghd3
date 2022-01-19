@@ -1,7 +1,160 @@
 <script src="https://d3js.org/d3.v6.min.js"></script>
 
+<svg width=1800 height=800></svg>
 <script>
   console.log(d3); // test if d3 is loaded
+
+var Greens = ["#9CCC65", "#8BC34A", "#7CB342", "#689F38", "#558B2F", "#AED581"]
+var Blues = ["#42A5F5", "#2196f3", "#1E88E5", "#1976D2", "#1565C0", "#64B5F6"]
+var count_cir = 0
+var count_rect = 0
+var count_line = 0
+var count_poly = 0
+
+  //Textblock
+  d3.select('svg')
+    .append('text')
+
+var textblock = d3.select('svg').select('text')
+
+  //Circle
+  d3.select('svg')
+    .append('circle')
+    .attr('cx', 300)
+    .attr('cy', 150)
+    .attr('r', 50)
+    .attr('fill', '#AED581')
+    .on('click', function(d) {
+      d3.select(this).attr('fill', Greens[count_cir % 6])
+      count_cir++
+      textblock.text("# of Clicks: " + count_cir)
+    })
+    .on("mouseover mousemove", function(e, d) {
+      d3.select(this).attr('r', 60)
+      textblock.transition()
+        .style('opacity', 1)
+        .duration(50)
+      textblock.text("# of Clicks: " + count_cir).raise()
+        .attr("x", (e.x + 10) + "px")
+        .attr("y", (e.y - 15) + "px");
+    })
+    .on("mouseout", function(d) {
+      d3.select(this).attr('r', 50)
+      textblock.transition()
+        .style("opacity", 0)
+        .duration(50)
+    });
+
+
+  //Rectangle
+  d3.select('svg')
+    .append('rect')
+    .attr('x', 700)
+    .attr('y', 100)
+    .attr('height', 100)
+    .attr('width', 200)
+    .attr('fill', "#64B5F6")
+    .on('click', function(d) {
+      d3.select(this).attr('fill', Blues[count_rect % 6])
+      count_rect++
+      textblock.text("# of Clicks: " + count_rect)
+    })
+    .on("mouseover mousemove", function(e, d) {
+      d3.select(this)
+        .attr('x', 690)
+        .attr('y', 90)
+        .attr('height', 120)
+        .attr('width', 220)
+      textblock.transition()
+        .style('opacity', 1)
+        .duration(50)
+      textblock.text("# of Clicks: " + count_rect).raise()
+        .attr("x", (e.x + 10) + "px")
+        .attr("y", (e.y - 15) + "px");
+    })
+    .on("mouseout", function(d) {
+      d3.select(this)
+        .attr('x', 700)
+        .attr('y', 100)
+        .attr('height', 100)
+        .attr('width', 200)
+      textblock.transition()
+        .style("opacity", 0)
+        .duration(50)
+    });
+
+
+  //Line
+  d3.select('svg')
+    .append('line')
+    .attr("x1", 100)
+    .attr("y1", 235)
+    .attr("x2", 470)
+    .attr("y2", 550)
+    .style('stroke', '#B71C1C')
+    .style("stroke-width", 5)
+    .on('click', function(d) {
+      d3.select(this).style("stroke-width", 9 + count_line * 4);
+      count_line++
+      textblock.text("# of Clicks: " + count_line)
+    })
+    .on("mouseover mousemove", function(e, d) {
+      d3.select(this).attr('opacity', '.60')
+      textblock.transition()
+        .style('opacity', 1)
+        .duration(50)
+      textblock.text("# of Clicks: " + count_line).raise()
+        .attr("x", (e.x + 10) + "px")
+        .attr("y", (e.y - 15) + "px");
+    })
+    .on("mouseout", function(d) {
+      d3.select(this).attr('opacity', '1')
+      textblock.transition()
+        .style("opacity", 0)
+        .duration(50)
+    });
+
+
+var angle = 90
+
+    //Polygon
+    d3.select('svg')
+      .append('polygon')
+      .attr("points", "800,570 900,650 950,580 890,350, 650,340 650,500")
+      .style("fill", "#FFCC80")
+      .on('click', function(e, d) {
+        d3.select(this).attr('transform', "rotate(" + angle + ", 810, 400)")
+        count_poly++
+        angle+=90
+        textblock.text("# of Clicks: " + count_poly)
+      })
+      .on("mouseover mousemove", function(e, d) {
+        d3.select(this).attr('opacity', '.85')
+        textblock.transition()
+          .style('opacity', 1)
+          .duration(50)
+        textblock.text("# of Clicks: " + count_poly).raise()
+         .attr("x", (e.x + 10) + "px")
+         .attr("y", (e.y - 15) + "px");
+      })
+      .on("mouseout", function(d) {
+        d3.select(this).attr('opacity', '1')
+        textblock.transition()
+          .style("opacity", 0)
+          .duration(50)
+      });
+
+
+const curve = d3.line().curve(d3.curveCatmullRom);
+const data = [[100, 200], [200, 200], [400, 400], [600, 300], [800, 300]];
+
+      //Path
+      d3.select('svg')
+        .append('path')
+        .attr('d', curve(data))
+        .attr('stroke', 'black')
+        .attr('fill', 'none');
+
   // Add an SVG
   // Add Rectangles
   // Add Circles
