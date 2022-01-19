@@ -1,10 +1,135 @@
-<script src="https://d3js.org/d3.v6.min.js"></script>
+<html lang="en">
+  <head>
+    <title>CS 480X - Assignment 1 - Hello World</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poiret+One&display=swap" rel="stylesheet">
+    <script src="https://d3js.org/d3.v6.min.js"></script>
+  </head>
+  <body>
+    <div id="container"></div>
+    <script>
+      const colors = ['#EB2962', '#55B5E6', '#FA8E8E', '#FFA745', '#560EEB']
 
-<script>
-  console.log(d3); // test if d3 is loaded
-  // Add an SVG
-  // Add Rectangles
-  // Add Circles
-  // Add Lines
-  // Add Polygons
-</script>
+      let setScene = () => {
+        // Set background of body
+        d3.select('body')
+          .style('background-color', colors[1])
+        // Add an SVG
+        let svg = d3.select('#container').append('svg')
+          .attr('width', '100%')
+          .attr('height', '100%')
+        // Add polygon background
+        svg.append('polygon')
+          .attr('points', '0,600 300,325 500,375 1000,250 1400,350 1600,150 1600,600')
+          .attr('fill', colors[0])
+          .attr('opacity', '70%')
+        // Add creator and sources
+        svg.append('rect')
+          .attr('x', 0)
+          .attr('y', 650)
+          .attr('width', 1600)
+          .attr('height', 80)
+          .attr('fill', colors[2])
+        // Add text in footer text box
+        svg.append('text')
+          .attr('x', 20)
+          .attr('y', 680)
+          .attr('font-family', 'Poiret One')
+          .text('CS 480X @ WPI, Assignment 1 by Federico Galbiati')
+        svg.append('text')
+          .attr('x', 20)
+          .attr('y', 700)
+          .attr('font-family', 'Poiret One')
+          .text('Dataset source: https://datahub.io/core/sea-level-rise')
+        // Add tile text box
+        svg.append('text')
+          .attr('x', 20)
+          .attr('y', 60)
+          .attr('font-family', 'Poiret One')
+          .attr('font-size', '50')
+          .text('EPA Sea Level 1880-2013')
+      }
+      
+      let plotData = (data) => {
+        let yLabels = Array(10).keys()
+        // Make the groups for the data point + error line
+        let gs = d3.select("svg")
+          .selectAll("g")
+          .data(data).enter()
+          .append("g")
+          .on('mouseover', function(evt, d) {
+            let s = d3.select(this)
+              .selectAll('circle')
+              .transition().duration(1).ease(d3.easeLinear)
+              .attr('r', 5)
+            d3.select(this)
+              .selectAll('line')
+              .transition().duration(1).ease(d3.easeLinear)
+              .attr('stroke-width', 5)
+          })
+          .on('mouseout', function(evt, d) {
+            d3.select(this)
+              .selectAll('circle')
+              .transition().duration(1).ease(d3.easeLinear)
+              .attr('r', 3)
+            d3.select(this)
+              .selectAll('line')
+              .transition().duration(1).ease(d3.easeLinear)
+              .attr('stroke-width', 3)
+          })
+        // Make the lines for error bounds
+        gs.append('line')
+          .attr('stroke', colors[3])
+          .attr('x1', d => 100 + d.idx * 10)
+          .attr('x2', d => 100 + d.idx * 10)
+          .attr('y1', d => 500 + (d.level * -40) - 20 * (d.ueb - d.leb))
+          .attr('y2', d => 500 + (d.level * -40) + 20 * (d.ueb - d.leb))
+          .attr('stroke-width', 3)
+          .attr('stroke-linecap', 'round')
+        // Make the circles for error bounds
+         gs.append("circle")
+          .attr('fill', colors[4])
+          .attr('cx', d => 100 + d.idx * 10)
+          .attr('cy', d => 500 + d.level * -40)
+          .attr('r', 3)
+        // Make labels for x-axis (dates)
+        d3.select("svg")
+          .selectAll("null")
+          .data(data).enter()
+          .append("text")
+          .attr('font-family', 'Poiret One')
+          .attr('x', d => 100 + d.idx * 10)
+          .attr('y', d => 580)
+          .attr('text-anchor', 'middle')
+          .text( d => d.xLabel )
+        // Make labels for y-axis
+        d3.select("svg")
+          .selectAll("null")
+          .data(yLabels).enter()
+          .append("text")
+          .attr('font-family', 'Poiret One')
+          .attr('x', d => 50)
+          .attr('y', d => 500 + 6 + d * -40)
+          .attr('text-anchor', 'middle')
+          .text( d => d + "\"")
+      }
+
+      d3.csv("epa-sea-level_csv.csv", (data, idx) => {
+        return {
+          idx,
+          level: +data['CSIRO Adjusted Sea Level'],
+          leb: +data['Lower Error Bound'],
+          ueb: +data['Upper Error Bound'],
+          xLabel: (idx % 10 === 0) ? data['Year'].split('-')[0] : ''
+        }
+      })
+      .then((data) => {        
+        setScene()
+        plotData(data)
+      })
+    </script>
+  </body>  
+</html>
+
+

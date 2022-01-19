@@ -1,86 +1,49 @@
 Assignment 1 - Hello World: GitHub and d3  
 ===
 
-This is a starting project to make sure you can write and host a webpage that generates graphics using d3. 
+### Links
+Repository: [https://github.com/fedeit/a1-ghd3](https://github.com/fedeit/a1-ghd3)
+<br>
+README: [https://github.com/fedeit/a1-ghd3/blob/master/README.md](https://github.com/fedeit/a1-ghd3/blob/master/README.md)
+<br>
+GitHub Pages: [http://fedeit.github.io/a1-ghd3/index.html](http://fedeit.github.io/a1-ghd3/index.html)
 
-The primary goal is to be able to generate graphics primitives (circles, rectangles, lines, polygons) at different locations on the screen with different colors. 
+### Overview
+<i>Made by Federico Galbiati (fedeit)</i>
+<br>
+For this assignment I created a small plot of data by reading a CSV dataset of the sea levels from the EPA available publicly at [https://datahub.io/core/sea-level-rise](https://datahub.io/core/sea-level-rise). The only framework used is d3.js. All code was created based on the starter code used in class from demos `d3start` and `exo-inclass`. The dataset is plot using circles for the data points, and lines for the upper and lower margin of error for each point. I then decorated the page using a polygon and adding a footer. Finally, I introduced custom fonts, an accessible color palette, text, and animations on the data points that enlarge the items on hover.
 
-The secondary goal is to introduce you to coding on GitHub, including creating a gh-pages branch to host your visualizations.
+![Screenshot of the web app made with D3.JS](images/website.png)
 
-You may write everything from scratch, or start with demo programs from books or the web. 
-If you do start with code that you found, you **must identify** the source of the code in your README and, most importantly, make non-trivial changes to the code to make it your own so you really learn what you're doing. 
+### Requirements
+- Circles:
+    - I used a circles for the datapoints, custom radius and color, and center position
+    - I also applied a transition on hover in/out which changes the radius from 3px to 5px and viceversa
+- Rectangles:
+    - I used a rectangle to create a footer at the bottom of the page.
+- Lines:
+    - I used lines for the error bound lines for each data point. The lines have a custom color, round corners, and line width
+    - I also applied a transition on hover in/out which changes the line width from 3px to 5px and viceversa
+- Polygons:
+    - I created one large polygon with seven points what represents an upward trend in the data. I also applied a custom color to it
+- Different colors:
+    - I created a custom palette with color.adobe.com and made sure it is accessible for all people with visual disabilities. These colors were applied to all the elements of the UI.
 
-For example, you could download one of the d3.js examples, read it through so you understand what it's doing, and then change the appearance of the graphical output to use different color schemes, different primitive shapes, different layouts of the primitives, and so on.
+### Technical Achievements
+- Data CSV import:
+- Animation on hover:
+    - I grouped the circles and lines for each data point using a `<g>` element. I then applied mouse events on the graphical elements on mouse hover. The mouse events trigger animations on the respective circle and line elements for the group, and modified the radius and line width to make them larger.
+- Lighthouse tests:
+    - I tested the website using the Google Lighthouse tests and scored 90+ on Performance, Accessibility, and Best Practices (screenshot below)
 
-Resources
----
+![Google Lighthouse result: Performance: 100%, Accessibility: 100%, and Best Practices: 93%](images/lighthouse.png)
 
-If you need a JavaScript/HTML/CSS refresher, see [JavaScript Codeacademy](https://www.codecademy.com/en/tracks/javascript) or find one of your choosing on the web.
+### Design Achievements
+- Accessible color palette (screenshot below):
+    - I created a custom color palette of five colors using [https://colors.adobe.com](https://colors.adobe.com). I also validated the palette for accessibility using [https://colors.adobe.com/create/color-accessibility](https://colors.adobe.com/create/color-accessibility) to make sure it works for people with color blind people.
+- Text items:
+    - Although we haven't used text elements yet in class, I decided to experiment with them. I created a title, footer notes, and axis labels.
+- Custom font from Google Fonts:
+    - I used a custom font from Google fonts that I found more visually appealing than the default fonts. Specifically, I used [Poiret One](https://fonts.google.com/specimen/Poiret+One). I included it by using a `<link>` tag.
 
-If you need a Git/GitHub refreseher, some possible resources include [Getting Started with GitHub](https://help.github.com/categories/bootcamp/), the [GitHub Guides](https://guides.github.com/) (especially the ones on Hello World, and Understanding the GitHub Flow, and Forking Projects), and [CodeSchool's Try Git Course](https://www.codeschool.com/courses/try-git).
-
-Requirements
----
-
-1. Your project should contain at least four kinds of graphics primitives (circles, rectangles, lines, polygons) in different colors. 
-2. Your document should identify the source of the code if you start with code that you found. 
-3. Your code should be forked from the GitHub repo and linked using GitHub pages. See the "GitHub Details" section below for detailed instructions on how to do this.
-
-GitHub Details
----
-
-- Fork the GitHub Repository for Assignment 1. You now have a copy associated with your username.
-- Make changes to index.html to fulfill the project requirements. 
-- Make sure your "main" branch matches your "gh-pages" branch. See the GitHub Guides referenced above if you need help.
-- Edit the README.md with a link to your gh-pages site "http://YourUsernameGoesHere.github.io/01-ghd3/index.html".
-
-Submission Details
----
-- To submit, make a [Pull Request](https://help.github.com/articles/using-pull-requests/) on the original repository.
-- Note: name your pull request using the following scheme: 
-```
-a1-your Gh username-your first name-your lastname
-
-```
-
-Vis Details
----
-
-For this project you should use d3.js. 
-You can learn from examples on the [d3.js](http://d3js.org) site or start from scratch.
-
-See the [Using d3js](https://github.com/mbostock/d3/wiki#using) documentation for how to run your own local server.
-
-Creative solutions are welcome! In the past I've seen recreations of paintings, interactives, and more.
-
-Go beyond the minimum requirements of this project.
-Experiment with other aspects of the [d3 API](https://github.com/mbostock/d3/wiki/API-Reference) and [d3 Tutorials](https://github.com/mbostock/d3/wiki/Tutorials). 
-Try making the elements interactive, for example, or animate them.
-
-Grading
----
-
-Grades are on a 120 point scale. 
-96 points will be graded for functionality: the program does what the assignment requests with an informative README. 
-
-We will use Google Chrome to view submissions. 
-Be sure to test your code there.
-
-Below are some, but not necessarily all, of the key points we will consider during grading:
-
-- Circles and Rectangles  
-- Lines  
-- Polygons  
-- Different colors  
-- README Quality
-    - A description of what you have created. 1-2 screenshots are recommended for the README.  
-    - A working link to the hosted files (usually the gh-pages 'live' url)  
-    - Section for Technical and Design Achievements
-
-Technical Achievement Desription -- 12  
-Design Achievement Description -- 12
-
-Remember, it is up to *you* to define what constitutes a technical and design achievements.
-Be ambitious as these are designed to allow you to shape your learning.
-These are the only way to move from B to A territory.
-
+![Screenshot of the accessible color palette created with Adobe Colors. The colors used are '#EB2962', '#55B5E6', '#FA8E8E', '#FFA745', '#560EEB'](images/colors.png)
