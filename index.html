@@ -1,10 +1,30 @@
-<script src="https://d3js.org/d3.v6.min.js"></script>
+<!DOCTYPE html>
+<html>
+<head>
+	<title> random symbols </title>
+	<link href="style.css" rel="stylesheet">
+	<script src="https://d3js.org/d3.v7.min.js"></script>
+</head>
 
-<script>
-  console.log(d3); // test if d3 is loaded
-  // Add an SVG
-  // Add Rectangles
-  // Add Circles
-  // Add Lines
-  // Add Polygons
-</script>
+<body>
+	<header>
+		<h1> Hi! </h1>
+	</header>
+		
+	<div id="text">
+		<p class="desc"> In the box below, the shapes are colored randomly. </p>
+		<p class="desc"> The lines connecting the circles are also random. </p>
+		<p class="desc"> Try reloading the page! </p>
+	</div>
+	
+	<svg x="40" y="40" width="360" height="360">
+		<rect id="box" x="0" y="0" rx="5" ry="5" width="360" height="360" />
+		
+		<!-- Group to separate the small squares from the background square, and the triangles from the crosses -->
+		<g></g>
+		
+	</svg>
+	<script src="symbol_grid.js" type="text/javascript"> </script>
+	
+</body>
+</html>
