@@ -1,11 +1,4 @@
 <script src="https://d3js.org/d3.v6.min.js"></script>
-Testing
-<style>
-  path {
-      fill: none;
-      stroke: green;
-  }
-</style>
   <svg width=600 height=600></svg>
 <script>
   console.log(d3); // test if d3 is loaded
@@ -13,32 +6,127 @@ Testing
   // Add Rectangles
   d3.select('svg')
     .append('rect')
-    .attr('x', 100)
-    .attr('y', 100)
-    .attr('height', 50)
+    .attr('x', 120)
+    .attr('y', 200)
+    .attr('height', 200)
     .attr('width', 10)
-    
-  
   // Add Circles
   d3.select('svg')
     .append('circle')
-    .attr('cx', 200)
-    .attr('cy', 200)
-    .attr('r', 100);
+    .attr('cx', 500)
+    .attr('cy', 100)
+    .attr('r', 50)
+    .style('fill', 'yellow');
   // Add Lines
   //https://webdva.github.io/how-to-draw-a-line-in-d3js/
   d3.select('svg')
     .append('line')
     .style('stroke', 'blue')
-    .style('stroke-width', 10)
-    .attr("x1", 10)
+    .style('stroke-width', 1)
+    .attr("x1", 0)
     .attr("y1", 0)
-    .attr("x2", 10)
+    .attr("x2", 0)
     .attr("y2", 600);
+  d3.select('svg')
+    .append('line')
+    .style('stroke', 'blue')
+    .style('stroke-width', 1)
+    .attr("x1", 0)
+    .attr("y1", 0)
+    .attr("x2", 600)
+    .attr("y2", 0);
+  d3.select('svg')
+    .append('line')
+    .style('stroke', 'blue')
+    .style('stroke-width', 1)
+    .attr("x1",600)
+    .attr("y1", 600)
+    .attr("x2", 600)
+    .attr("y2", 0);
+  d3.select('svg')
+    .append('line')
+    .style('stroke', 'blue')
+    .style('stroke-width', 1)
+    .attr("x1", 600)
+    .attr("y1", 600)
+    .attr("x2", 0)
+    .attr("y2", 600);
+  d3.select('svg')
+    .append('line')
+    .style('stroke', 'orange')
+    .style('stroke-width', 10)
+    .attr("x1", 500)
+    .attr("y1", 10)
+    .attr("x2", 500)
+    .attr("y2", 45);
+  d3.select('svg')
+    .append('line')
+    .style('stroke', 'orange')
+    .style('stroke-width', 10)
+    .attr("x1", 500)
+    .attr("y1", 155)
+    .attr("x2", 500)
+    .attr("y2", 190);
+  d3.select('svg')
+    .append('line')
+    .style('stroke', 'orange')
+    .style('stroke-width', 10)
+    .attr("x1", 555)
+    .attr("y1", 100)
+    .attr("x2", 590)
+    .attr("y2", 100);
+  d3.select('svg')
+    .append('line')
+    .style('stroke', 'orange')
+    .style('stroke-width', 10)
+    .attr("x1", 445)
+    .attr("y1", 100)
+    .attr("x2", 410)
+    .attr("y2", 100);
+  d3.select('svg')
+    .append('line')
+    .style('stroke', 'orange')
+    .style('stroke-width', 10)
+    .attr("x1", 535)
+    .attr("y1", 15)
+    .attr("x2", 520)
+    .attr("y2", 50);
+  d3.select('svg')
+    .append('line')
+    .style('stroke', 'orange')
+    .style('stroke-width', 10)
+    .attr("x1", 565)
+    .attr("y1", 30)
+    .attr("x2", 540)
+    .attr("y2", 60);
+  d3.select('svg')
+    .append('line')
+    .style('stroke', 'orange')
+    .style('stroke-width', 10)
+    .attr("x1", 585)
+    .attr("y1", 65)
+    .attr("x2", 550)
+    .attr("y2", 75);
+  d3.select('svg')
+    .append('line')
+    .style('stroke', 'orange')
+    .style('stroke-width', 10)
+    .attr("x1", 520)
+    .attr("y1", 153)
+    .attr("x2", 530)
+    .attr("y2", 185);
+  d3.select('svg')
+    .append('line')
+    .style('stroke', 'orange')
+    .style('stroke-width', 10)
+    .attr("x1", 535)
+    .attr("y1", 150)
+    .attr("x2", 545)
+    .attr("y2", 175);
   // Add Polygons
   d3.select('svg')
     .append('polygon')
     .style('fill', 'red')
     .style('stroke-width', '3')
-    .attr('points', '10,10 20,30 15,5')
+    .attr('points', '100,100 150,100 175,125 175,175 150,200 100,200 75,175 75,125')
 </script>
