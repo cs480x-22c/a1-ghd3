@@ -12,5 +12,5 @@ Learned to use Github Pages to host web projects.
 
 Sample screenshots
 
-[Screenshot 1](screenshots/screenie1.png)
-[Screenshot 2](screenshots/screenie2.png)
+![Screenshot 1](screenshots/screenie1.png)
+![Screenshot 2](screenshots/screenie2.png)
