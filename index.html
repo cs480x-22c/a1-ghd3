@@ -1,10 +1,104 @@
 <script src="https://d3js.org/d3.v6.min.js"></script>
 
+<svg width = 600 height = 600></svg>
+
 <script>
-  console.log(d3); // test if d3 is loaded
-  // Add an SVG
-  // Add Rectangles
-  // Add Circles
-  // Add Lines
-  // Add Polygons
+
+  // Sky
+  // https://stackoverflow.com/questions/10939082/d3-javascript-alternate-colors-on-click
+  d3.select('svg')
+    .append('rect')
+    .attr('x', 0)
+    .attr('y', 0)
+    .attr('width', 600)
+    .attr('height', 600)
+    .style('fill', 'rgb(0, 255, 255)');
+
+  // Ground
+  d3.select('svg')
+    .append('rect')
+    .attr('x', 0)
+    .attr('y', 500)
+    .attr('width', 600)
+    .attr('height', 100)
+    .style('fill', 'green');
+
+  // Tree bark
+  d3.select('svg')
+    .append('rect')
+    .attr('x', 100)
+    .attr('y', 200)
+    .attr('width', 50)
+    .attr('height', 300)
+    .style('fill', 'brown');
+
+  // Lines on tree bark
+  for (let i = 0; i < 5; i++) {
+    d3.select('svg')
+    .append('line')
+    .attr('x1', 100 + i * 10)
+    .attr('x2', 100 + i * 10)
+    .attr('y1', 200)
+    .attr('y2', 500)
+    .attr('stroke', 'black');
+  }
+
+  // Leaves
+  d3.select('svg')
+    .append('circle')
+    .attr('cx', 125)
+    .attr('cy', 200)
+    .attr('r', 75)
+    .style('fill', 'rgb(38, 153, 88)');
+
+  // Bird Nest
+  d3.select('svg')
+    .append('polygon')
+    .attr('points', '125, 180, 130, 190, 145, 190, 150, 180')
+    .attr('stroke', 'black')
+    .style('fill', 'rgb(145, 77, 13)');
+
+  // Creating a day and night by changing the color of
+  // the background
+  d3.select('svg')
+    .selectAll('rect')
+    .on('click', function() {
+      let skyColor = this.style.fill;
+      if (skyColor == 'rgb(0, 255, 255)') {
+        skyColor = 'rgb(10, 31, 64)';
+      }
+      else if (skyColor == 'rgb(10, 31, 64)') {
+        skyColor = 'rgb(0, 255, 255)';
+      }
+      d3.select(this)
+        .transition()
+        .duration(1000)
+        .ease(d3.easeExpIn)
+        .style('fill', skyColor);
+    });
+
+  // Making the clouds and causing them to move upon
+  // the mouse moving over them
+  // Used this site as a reference: 
+  // https://www.d3indepth.com/transitions/
+  for (let i = 0; i < 10; i++) {
+    let r = Math.floor(Math.random() * 50 + 10);
+    let cx = Math.floor(Math.random() * 600 - r) + r;
+    let cy = Math.floor(Math.random() * 50) + r;
+    d3.select('svg')
+      .append('circle')
+      .attr('cx', cx)
+      .attr('cy', cy)
+      .attr('r', r)
+      .attr('fill', 'white')
+      .on('mouseover', function() {
+        d3.select(this)
+          .transition()
+          .duration(2000)
+          .ease(d3.easeQuadInOut)
+          .attr('cx', function() {
+            return Math.floor(Math.random() * 600 - r) + r;})
+          });
+  }
+
 </script>
