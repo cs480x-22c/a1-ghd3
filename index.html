@@ -1,10 +1,44 @@
 <script src="https://d3js.org/d3.v6.min.js"></script>
-
+Testing
+<style>
+  path {
+      fill: none;
+      stroke: green;
+  }
+</style>
+  <svg width=600 height=600></svg>
 <script>
   console.log(d3); // test if d3 is loaded
-  // Add an SVG
+  // SVG added above
   // Add Rectangles
+  d3.select('svg')
+    .append('rect')
+    .attr('x', 100)
+    .attr('y', 100)
+    .attr('height', 50)
+    .attr('width', 10)
+    
+  
   // Add Circles
+  d3.select('svg')
+    .append('circle')
+    .attr('cx', 200)
+    .attr('cy', 200)
+    .attr('r', 100);
   // Add Lines
+  //https://webdva.github.io/how-to-draw-a-line-in-d3js/
+  d3.select('svg')
+    .append('line')
+    .style('stroke', 'blue')
+    .style('stroke-width', 10)
+    .attr("x1", 10)
+    .attr("y1", 0)
+    .attr("x2", 10)
+    .attr("y2", 600);
   // Add Polygons
+  d3.select('svg')
+    .append('polygon')
+    .style('fill', 'red')
+    .style('stroke-width', '3')
+    .attr('points', '10,10 20,30 15,5')
 </script>
