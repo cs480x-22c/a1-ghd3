@@ -1,0 +1,17 @@
+h1 {
+	font-family: "Comic Sans MS", sans-serif;
+	font-size: 36px;
+	color: springgreen;
+}
+
+.desc {
+	font-family: "Calibri", "Arial", sans-serif;
+	font-size: 18px;
+	font-weight: bold;
+	color: blueviolet;
+}
+
+#box {
+	stroke: black;
+	fill: aliceblue;
+}
