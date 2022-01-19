@@ -1,10 +1,56 @@
 <script src="https://d3js.org/d3.v6.min.js"></script>
 
+Testing
+
+aaaa
+
+<svg width="600" height="600"></svg>
+
 <script>
   console.log(d3); // test if d3 is loaded
   // Add an SVG
+
   // Add Rectangles
+  //red rectangle
+  d3.select("svg")
+      .append('rect')
+      .attr('x', 10)
+      .attr('y', 120)
+      .attr('width', 45)
+      .attr('height', 40)
+      .attr('stroke', 'black')
+      .attr('fill', '#ff0000');
+
+  //purple rectangle with rounded corners
+  d3.select("svg")
+      .append('rect')
+      .attr('x', 45)
+      .attr('y', 450)
+      .attr('width', 100)
+      .attr('height', 45)
+      .attr('stroke', 'black')
+      .attr('rx', 13)
+      .attr('fill', '#ff00ff');
+
+  //black circle
   // Add Circles
+  d3.select('svg')
+      .append('circle')
+      .attr('cx',400)
+      .attr('cy',500)
+      .attr('r', 100);
+
   // Add Lines
+
   // Add Polygons
+
+  //class dataset example
+  var data = [23, 80 , 47, 17, 5];
+  d3.select("svg")
+  .selectAll("circle")
+  .data(data)
+  .enter().append("circle")
+  .attr('cx', function (d) {return d;})
+  .attr('cy', function (d) {return d * 5;})
+  .attr('r', 5);
 </script>
