@@ -2,7 +2,7 @@ Assignment 1 - Hello World: GitHub and d3
 ===
 Live URL: https://gabi246.github.io/a1-ghd3/index.html 
 
-For this project the user is to interact with a circle and a rectangle. The goal is to drag and drop the shapes into a box at the bottom of the page. When the user drags the shape within the bounds of the box, user will be alerted of their success.
+For this project the user is to interact with a circle and a rectangle. The goal is to drag and drop the shapes into a box at the bottom of the page. When the user drags the shape within the bounds of the box, user will be alerted of their success. Refresh the page to reset.
 The user has these capabilities when interacting with these shapes:
  - Mouseover the shapes: when mousing over a given shape, the shape will change color. Mouse out of the shape: when the mouse is no longer over the shape, the shape will return to it's original color. The following images show the color change in the mouse over of the circle.  
  ![Screenshot (39)](https://user-images.githubusercontent.com/48228807/150382864-5254b9ed-6826-48a0-a7b5-7ffea008190d.png)
