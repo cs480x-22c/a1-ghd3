@@ -70,7 +70,7 @@
         width/2, height/8+height/2,
         3*width/8, height/2,
         width/8, height/2]);
-    let cog = d3.select('svg')
+    d3.select('svg')
       .append('polygon')
       .attr('points', 
         [width/2+width/4, height/2+height/8,
@@ -86,7 +86,10 @@
         width, height/2+height/8,
         width/2+3*width/8, height/2])
       .on("click", function(){
-        cog.attr("transform", "rotate(45deg)")
+        d3.selectAll('polygon')
+          .transition()
+          .attr('transform','rotate(45)')
+          .duration(1000);
       });
     
     
