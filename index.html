@@ -85,7 +85,7 @@
         width/2+3*width/8, height/2+height/4,
         width, height/2+height/8,
         width/2+3*width/8, height/2])
-      .attr("onclick", "cogspin();");
+      .on("click", cogspin());
     
     function cogspin(){
       cog.attr("transform","rotate(45)");
