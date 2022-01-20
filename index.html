@@ -77,12 +77,16 @@
                 .on("drag", function(d) {
                     if(event.x < 400 && event.x > 200 
                         && event.y > 430 && event.y < 500){
-                            console.log("we in here??");
-                            alert("Congratulations! The circle was placed in the box!");
                             d3.select('circle') 
                                 .attr("cx", 350 )
-                                .attr("cy", 440 );
+                                .attr("cy", 440 );                            
                             d3.select(this).attr('fill',"blue");
+                            d3.select('svg')
+                                .append('text')
+                                .attr('fill','blue')
+                                .attr('x',150)
+                                .attr('y',40)
+                                .text("Congratulations! The circle was placed in the box!");
                         }
                     else{
                         d3.select('circle') 
@@ -90,6 +94,7 @@
                         .attr("cy", event.y );
                     }     
             }); 
+
             //apply the drag_handler to our circles 
             drag_circle(circle);
             
@@ -98,11 +103,16 @@
                 .on("drag", function(d) { 
                     if(event.x < 400 && event.x > 200 
                         && event.y > 430 && event.y < 500){
-                            alert("Congratulations! The rectangle was placed in the box!");
                             d3.selectAll('rect') 
                                 .attr("x", 220 )
                                 .attr("y", 420 );
                             d3.select(this).attr('fill',"pink");
+                            d3.select('svg')
+                                .append('text')
+                                .attr('fill','pink')
+                                .attr('x',125)
+                                .attr('y',60)
+                                .text("Congratulations! The rectangle was placed in the box!");
                         }
                     else{
                         d3.selectAll('rect') 
