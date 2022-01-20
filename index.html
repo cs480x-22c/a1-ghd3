@@ -84,6 +84,35 @@ d3.select("svg")
       d3.select("#info").text(d);
   })
 
+
+  // <!-- Example of a polygon with the default fill -->
+  // <polygon points="0,100 50,25 50,75 100,0" />
+
+  // <!-- Example of the same polygon shape with stroke and no fill -->
+  // <polygon points="100,100 150,25 150,75 200,0"
+  //           fill="none" stroke="black" />
+  d3.select("svg")
+  .selectAll("polygon")
+  .data(ourdata)
+  .enter().append("polygon")
+  .attr("points",[
+      {"x":function(d) { return d*10; }, "y":function(d) { return d*10+100; }},
+      {"x":function(d) { return d*10+50; }, "y":function(d) { return d*10+25; }},
+      {"x":function(d) { return d*10+50; }, "y":function(d) { return d*10+75; }},
+      {"x":function(d) { return d*10+100; }, "y":function(d) { return d*10; }}      
+    ])
+  .on('click', function(evt, d) {
+      console.log(evt);
+      d3.select(this)
+        .transition()
+        .duration(1000)
+        .ease(d3.easeLinear)
+        .attr('fill', '#078CB8')
+        .attr('stroke', '#F2EA07')
+      d3.select("#info").text(d);
+  })
+
+
 //  .text(function(d) { return "I’m number " + d + "!"; });
 
 
