@@ -5,27 +5,71 @@
   </head>
   
   <script>
-    console.log(d3); // test if d3 is loaded
-    // Add an SVG
-    const windowSize = {
-      width: window.innerWidth, height: window.innerHeight  
-    }
+console.log(d3); // test if d3 is loaded
+// Add an SVG
+var width = window.innerWidth;
+var height = window.innerHeight;
     
-    const svg = d3.select("body")
-      .append("svg")
-      .attr("width", windowSize.width)
-      .attr("heigth", windowSize.height)
-    // Add Rectangles
-    // Add Circles
-    d3.select('svg')
-      .append('circle')
-      .attr('cx', width/8)
-      .attr('cy', height/8)
-      .attr('r', width/8)
-    // Add Lines
-    // Add Polygons
+const svg = d3.select("body")
+  .append("svg")
+  .attr("width", width)
+  .attr("heigth", height);
+// Add Rectangles
+d3.select('svg')
+	.append('rect')
+  .attr("x", width/2)
+  .attr("y", 0)
+  .attr("width", width/2)
+  .attr("height", height/2)
+// Add Circles
+d3.select('svg')
+  .append('circle')
+  .attr('cx', width/4)
+  .attr('cy', height/4)
+  .attr('r', width/4);
+// Add Lines
+d3.select('svg')
+	.append('line')
+  .attr("x1", width/2)
+  .attr("x2", width/2)
+  .attr("y1", 0)
+  .attr("y2", height)
+  .attr("stroke", "green");
+d3.select('svg')
+	.append('line')
+  .attr("x1", 0)
+  .attr("x2", width)
+  .attr("y1", height/2)
+  .attr("y2", height/2)
+  .attr("stroke", "green");
+// Add Polygons
+d3.select('svg')
+  .append('polygon')
+  .attr('points', 
+  [0, height/8+height/2,
+   0, 3*height/8+height/2,
+   width/8, height,
+   3*width/8, height,
+   width/2, 3*height/8+height/2,
+   width/2, height/8+height/2,
+   3*width/8, height/2,
+   width/8, height/2]);
+d3.select('svg')
+  .append('polygon')
+  .attr('points', 
+  [width/2+width/4, height/2+height/8,
+   width/2+width/8, height/2,
+   width/2, height/2+height/8,
+   width/2+width/8, height/2+height/4,
+   width/2, height/2+3*height/8,
+   width/2+width/8, height,
+   width/2+width/4, height/2+3*height/8,
+   width/2+3*width/8, height,
+   width, height/2+3*height/8,
+   width/2+3*width/8, height/2+height/4,
+   width, height/2+height/8,
+   width/2+3*width/8, height/2]);
   </script>
   <body>
-    testing
   </body>
 </html>
