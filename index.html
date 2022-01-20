@@ -93,9 +93,14 @@
         var y = height/2+height/4;
         angle += 45;
         d3.selectAll('#cog')
-          //.style('transform', 'rotate(' + angle + ',' + x + ',' +  y +')');
           .attr('transform', 'rotate(' + angle + ',' + x + ',' +  y +')');
       });
+    d3.select('svg')
+      .append('circle')
+      .attr('cx', width/2+width/4)
+      .attr('cy', height/2+height/4)
+      .attr('r', height/16)
+      .attr('fill', 'white');
     
     
   </script>  
