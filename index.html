@@ -23,6 +23,7 @@
     // Add an SVG
     var width = window.innerHeight;
     var height = window.innerHeight;
+    var angle = 0;
 
     const svg = d3.select("body")
       .append("svg")
@@ -86,11 +87,13 @@
         width/2+3*width/8, height/2+height/4,
         width, height/2+height/8,
         width/2+3*width/8, height/2])
-      .on("mouseover", function(){
+      .on("click", function(){
         var x = width/2+width/4;
         var y = height/2+height/4;
+        angle += 45;
         d3.selectAll('#cog')
-          .attr('transform', 'rotate(45 ' + x + ',' +  y +')');
+          .style('transform', 'rotate(' + angle + ',' + x + ',' +  y +')');
+          //.attr('transform', 'rotate(45 ' + x + ',' +  y +')');
       });
     
     
