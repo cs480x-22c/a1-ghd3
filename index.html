@@ -1,10 +1,181 @@
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 <script src="https://d3js.org/d3.v6.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/d3-scale@4"></script>
+<link rel="stylesheet" href="styles.css">
+
+
+<html>
+<head>
+<title>D3.js Bar Chart</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+<head/>
+<body>
+  <div class="container-fluid d-flex flex-column">
+
+    <div class="row titles">
+      <div class="col-md-12 mx-auto">
+        <h1>D3.js</h1>
+      </div>
+    </div>
+
+    <div class="row justify-content-md-center">
+      <div class="col-md-auto mx-auto">
+        <div class="alert alert-info">
+          <h4>Hello!</h4>
+          <p>All the data is fake! This code is mostly just a learning space</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="row titles">
+      <div class="col-md-12 mx-auto">
+        <h1>Bar Chart</h1>
+      </div>
+    </div>
+
+    <div class="row row-margin-05 mx-auto charts">
+      <div class="col-md-12 charts">
+        <div class="bar-chart"></div>
+      </div>
+    </div>
+
+    <div class="row titles">
+      <div class="col-md-12 mx-auto">
+        <h1>Circle Chart</h1>
+      </div>
+    </div>
+
+    <div class="row row-margin-05 mx-auto charts">
+      <div class="col-md-12 charts">
+        <div class="circle-chart"></div>
+      </div>
+    </div>
+
+    <div class="row titles">
+      <div class="col-md-12 mx-auto">
+        <h1>Polygon</h1>
+      </div>
+    </div>
+
+    <div class="row row-margin-05 mx-auto charts">
+      <div class="col-md-12 charts">
+        <div class="polygon-chart"></div>
+      </div>
+    </div>
+
+    <div class="row mx-auto">
+      <div class="col-md-12">
+        <div class="footer">
+          <p>&copy; 2022 Danilo Correia</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="bar-chart chart"></div>
+</body>
+<html/>
+
 
 <script>
   console.log(d3); // test if d3 is loaded
+  console.log(d3.version); // test if d3 is loaded
+
+  const data = [
+    { id: 'd1', value: 10, region: 'Brazil'},
+    { id: 'd2', value: 20, region: 'USA'},
+    { id: 'd3', value: 30, region: 'Canada'},
+    { id: 'd4', value: 40, region: 'Mexico'},
+    { id: 'd5', value: 50, region: 'Colombia'},
+    { id: 'd6', value: 60, region: 'Peru'},
+    { id: 'd7', value: 70, region: 'Chile'},
+    { id: 'd8', value: 80, region: 'Argentina'},
+    { id: 'd9', value: 90, region: 'Venezuela'},
+  ]
+
+
+ 
   // Add an SVG
+  const svg = d3.select('.bar-chart')
+    .append('svg')
+    .attr('width', Math.max(...data.map(a => a.value)) * 6)
+    .attr('height', data.length * 55);
+
+  console.log(Math.max(...data.map(a => a.value)));
+
+  
+  // Add a circle of svg
+  const svgCircle = d3.select('.circle-chart')
+    .append('svg')
+    .attr('width', Math.max(...data.map(a => a.value)) * 6)
+    .attr('height', Math.max(...data.map(a => a.value)));
+
+  // add polygon svg
+  const svgPolygon = d3.select('.polygon-chart')
+    .append('svg')
+    .attr('width', Math.max(...data.map(a => a.value)) * 6)
+    .attr('height', Math.max(...data.map(a => a.value)));
+
   // Add Rectangles
+  var rect = svg.selectAll('rect')
+    .data(data)
+    .enter()
+    .append('rect')
+    .attr('x', 0)
+    .attr('y', function(d, i){
+      return i * 50;
+    })
+    .attr('width', function(d){
+      return d.value * 5;
+    })
+    .classed('elements', true)
+    .attr('height', 40)
+    .attr('fill', '#7cb342');
+
+  // Add Text
+  var text = svg.selectAll('text')
+    .data(data)
+    .enter()
+    .append('text')
+    .text(function(d){
+      return d.region;
+    })
+    .attr('x', function(d){
+      return 10; // x(d.value) + x.bandwidth() / 2
+    })
+    .attr('y', function(d, i){
+      return (i * 50) + 27;
+    })
+    .attr('font-size', '20px')
+    .attr('fill', 'black');
+
   // Add Circles
-  // Add Lines
-  // Add Polygons
+  var circle = svgCircle.selectAll('circle')
+    .data(data)
+    .enter()
+    .append('circle')
+    .attr('cx', function(d){
+      return d.value * 5;
+    })
+    .attr('cy', function(d, i){
+      return Math.max(...data.map(a => a.value))/2;
+    })
+    .attr('r', function(d){
+      return d.value * 0.3;
+    })
+    .classed('elements', true)
+    .attr('fill', '#dcbd23');  
+  
+  // Add Polygon
+  var polygon = svgPolygon.selectAll('polygon')
+    .data(data)
+    .enter()
+    .append('polygon')
+    .attr('points', function(d){
+      return d.value * 5 + ',' + Math.max(...data.map(a => a.value))/2 + ' ' + d.value * 5 + ',' + Math.max(...data.map(a => a.value)) + ' ' + (d.value * 5 + 10) + ',' + Math.max(...data.map(a => a.value)) + ' ' + (d.value * 5 + 10) + ',' + Math.max(...data.map(a => a.value))/2;
+    })
+    .classed('elements', true)
+    .attr('fill', '#1b87c9');
+
 </script>
