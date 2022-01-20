@@ -94,21 +94,21 @@
         d3.selectAll('#stopsign')
           .style('fill', 'red');
         d3.selectAll('text')
-          .attr('stoke', 'white');
+          .attr('stroke', 'white');
        })
        .on('mouseout', function() {
         console.log("stopsign moused out");
         d3.selectAll('#stopsign')
           .style('fill', 'black');
         d3.selectAll('text')
-          .attr('stoke', 'black');
+          .attr('stroke', 'black');
         });
     d3.select('svg')
       .append('text')
-      .attr('x', width/8)
-      .attr('y', height/8+height/2)
+      .attr('x', width/4)
+      .attr('y', height/4)
       .attr('stroke', 'black')
-      .attr('font-size', '36px')
+      .attr('font-size', '144px')
       .text("STOP");
     d3.select('svg')
       .append('polygon')
