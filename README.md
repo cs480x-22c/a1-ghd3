@@ -7,7 +7,10 @@ You can see that I was able to use primitive graphics like circles, rectangles, 
 ![Alt text](https://raw.githubusercontent.com/alexiscaira/a1-ghd3/cf0314aa48d4ae4ce58dc1cd5447f0755d74225c/graphics/back.svg)
 
 
-From there, I imported it in the style page, and added the night sky blue in the background.  
+From there, I imported it in the style page, and added the night sky blue in the background. You can see what it looks like as a whole here:
+
+
+![Alt text](https://github.com/alexiscaira/a1-ghd3/blob/master/graphics/Screen%20Shot%202022-01-20%20at%2012.12.39%20PM.png?raw=true)
 
 Submission Details
 ---
