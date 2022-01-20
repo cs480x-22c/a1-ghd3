@@ -1,10 +1,105 @@
 <script src="https://d3js.org/d3.v6.min.js"></script>
 
+<svg width=1000 height=1000></svg>
+
+<polygon points="200,10 250,190 160,210"></polygon>
+
 <script>
   console.log(d3); // test if d3 is loaded
+
   // Add an SVG
-  // Add Rectangles
+  d3.select('svg')
+    .style('border', '2px solid black')
+
   // Add Circles
+  d3.select('svg')
+    .append('circle')
+    .attr('cx', 500)
+    .attr('cy', 800)
+    .attr('r', 200)
+    .attr('stroke', 'black')
+    .attr('fill', 'white');
+
+  d3.select('svg')
+    .append('circle')
+    .attr('cx', 500)
+    .attr('cy', 450)
+    .attr('r', 150)
+    .attr('stroke', 'black')
+    .attr('fill', 'white');
+
+  d3.select('svg')
+    .append('circle')
+    .attr('cx', 500)
+    .attr('cy', 225)
+    .attr('r', 75)
+    .attr('stroke', 'black')
+    .attr('fill', 'white');
+
+  // Add Rectangles
+  d3.select('svg')
+    .append('rect')
+    .attr('x', 525)
+    .attr('y', 220)
+    .attr('width', 10)
+    .attr('height', 10)
+    .attr('stroke', 'black')
+    .attr('fill', 'green');
+
+  d3.select('svg')
+    .append('rect')
+    .attr('x', 475)
+    .attr('y', 220)
+    .attr('width', 10)
+    .attr('height', 10)
+    .attr('stroke', 'black')
+    .attr('fill', 'green');
+
+  d3.select('svg')
+    .append('rect')
+    .attr('x', 475)
+    .attr('y', 255)
+    .attr('width', 50)
+    .attr('height', 5)
+    .attr('stroke', 'black')
+    .attr('fill', 'green');
+
   // Add Lines
+  d3.select('svg')
+    .append('line')
+    .attr('x1', 350)
+    .attr('y1', 450)
+    .attr('x2', 250)
+    .attr('y2', 350)
+    .attr('stroke', 'brown')
+    .attr('stroke-width', '3px')
+
+  d3.select('svg')
+    .append('line')
+    .attr('x1', 650)
+    .attr('y1', 450)
+    .attr('x2', 750)
+    .attr('y2', 350)
+    .attr('stroke', 'brown')
+    .attr('stroke-width', '3px')
+
   // Add Polygons
+  d3.select('svg')
+    .append('polygon')
+    .attr('points', '500,175 600,175 600,150 550,150 550,50 450,50 450,150 400, 150 400,175')
+    .style('fill', 'green')
+    .style('fill', 'black');
+
+  var data = [{x: 550, y: 210}, {x: 525, y: 200}, {x: 500, y: 210}, {x: 475, y: 200}, {x: 450, y: 210}]
+
+  var makeline = d3.line()
+  .x(function(d) { return d.x })
+  .y(function(d) { return d.y })
+
+  d3.select('svg')
+    .append('path')
+    .attr('d', makeline(data))
+    .attr('stroke', 'black')
+    .attr('fill', 'none');
+
 </script>
