@@ -11,7 +11,7 @@ Link to gh-page:
 
 Link to Glitch page:
 
-Technical Achievement Desription -- 12
+**Technical Achievement Desription -- 12**
 
 - **Was able to launch my program on another website host**: This allows me to not need to have a project on github to launch it.
 
@@ -28,7 +28,7 @@ Technical Achievement Desription -- 12
 - Polygons have depth of colors.
 
 
-Design Achievement Description -- 12
+**Design Achievement Description -- 12**
 
 - **Created color palette using adobe**: I used the hash numbers from my palette. Changing color of some shapes andd background-color.
 ![AdobeColor-My Color Theme](https://user-images.githubusercontent.com/73619173/131264408-2958291f-d7da-4b77-aa55-674150e36d84.jpeg)
