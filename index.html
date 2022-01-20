@@ -1,10 +1,60 @@
-<script src="https://d3js.org/d3.v6.min.js"></script>
-
-<script>
-  console.log(d3); // test if d3 is loaded
-  // Add an SVG
-  // Add Rectangles
-  // Add Circles
-  // Add Lines
-  // Add Polygons
+<script src="https://d3js.org/d3.v6.min.js" type="text/javascript"></script>
+<svg width = 1000 height = 1000></svg>
+<script type="text/javascript">
+/* note: used color scheme "Viridis" from https://observablehq.com/@d3/color-schemes/ */
+  console.log(d3); /* test if d3 is loaded */
+/* Add Rectangles */
+  let rectangleData = [{Viridis: "#fde725", x: 000},
+                       {Viridis: "#35b779", x: 250},
+                       {Viridis: "#31688e", x: 500},
+                       {Viridis: "#440154", x: 750}];
+  d3.select("svg")
+      .selectAll("rect")
+      .data(rectangleData)
+      .enter()
+    .append("rect")
+      .attr("width", 250)
+      .attr("height", 1000)
+      .attr("y", 0)
+      .attr("x", function(d) { return d.x; })
+      .style("fill", function(d) { return d.Viridis; });
+/* Add Polygons */
+  d3.select("svg")
+    .append("polygon")
+      .attr("points", "500,300 900,380 900,620 500,700 100,620 100,380")
+      .style("fill", "#FFFFFF")
+      .style("opacity", 0.4);
+/* Add Circles */
+  let circleData = [{Viridis: "#440154", cx: 200},
+                    {Viridis: "#414487", cx: 320},
+                    {Viridis: "#2a788e", cx: 440},
+                    {Viridis: "#22a884", cx: 560},
+                    {Viridis: "#7ad151", cx: 680},
+                    {Viridis: "#fde725", cx: 800}];
+  d3.select("svg")
+      .selectAll("circle")
+      .data(circleData)
+      .enter()
+    .append("circle")
+      .attr("r", 100)
+      .attr("cx", function(d) { return d.cx; })
+      .attr("cy", 500)
+      .style("fill", function(d) { return d.Viridis; });
+/* Add Lines */
+  d3.select("svg")
+    .append("line")
+      .attr("x1",0)
+      .attr("y1",0)
+      .attr("x2",1000)
+      .attr("y2",1000)
+      .style("stroke","#000000")
+      .style("stroke-width",5);
+  d3.select("svg")
+    .append("line")
+      .attr("x1",0)
+      .attr("y1",1000)
+      .attr("x2",1000)
+      .attr("y2",0)
+      .style("stroke","#000000")
+      .style("stroke-width",5);
 </script>
