@@ -3,11 +3,11 @@ Assignment 1 - Hello World: GitHub and d3
 
 Orest Ropi
 
-Credit to: For this project I used parts of the the code from the first class as well as learning from https://developer.mozilla.org/.
+**Credit to:** For this project I used parts of the the code from the first class as well as learning from https://developer.mozilla.org/.
 
-Project Description: Interact with diffrent types of shapes in a "shape playbox" by clicking on them. Shapes move, change size, and change color. The shape that is being modified will be displayed in the bottom left corner. Refreshing the page will reset the "playbox".
+**Project Description:** Interact with diffrent types of shapes in a "shape playbox" by clicking on them. Shapes move, change size, and change color. The shape that is being modified will be displayed in the bottom left corner. Refreshing the page will reset the "playbox".
 
-Project Pictures:
+**Project Pictures:**
 
 Before Fun:
 
