@@ -8,26 +8,33 @@
     <script src="https://d3js.org/d3.v6.min.js"></script>
   </head>
   <body>
-    <div id="canvas"></div>
+    <div id="canvas">
+      <svg width="78%" height="150" class="moon"></svg>
+      <svg width="300" height="188" class="star"></svg>
+      <svg width="100%" height="205" class="spaceship"></svg>
+      <svg width="100%" height="140" class="cow"></svg>
+    </div>
     <script>
       console.log(d3); // test if d3 is loaded
 
       var moonSvg = d3
-        .select("#canvas")
+        .select("svg.moon")
         .append("svg")
         .append("circle")
+        .attr("height", 140)
+        .attr("width", 140)
         .attr("cx", 80)
         .attr("cy", 80)
         .attr("r", 70)
         .style("fill", "#dfbc4b")
-        .style("top", 0)
-        .style("left", 0)
+        .style("top", 10)
+        .style("left", 10)
         .style("position", "absolute");
 
-      var spaceship = d3.select("#canvas").append("svg");
+      var spaceship = d3.select("svg.spaceship").append("svg");
       spaceship
         .append("polygon")
-        .attr("points", "200,10 250,200 160,210")
+        .attr("points", "200,10 250,200 80,210")
         .style("fill", "#dfbc4b")
         .append("ellipse")
         .attr("cx", 200)
@@ -86,55 +93,7 @@
         .attr("r", 6)
         .style("fill", "white");
 
-      var starSVG = d3
-        .select("#canvas")
-        .append("svg")
-        .append("polygon")
-        .attr("width", 200)
-        .attr("height", 200)
-        .attr("points", "90,0 30,188 170,68 00,68 150,188")
-        .style("fill", "#dfbc4b")
-        .style("stroke", "#bf9a22")
-        .style("stroke-length", 4)
-        .style("fill-rule", "nonzero");
-
-      var starSVG2 = d3
-        .select("#canvas")
-        .append("svg")
-        .append("polygon")
-        .attr("width", 200)
-        .attr("height", 200)
-        .attr("points", "103,10 40,198 190,78 10,78 160,198")
-        .style("fill", "#dfbc4b")
-        .style("stroke", "#bf9a22")
-        .style("stroke-length", 4)
-        .style("fill-rule", "nonzero");
-
-      var starSVG3 = d3
-        .select("#canvas")
-        .append("svg")
-        .append("polygon")
-        .attr("width", 200)
-        .attr("height", 200)
-        .attr("points", "103,10 40,198 190,78 10,78 160,198")
-        .style("fill", "#dfbc4b")
-        .style("stroke", "#bf9a22")
-        .style("stroke-length", 4)
-        .style("fill-rule", "nonzero");
-
-      var starSVG4 = d3
-        .select("#canvas")
-        .append("svg")
-        .append("polygon")
-        .attr("width", 200)
-        .attr("height", 200)
-        .attr("points", "103,10 40,198 190,78 10,78 160,198")
-        .style("fill", "#dfbc4b")
-        .style("stroke", "#bf9a22")
-        .style("stroke-length", 4)
-        .style("fill-rule", "nonzero");
-
-      var cow = d3.select("#canvas").append("svg");
+      var cow = d3.select("svg.cow").append("svg");
       cow
         .append("rect")
         .attr("x", 50)
@@ -276,7 +235,47 @@
         .style("stroke", "black")
         .style("stroke-width", 2);
 
-      spaceship.attr("align", "center");
+      var starSVG = d3
+        .select("svg.star")
+        .append("svg")
+        .append("polygon")
+        .attr("points", "90,0 30,188 170,68 00,68 150,188")
+        .style("stroke-length", 4)
+        .style("fill-rule", "nonzero");
+
+      function moveShips(duration) {
+        spaceship
+          .transition()
+          .ease(d3.easeQuad)
+          .on("start", function repeat() {
+            d3.active(this)
+              .attr("x", 40)
+              .transition()
+              .duration(duration)
+              .attr("x", 920)
+              .transition()
+              .duration(duration)
+              .attr("x", 40)
+              .on("start", repeat);
+          });
+      }
+
+      function cowStolen(duration) {
+        cow
+          .transition()
+          .ease(d3.easeQuad)
+          .on("start", function repeat() {
+            d3.active(this)
+              .attr("x", 40)
+              .transition()
+              .duration(duration)
+              .attr("x", 920)
+              .transition()
+              .duration(duration)
+              .attr("x", 40)
+              .on("start", repeat);
+          });
+      }
 
       function twinkleStars(duration) {
         starSVG
@@ -284,20 +283,21 @@
           .ease(d3.easeQuad)
           .on("start", function repeat() {
             d3.active(this)
-              .attr("fill", "white")
+              .attr("fill", "#dfbc4b")
+              .style("stroke", "#bf9a22")
               .transition()
               .duration(3000)
-              .attr("fill", "yellow")
+              .attr("fill", "#0e1e34")
+              .style("stroke", "#0e1e34")
               .transition()
-              .duration(100)
+              .duration(3000)
               .on("start", repeat);
           });
       }
-      twinkleStars(1000);
 
-      // Add Rectangles
-      // Add Circles
-      // Add Lines
+      twinkleStars(1000);
+      moveShips(3000);
+      cowStolen(3000);
     </script>
   </body>
 </html>
