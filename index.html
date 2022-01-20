@@ -1,10 +1,149 @@
-<script src="https://d3js.org/d3.v6.min.js"></script>
+<html lang="en">
+  <head>
+    <title>a1-ghd3</title>
+    <script src="https://d3js.org/d3.v6.min.js"></script>
+    <style>
+      .center {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+      }
+      #map .box rect {
+        fill: none;
+        stroke: #333;
+        stroke-dasharray: 2, 1;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="center">
+      <div>
+        <h1>Liam's Locations</h1>
+        <svg id="map" width="900" height="500">
+          <g class="countries"></g>
+          <g class="paths"></g>
+          <g class="cities"></g>
+          <g class="box"><rect></rect></g>
+        </svg>
+        <h3 id="desc">Hover over a highlighted country to get info!</h3>
+      </div>
+    </div>
+    <script>
 
-<script>
-  console.log(d3); // test if d3 is loaded
-  // Add an SVG
-  // Add Rectangles
-  // Add Circles
-  // Add Lines
-  // Add Polygons
-</script>
+      const countries = {
+        'Russia': {
+          color: '#cd6155', 
+          time: '2000-2001'
+        },
+        'Ireland': {
+          color: '#9b59b6',
+          time: '2001-2003'
+        },
+        'USA': {
+          color: '#2980b9',
+          time: '2003-2006, 2014-2022'
+        },
+        'Germany': {
+          color: '#1abc9c',
+          time: '2006-2009'
+        },
+        'Belgium': {
+          color: '#f1c40f',
+          time: '2009-2011'
+        },
+        'Malaysia': {
+          color: '#e67e22',
+          time: '2011-2014'
+        }
+      }
+
+      const paths = [
+        { coords: [[30, -10], [40, 25]], color: '#641e16' },
+        { coords: [[40, 25], [70, 15]], color: '#4a235a' },
+        { coords: [[70, 15], [30, -10]], color: '#0b5345' },
+      ]
+
+      // const cities = [
+      //   { coords: [55.751, 37.618], color: '#641e16' },
+      //   { coords: [53.350, -6.266], color: '#4a235a' },
+      //   { coords: [38.889, -77.050], color: '#154360' },
+      //   { coords: [52.520, 13.404], color: '#0b5345' },
+      //   { coords: [50.850, 4.348], color: '#7e5109' },
+      //   { coords: [3.140, 101.693], color: '#6e2c00' }
+      // ]
+
+      const cities = [
+        { coords: [30, -10], color: '#641e16' },
+        { coords: [40, 25], color: '#4a235a' },
+        { coords: [70, 15], color: '#0b5345' },
+      ]
+
+
+      const map = d3.select('#map')
+      const width = map.attr('width')
+      const height = map.attr('height')
+
+      const path = d3.geoPath()
+      const projection = d3.geoStereographic()
+        .scale(400)
+        .center([12, 44])
+        .translate([392, 273])
+
+      let geoGenerator = d3.geoPath().projection(projection)
+
+      function handleHover(e, d) {
+        let countryName = d.properties.name
+        if (countries[countryName]) {
+          let bounds = geoGenerator.bounds(d)
+          let centroid = geoGenerator.centroid(d)
+
+          d3.select('#map .box rect')
+            .attr('x', bounds[0][0])
+            .attr('y', bounds[0][1])
+            .attr('width', bounds[1][0] - bounds[0][0])
+            .attr('height', bounds[1][1] - bounds[0][1])
+
+          document.getElementById('desc').textContent = `Liam lived in ${countryName} from ${countries[countryName].time}`
+        }
+      }
+
+      Promise.all([
+        d3.json('https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/world.geojson')
+      ]).then(gj => {
+        let topo = gj[0]
+
+        d3.select('#map .countries').append('g')
+          .selectAll('path')
+          .data(topo.features)
+          .join('path')
+          .attr('d', geoGenerator)
+          .attr('fill', d => {
+            let countryName = d.properties.name
+            return countries[countryName] ? countries[countryName].color : '#a7a7a7'
+          })
+          .on('mouseover', handleHover)
+
+        d3.select('.paths')
+          .selectAll('line')
+          .data(paths).enter()
+          .append('line')
+          .attr('x1', d => projection(d.coords[0].reverse())[0])
+          .attr('y1', d => projection(d.coords[0].reverse())[1])
+          .attr('x2', d => projection(d.coords[1].reverse())[0])
+          .attr('y2', d => projection(d.coords[1].reverse())[1])
+          .attr('stroke', d => d.color)
+          .attr('stroke-width', 5)
+
+        d3.select('.cities')
+          .selectAll('circle')
+          .data(cities).enter()
+          .append('circle')
+          .attr('cx', d => projection(d.coords.reverse())[0])
+          .attr('cy', d => projection(d.coords.reverse())[1])
+          .attr('r', 10)
+          .style('fill', d => d.color)
+      })
+    </script>
+  </body>
+</html>
