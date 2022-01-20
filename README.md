@@ -18,7 +18,7 @@ After this piece was working I added the platforms, star, and coins. This was th
 
 Design Achievements
 ---
-I used an HTML color picker on images of 8 bit Mario games to match which colors to use in my game. I referenced images of Mario so that my version matched those in the original game. In addition, I spent time adjusting the sizing and positioning of elements to make the game look better. For example, centering the star over the platform, evenly spacing the coins on the ground, and adjusting the thickness of the platforms.
+I used an HTML color picker on images of 8 bit Mario games to determine which colors to use in my game. I referenced images of Mario so that my version matched those in the original game. In addition, I spent time adjusting the sizing and positioning of elements to make the game look better. For example, centering the star over the platform, evenly spacing the coins on the ground, and adjusting the thickness of the platforms.
 
 Below is a screenshot of the starting screen for the game:
 
