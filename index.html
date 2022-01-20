@@ -109,6 +109,22 @@ d3.select("svg")
       d3.select("#info").text('Polygon');
   })
 
+  d3.select("svg")
+  .append("polygon")
+  .attr('points', '300,450 350,425 350,425 400,350')
+  .style('stroke-width', '5px')
+  .attr('fill', '#F2EA07')
+  .attr('stroke', '#078CB8')
+  .on('click', function(evt) {
+      console.log(evt);
+      d3.select(this)
+        .transition()
+        .duration(1000)
+        .ease(d3.easeLinear)
+        .attr('fill', '#078CB8')
+        .attr('stroke', '#F2EA07')
+      d3.select("#info").text('Polygon');
+  })
 
 //  .text(function(d) { return "I’m number " + d + "!"; });
 
