@@ -11,7 +11,7 @@ Edits to the README:
 ![alt text](s2.png)
 ![alt text](s3.png)
 
--http://lewasserman.github.io/01-ghd3/index.html
+-Link to page: https://lewasserman.github.io/a1-ghd3/
 
 -I edited the code from the second answer as an example to base my polygons off of. https://stackoverflow.com/questions/13204562/proper-format-for-drawing-polygon-data-in-d3
 
