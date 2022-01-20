@@ -7,7 +7,7 @@ Credit to: For this project I used parts of the the code from the first class as
 
 Project Description: Interact with diffrent types of shapes in a "shape playbox" by clicking on them. Shapes move, change size, and change color. The shape that is being modified will be displayed in the bottom left corner. Refreshing the page will reset the "playbox".
 
-Link to gh-page:
+Link to gh-page: https://orestropi.github.io/a1-ghd3/
 
 Link to Glitch page:
 
@@ -39,6 +39,6 @@ Link to Glitch page:
 
 - I made a title using intresting colors, that also gives an idea of what the website is about.
 
-- I placed the shapes so they appear to be attached to the line
+- I placed the shapes so they appear to be attached to the line, and similar to a music note.
 
 - Indicator for what shape/id number is shown on the bottom left, to allow a user to make sure the website is running correctly.
