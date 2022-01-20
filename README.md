@@ -84,6 +84,8 @@ Remember, it is up to *you* to define what constitutes a technical and design ac
 Be ambitious as these are designed to allow you to shape your learning.
 These are the only way to move from B to A territory.
 
+Github pages: https://github.com/cs480x-22c/a1-ghd3
+
 This program is a bubble-wrap popping game. The game starts with all circles unpopped (black) and ends when all cicles have been popped (white) by being clicked. 
 A line indicating progress moves across the bottom of the screen and indicates the game si complete when reachign the other side of the game's box. 
 
