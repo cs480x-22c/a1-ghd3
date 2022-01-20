@@ -1,72 +1,16 @@
 Assignment 1 - Hello World: GitHub and d3  
 ===
 
-This is a starting project to make sure you can write and host a webpage that generates graphics using d3. 
+For my Assignment 1, I decided to create a picture. This picture contains a car on the road at a stop sign. The sun is out, and there are clouds in the sky. Some source code that I used was compiled from different websites including [Create SVG elements](https://www.tutorialsteacher.com/d3js/create-svg-elements-in-d3js#:~:text=var%20svg%20%3D%20d3.select%20%28%22body%22%29.append%20%28%22svg%22%29.attr%20%28%22width%22%2C%20width%29.attr,svg%2C%20so%20that%20we%20can%20use%20it%20later.) which I used for creating text inside of a polygon, [How to Draw a Line in d3](https://webdva.github.io/how-to-draw-a-line-in-d3js/) for drawing lines, and Professor's code from class. The link to my "gh-pages" branch is "http://vlm-wpi.github.io/01-ghd3/index.html" and the page should look like this: (insert screenshot here)
 
-The primary goal is to be able to generate graphics primitives (circles, rectangles, lines, polygons) at different locations on the screen with different colors. 
-
-The secondary goal is to introduce you to coding on GitHub, including creating a gh-pages branch to host your visualizations.
-
-You may write everything from scratch, or start with demo programs from books or the web. 
-If you do start with code that you found, you **must identify** the source of the code in your README and, most importantly, make non-trivial changes to the code to make it your own so you really learn what you're doing. 
-
-For example, you could download one of the d3.js examples, read it through so you understand what it's doing, and then change the appearance of the graphical output to use different color schemes, different primitive shapes, different layouts of the primitives, and so on.
-
-Resources
+Design Achievement Description
 ---
 
-If you need a JavaScript/HTML/CSS refresher, see [JavaScript Codeacademy](https://www.codecademy.com/en/tracks/javascript) or find one of your choosing on the web.
+In this project, I was able to create a picture using lines, polygons, circles, and rectangles. When I first started playing around with d3, I tried to make a polygon and the first shape that popped into my head was an octagon, and the color I chose was red. Once I created this shape, I realized that it looked like a stop sign, and started to design the rest of my picture around that. I then had a circle in the upper right hand corner of the page, and decided to make it the sun, containing thick lines coming off of the sun as rays
 
-If you need a Git/GitHub refreseher, some possible resources include [Getting Started with GitHub](https://help.github.com/categories/bootcamp/), the [GitHub Guides](https://guides.github.com/) (especially the ones on Hello World, and Understanding the GitHub Flow, and Forking Projects), and [CodeSchool's Try Git Course](https://www.codeschool.com/courses/try-git).
-
-Requirements
+Technical Achievement Desription
 ---
 
-1. Your project should contain at least four kinds of graphics primitives (circles, rectangles, lines, polygons) in different colors. 
-2. Your document should identify the source of the code if you start with code that you found. 
-3. Your code should be forked from the GitHub repo and linked using GitHub pages. See the "GitHub Details" section below for detailed instructions on how to do this.
-
-GitHub Details
----
-
-- Fork the GitHub Repository for Assignment 1. You now have a copy associated with your username.
-- Make changes to index.html to fulfill the project requirements. 
-- Make sure your "main" branch matches your "gh-pages" branch. See the GitHub Guides referenced above if you need help.
-- Edit the README.md with a link to your gh-pages site "http://YourUsernameGoesHere.github.io/01-ghd3/index.html".
-
-Submission Details
----
-- To submit, make a [Pull Request](https://help.github.com/articles/using-pull-requests/) on the original repository.
-- Note: name your pull request using the following scheme: 
-```
-a1-your Gh username-your first name-your lastname
-
-```
-
-Vis Details
----
-
-For this project you should use d3.js. 
-You can learn from examples on the [d3.js](http://d3js.org) site or start from scratch.
-
-See the [Using d3js](https://github.com/mbostock/d3/wiki#using) documentation for how to run your own local server.
-
-Creative solutions are welcome! In the past I've seen recreations of paintings, interactives, and more.
-
-Go beyond the minimum requirements of this project.
-Experiment with other aspects of the [d3 API](https://github.com/mbostock/d3/wiki/API-Reference) and [d3 Tutorials](https://github.com/mbostock/d3/wiki/Tutorials). 
-Try making the elements interactive, for example, or animate them.
-
-Grading
----
-
-Grades are on a 120 point scale. 
-96 points will be graded for functionality: the program does what the assignment requests with an informative README. 
-
-We will use Google Chrome to view submissions. 
-Be sure to test your code there.
-
-Below are some, but not necessarily all, of the key points we will consider during grading:
 
 - Circles and Rectangles  
 - Lines  
@@ -77,10 +21,4 @@ Below are some, but not necessarily all, of the key points we will consider duri
     - A working link to the hosted files (usually the gh-pages 'live' url)  
     - Section for Technical and Design Achievements
 
-Technical Achievement Desription -- 12  
-Design Achievement Description -- 12
-
-Remember, it is up to *you* to define what constitutes a technical and design achievements.
-Be ambitious as these are designed to allow you to shape your learning.
-These are the only way to move from B to A territory.
 
