@@ -29,6 +29,12 @@
       .append("svg")
       .attr("width", width)
       .attr("height", height);
+    d3.select('svg')
+      .append('text')
+      .attr('x', 0)
+      .attr('y', height/8+height/2)
+      .attr('stroke', 'white')
+      .text("STOP");
     // Add Rectangles
     d3.select('svg')
       .append('rect')
@@ -48,15 +54,15 @@
         d3.selectAll('#rainbow')
           .transition().duration(0)
           .style('fill','hsl(0, 100%, 0%)')
-          .transition().duration(250)
+          .transition().duration(400)
           .style('fill','hsl(0, 100%, 50%)')
-          .transition().delay(250).duration(250)
+          .transition().delay(400).duration(400)
           .style('fill','hsl(90, 100%, 50%)')
-          .transition().delay(500).duration(250)
+          .transition().delay(800).duration(400)
           .style('fill','hsl(180, 100%, 50%)')
-          .transition().delay(750).duration(250)
+          .transition().delay(1200).duration(400)
           .style('fill','hsl(270, 100%, 50%)')
-          .transition().delay(1000).duration(250)
+          .transition().delay(1600).duration(400)
           .style('fill','hsl(0, 100%, 0%)');
       });
     // Add Lines
@@ -90,12 +96,15 @@
         3*width/8, height/2,
         width/8, height/2])
       .on('mouseover', function() {
-        console.log("stopsign clicked");
+        console.log("stopsign moused over");
         d3.selectAll('#stopsign')
-          .style('fill', 'red')
-          .style('border-color', 'black')
-          .style('border-width', '3px');
-      });
+          .style('fill', 'red');
+       })
+       .on('mouseout', function() {
+        console.log("stopsign moused out");
+        d3.selectAll('#stopsign')
+          .style('fill', 'black');
+        });
     d3.select('svg')
       .append('polygon')
       .attr('id', 'cog')
