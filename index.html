@@ -1,10 +1,75 @@
-<script src="https://d3js.org/d3.v6.min.js"></script>
-
+<script src="https://d3js.org/d3.v7.min.js"></script>
+<svg width=1920 height=1080></svg>
 <script>
-  console.log(d3); // test if d3 is loaded
-  // Add an SVG
-  // Add Rectangles
-  // Add Circles
-  // Add Lines
-  // Add Polygons
+  console.log(d3);
+  var data = [];
+  for(let i = 0 ; i < 3; i++){
+    data[i] = Math.random()*10*(i+1);
+  }
+  
+  d3.select("svg")
+    .selectAll("circle")
+    .data(data)
+    .enter().append("circle")
+    .attr('cx', function(d) { return (Math.random()*d)*100; })
+    .attr('cy', function(d) { return (Math.random()*d)*100; })
+    .attr('r', function(d) { return (Math.random()*d)*30; })
+    .append("svg:title")
+    .text("Circle");
+  
+  var data2 = [];
+  for(let i = 0 ; i < 3; i++){
+    data2[i] = Math.random()*10*(i+1);
+  }
+  
+  d3.select("svg")
+    .selectAll("square")
+    .data(data2)
+    .enter().append('rect')
+    .attr('x', function(d) { return (Math.random()*d)*100; })
+    .attr('y', function(d) { return (Math.random()*d)*100; })
+    .attr('width', function(d) { return (Math.random()*d)*30; })
+    .attr('height', function(d) { return (Math.random()*d)*30; })
+    .attr('stroke', 'red')
+    .attr('fill', '#69a3b2')
+      .on("click", function(){
+        console.log("Clicked");
+        var x = width/2+width/4;
+        var y = height/2+height/4;
+        angle += 45;
+        d3.selectAll('#cog')
+          .attr('transform', 'rotate(' + angle + ',' + x + ',' +  y +')');
+      });
+  
+  var data3 = [];
+  for(let i = 0 ; i < 3; i++){
+    data3[i] = Math.random()*10*(i+1);
+  }
+  
+  d3.select("svg")
+    .selectAll("line")
+    .data(data2)
+    .enter().append('line')
+    .style("stroke", "lightgreen")
+    .style("stroke-width", function(d) { return (Math.random()*d)*15; })
+    .attr('x1', function(d) { return (Math.random()*d)*100; })
+    .attr('y1', function(d) { return (Math.random()*d)*100; })
+    .attr('x2', function(d) { return (Math.random()*d)*100; })
+    .attr('y2', function(d) { return (Math.random()*d)*100; });
+  
+  //Random polygon generation
+  let add = '';
+  document.write(add);
+  for(let i = 0; i < 10; i++){
+    let num = Math.floor(Math.random()*1920);
+    let num2 = Math.floor(Math.random()*1080);
+    add += num + ", " + num2 + " ";
+  }
+  
+  d3.select("svg")
+    .append("polygon")
+    .attr("points", add)
+    .attr('stroke', 'green')
+    .attr('stroke-width', 5)
+    .attr('fill', 'blue');
 </script>
