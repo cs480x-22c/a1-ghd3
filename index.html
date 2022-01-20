@@ -4,12 +4,7 @@
     <title>MFaria DataVis Assignmnet 1</title>
     <script src="https://d3js.org/d3.v6.min.js"></script>
     <style>
-      html {
-        margin: 0px;
-        height: 100%;
-        width: 100%;
-      }
-      body {
+      html,body {
         margin: 0px;
         height: 100%;
         width: 100%;
@@ -35,7 +30,10 @@
       .attr("x", width/2)
       .attr("y", 0)
       .attr("width", width/2)
-      .attr("height", height/2);
+      .attr("height", height/2)
+      .attr('stroke', 'black')
+      .attr('stroke-width', '5px')
+      .attr('fill', 'none');
     d3.selectAll('rect')
       .on('mousemove', function() {
         let mouseLocation = d3.mouse(this);
@@ -121,7 +119,7 @@
       .attr('x', width/16)
       .attr('y', 17*height/64+height/2)
       .attr('stroke', 'black')
-      .attr('font-size', '144px')
+      .attr('font-size', '180px')
       .text("STOP")
       .on('mouseover', function() {
         console.log("stopsign moused over");
