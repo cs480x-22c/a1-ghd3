@@ -1,10 +1,61 @@
 <script src="https://d3js.org/d3.v6.min.js"></script>
+<script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+
+Testing 123
+
+testing again
+
+<svg width=1000 height=1000></svg>
 
 <script>
-  console.log(d3); // test if d3 is loaded
-  // Add an SVG
-  // Add Rectangles
-  // Add Circles
-  // Add Lines
-  // Add Polygons
+console.log(d3); // test if d3 is loaded
+
+
+
+// Add an SVG -- done above
+// Add Rectangles
+//https://www.d3-graph-gallery.com/graph/custom_color.html
+var rectXcoord = [0, 100, 200, 300, 400, 500, 600, 700, 800, 900]
+var colorShift = d3.scaleSequential().domain([1,10]).interpolator(d3.interpolateReds);
+
+d3.select('svg')
+  .selectAll('rect')
+  .data(rectXcoord)
+  .enter().append('rect')
+  .attr('x', function(d) {return d; })
+  .attr('y', 950)
+  .attr('height', 50)
+  .attr('width', 100)
+  .attr('fill', function(d,i) {return colorShift(i) });
+
+// Add Circles 
+var fundata = d3.range(1,30);
+
+d3.select('svg')
+  .selectAll('circle')
+  .data(fundata)
+  .enter().append('circle')
+  .attr('cx', function(d) { return d*d; })
+  .attr('cy', function(d) { return d*d; })
+  .attr('r', function(d) { return d; })
+  .style('fill', 'purple')
+
+// Add Lines
+//https://www.tutorialspoint.com/d3js/d3js_introduction_to_svg.htm#:~:text=To%20create%20SVG%20using%20D3,SVG%20image%20as%20given%20below.&text=Step%202%20%E2%88%92%20Select%20the%20SVG,using%20the%20append()%20method.
+d3.select('svg')
+  .append('line')
+  .attr('x1', 200)
+  .attr('y1', 500)
+  .attr('x2', 300)
+  .attr('y2', 600)
+  .attr('stroke', 'purple');
+// Add Polygons -- https://github.com/d3/d3-polygon/tree/v3.0.1
+//              -- https://stackoverflow.com/questions/13204562/proper-format-for-drawing-polygon-data-in-d3 
+d3.select('svg')
+  .append('polygon')
+  .attr('points', '300,300 300,350 350,400 350,500')
+  .style('stroke', 'black')
+  .style('strokeWidth', '15px')
+  .style('fill', 'orange');
+
 </script>
