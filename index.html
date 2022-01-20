@@ -90,14 +90,16 @@
         var x = width/2+width/4;
         var y = height/2+height/4;
         d3.selectAll('#cog')
-          .attr('transform', 'rotate(45 ' + x + ',' +  y +')')
+          .transition()
+          .attr('transform', 'translate( ' + x + ',' +  y +') rotate(45)')
           .duration(1000);
       })
       .on("mouseout", function(){
         var x = width/2+width/4;
         var y = height/2+height/4;
         d3.selectAll('#cog')
-          .attr('transform', 'rotate(45 ' + x + ',' +  y +')')
+          .transition()
+          .attr('transform', 'translate( ' + x + ',' +  y +') rotate(45)')
           .duration(1000);
       });
     
