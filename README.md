@@ -13,7 +13,7 @@ The user has these capabilities when interacting with these shapes:
  
 Design Acheivements:
 - These mouse over and out capabilities will allow the user clearly idenitfy what shape there mouse is hovering over. This could be more helpful when more shapes are added to the game. 
-- The yellow selection will also help users who might want to highlight the shape they are working on to see it more clearly.
+- The yellow selection will also help users who might want to highlight the shape they are working on to see it more clearly. The user can de-select by simply clicking the same shape again.
 ![Screenshot (49)](https://user-images.githubusercontent.com/48228807/150383470-313f723d-3353-482b-a4dc-70b6ebcde678.png)
 
 - An alert that is color coordinated with the shape, will help validate the user when they have completed the task. 
