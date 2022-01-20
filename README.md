@@ -1,7 +1,7 @@
 Assignment 1 - Hello World: GitHub and d3  
 ===
 
-For my Assignment 1, I decided to create a picture. This picture contains a car on the road at a stop sign. The sun is out, and there are clouds in the sky. Some source code that I used was compiled from different websites including [Create SVG elements](https://www.tutorialsteacher.com/d3js/create-svg-elements-in-d3js#:~:text=var%20svg%20%3D%20d3.select%20%28%22body%22%29.append%20%28%22svg%22%29.attr%20%28%22width%22%2C%20width%29.attr,svg%2C%20so%20that%20we%20can%20use%20it%20later.) which I used for creating text inside of a polygon, [How to Draw a Line in d3](https://webdva.github.io/how-to-draw-a-line-in-d3js/) for drawing lines, and Professor's code from class. The link to my "gh-pages" branch is "http://vlm-wpi.github.io/01-ghd3/index.html" and the page should look like this: (insert screenshot here)
+For my Assignment 1, I decided to create a picture. This picture contains a car on the road at a stop sign. The sun is out, and there are clouds in the sky. Some source code that I used was compiled from different websites including [Create SVG elements](https://www.tutorialsteacher.com/d3js/create-svg-elements-in-d3js#:~:text=var%20svg%20%3D%20d3.select%20%28%22body%22%29.append%20%28%22svg%22%29.attr%20%28%22width%22%2C%20width%29.attr,svg%2C%20so%20that%20we%20can%20use%20it%20later.) which I used for creating text inside of a polygon, [How to Draw a Line in d3](https://webdva.github.io/how-to-draw-a-line-in-d3js/) for drawing lines, and Professor's code from class. The link to my "gh-pages" branch is "https://vlm-wpi.github.io/a1-ghd3/" and the page should look like this: (insert screenshot here)
 
 Design Achievement Description
 ---
@@ -11,6 +11,6 @@ In this project, I was able to create a picture using lines, polygons, circles, 
 Technical Achievement Desription
 ---
 
-On
+Once I was able to print different shapes and colors on an svg, I focused on the technicalily of this assignment. For my picture, all of the objects need to be in precise spots on the svg, so that the image makes sense. For example, I made sure to place the rectangle for the road at the edge of the pole for the stop sign, and the yellow marks needed to be in the middle of that rectangle. The rays for the sun were difficult to make, especially since   I did not have grid lines to go off of when defining the coordinates of these lines. Something that I was also able to do is use straightforward shapes look more complex. For example, the blue clouds in the sky are multiple circles on top of each other to make the image look like it is one cloud-like shape. This assignment was a lot of trial and error in figuring out where I wanted to place each item so that the image I had in my mind would show up on the page. I also decided to add text into my drawing and figured out how to append the text to the shape I wanted it to go on. By doing this, I did not have to figure out if the shape or text would be drawn on top of the other, I just had to add the text to the octagon and the text would automatically appear visibally within the shape.
 
 
