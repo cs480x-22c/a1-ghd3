@@ -26,32 +26,20 @@
     var width = window.innerHeight;
     var height = window.innerHeight;
     
-    const svg1 = d3.select("#div1")
-      .append("svg")
-      .attr("width", width/2)
-      .attr("height", height/2);
-    const svg2 = d3.select("#div2")
-      .append("svg")
-      .attr("width", width/2)
-      .attr("height", height/2);
-    const svg3 = d3.select("#div3")
-      .append("svg")
-      .attr("width", width/2)
-      .attr("height", height/2);
-    const svg4 = d3.select("#div4")
+    const svg = d3.select("div")
       .append("svg")
       .attr("width", width/2)
       .attr("height", height/2);
     
     // Add Rectangles
-    d3.select('svg1')
+    d3.select('svg')
       .append('rect')
       .attr("x", width/2)
       .attr("y", 0)
       .attr("width", width/2)
       .attr("height", height/2)
     // Add Circles
-    d3.select('svg2')
+    d3.select('svg')
       .append('circle')
       .attr('cx', width/4)
       .attr('cy', height/4)
@@ -59,7 +47,7 @@
     // Add Lines
 
     // Add Polygons
-    d3.select('svg3')
+    d3.select('svg')
       .append('polygon')
       .attr('points', 
         [0, height/8+height/2,
@@ -70,7 +58,7 @@
         width/2, height/8+height/2,
         3*width/8, height/2,
         width/8, height/2]);
-    d3.select('svg4')
+    d3.select('svg')
       .append('polygon')
       .attr('points', 
         [width/2+width/4, height/2+height/8,
