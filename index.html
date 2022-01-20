@@ -72,6 +72,7 @@
         width/8, height/2]);
     d3.select('svg')
       .append('polygon')
+      .attr('id', 'cog')
       .attr('points', 
         [width/2+width/4, height/2+height/8,
         width/2+width/8, height/2,
@@ -86,9 +87,9 @@
         width, height/2+height/8,
         width/2+3*width/8, height/2])
       .on("click", function(){
-        d3.selectAll('polygon')
+        d3.selectAll('#cog')
           .transition()
-          .attr('transform','rotate(45)')
+          .attr('transform','rotate(45 ' + width/2+width/4 + ' ' + height/2+height/4 + ')')
           .duration(1000);
       });
     
