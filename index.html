@@ -20,6 +20,8 @@
     var height = window.innerHeight;
     var angle = 0;
     var textSize = height/(400/9);
+    var textSizeString = textSize + "px";
+    console.log(textSizeString);
 
     const svg = d3.select("body")
       .append("svg")
@@ -146,7 +148,7 @@
       .attr('x', width/64)
       .attr('y', 19*height/64+height/2)
       .attr('stroke', 'black')
-      .attr('font-size', textSize)
+      .attr('font-size', textSizeString)
       .text("STOP")
       .on('mouseover', function() {
         console.log("stopsign moused over");
