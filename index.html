@@ -3,11 +3,7 @@
 <script>
   console.log(d3);
   
-  const setBg = () => {
-    const randomColor = Math.floor(Math.random()*16777215).toString(16);
-    document.body.style.backgroundColor = "#" + randomColor;
-    var color = "#" + randomColor;
-  }
+  var color = "#" + Math.floor(Math.random()*16777215).toString(16);
   d3.select("svg").style("background-color", color );
   
   var data = [];
