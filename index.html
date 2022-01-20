@@ -1,11 +1,10 @@
 <script src="https://d3js.org/d3.v7.min.js"></script>
-
-<span id="info">asdf</span>
-
+<span id="info"></span>
 <svg width=600 height=300></svg>
 
 <script>
-
+//Used class code as starter code
+//used Tableau10 color scheme found at https://observablehq.com/@d3/color-schemes
 console.log(d3);
 
   var circleData = [[400, 200, 10], [300, 230, 20], [200, 200, 25]];
@@ -13,7 +12,6 @@ console.log(d3);
 ///////////////////////////
 //circle
 //////////////////
-  //starter code from class code
 d3.select("svg")
   .selectAll("circle")
   .data(circleData)
@@ -25,7 +23,6 @@ d3.select("svg")
   .attr('stroke-width', 2.5)
   .attr('fill', '#59a14f')
   .on('click', function(evt, d) {
-      console.log(evt);
       d3.select(this)
         .transition()
         .duration(100)
@@ -33,26 +30,27 @@ d3.select("svg")
         .attr('fill', '#4e79a7')
         .attr('r', d[2])
         .attr('stroke', '#59a14f')
-      d3.select("#info").text(d);
   })
 
- // ["#4e79a7","#f28e2c","#e15759","#76b7b2","#59a14f","#edc949","#af7aa1","#ff9da7","#9c755f","#bab0ab"]
-//  .text(function(d) { return "I’m number " + d + "!"; });
 
 ///////////////////////////
 //line
 //////////////////
-///Starter code from https://www.d3-graph-gallery.com/graph/shape.html
+///Used starter code from https://www.d3-graph-gallery.com/graph/shape.html
+
+var lineData = [[10, 10, 700, 100], [15, 20, 705, 100]];
+
 d3.select("svg")
-  .append("line")
-  .attr('x1', 10)
-  .attr('y1', 10)
-  .attr('x2', 700)
-  .attr('y2', 100)
-  .attr('stroke-width', 5)
+  .selectAll("line")
+  .data(lineData)
+  .enter().append("line")
+  .attr('x1', function(d) { return d[0]; })
+  .attr('y1', function(d) { return d[1]; })
+  .attr('x2', function(d) { return d[2]; })
+  .attr('y2', function(d) { return d[3]; })
+  .attr('stroke-width', 4)
   .attr('stroke', '#f28e2c')
   .on('click', function(evt, d) {
-      console.log(evt);
       d3.select(this)
         .transition()
         .duration(850)
@@ -62,88 +60,83 @@ d3.select("svg")
         .attr('y2', 10)
         .attr('x1', 700)
         .attr('y1', 100)
-      d3.select("#info").text(d);
   })
   
 
 ///////////////////////////
 //rect
 //////////////////
-///Starter code from https://www.d3-graph-gallery.com/graph/shape.html
+///Used starter code from https://www.d3-graph-gallery.com/graph/shape.html
+
+var rectData = [[585, '#e15759', '#4e79a7'], [40, '#9c755f', '#9c755f']];
+
 d3.select("svg")
-  .append("rect")
+  .selectAll("rect")
+  .data(rectData)
+  .enter().append("rect")
   .attr('x', 10)
   .attr('y', 120)
-  .attr('width', 585)
+  .attr('width', function(d) { return d[0]; })
   .attr('height', 40)
   .attr('stroke', '#9c755f')
   .attr('stroke-width', 2.5)
-  .attr('fill', '#e15759')
+  .attr('fill', function(d) { return d[1]; })
   .on('click', function(evt, d) {
-      console.log(evt);
       d3.select(this)
         .transition()
         .duration(500)
         .ease(d3.easeLinear)
-        .attr('fill', '#4e79a7')
+        .attr('fill', function(d) { return d[2]; })
         .attr('width', 40)
         .attr('height', 200)
         .attr('y', 20)
         .attr('stroke', '#e15759')
-      d3.select("#info").text(d);
   })
 
 ///////////////////////////
 //polygon
 //////////////////
-///Starter code from https://lucidar.me/en/d3.js/part-06-basic-shapes/
+///Used starter code from https://lucidar.me/en/d3.js/part-06-basic-shapes/
+
+var polyData = ["60,60, 210,15 310,110 160,160 110,110", "75,40, 230,25 310,10 160,160 110,110"];
+
 d3.select("svg")
-  .append("polygon")
-  .attr('points', "60,60 210,15 310,110 160,160 110,110")
+  .selectAll("polygon")
+  .data(polyData)
+  .enter().append("polygon")
+  .attr('points', function(d) { return d; })
   .attr('stroke', '#bab0ab')
   .attr('stroke-width', 2.5)
   .attr('fill', '#76b7b2')
   .on('click', function(evt, d) {
-      console.log(evt);
       d3.select(this)
         .transition()
-        .duration(50)
+        .duration(1000)
         .ease(d3.easeLinear)
         .attr('fill', '#4e79a7')
         .attr('points', "60,60 210,15 310,110 160,160 410,10")
         .attr('y', 20)
         .attr('stroke', '#76b7b2')
-      d3.select("#info").text(d);
   })
 
 
   //////////////////
 //text
 //////////////
-  //starter code from: https://www.d3-graph-gallery.com/graph/shape.html
+//Used starter code from https://www.d3-graph-gallery.com/graph/shape.html
+
+var textData = [["Data Visualization", 25, '#9c755f', 400, 50], 
+                ["HW1", 15, '#bab0ab', 550, 70], 
+                ["Maria del Carmen Sacristan Benjet", 19, '#af7aa1', 312, 108]]
+
 d3.select("svg")
-  .append('text')
-  .attr('x', 400)
-  .attr('y', 50)
-  .attr('fill', '#9c755f')
-  .style("font-size", 25)
-  .text("Data Visualization");
-
-  d3.select("svg")
-  .append('text')
-  .attr('x', 550)
-  .attr('y', 70)
-  .attr('stroke', '#bab0ab')
-  .style("font-size", 15)
-  .text("HW1");
-
-  d3.select("svg")
-  .append('text')
-  .attr('x', 312)
-  .attr('y', 108)
-  .attr('stroke', '#af7aa1')
-  .style("font-size", 19)
-  .text("Maria del Carmen Sacristan Benjet");
-
+  .selectAll("text")
+  .data(textData)
+  .enter().append("text")
+  .attr('x', function(d) { return d[3]; })
+  .attr('y', function(d) { return d[4]; })
+  .attr('fill', function(d) { return d[2]; })
+  .style("font-size", function(d) { return d[1]; })
+  .text(function(d) { return d[0]; });
 
 </script>
