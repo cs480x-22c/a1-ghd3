@@ -1,16 +1,19 @@
 <script src="https://d3js.org/d3.v4.min.js"></script>
 
-<svg width="1100" height= "750" style =  "border:5px solid black"></svg>
+<svg width="1100" height= "750" style =  "border:5px solid black" bac></svg>
 <script>
 
+    //creating the sun
     var sun = d3.select('svg').append("circle")
         .attr("fill", "#ffff00")
         .attr("cx", 150)
-        .attr("cy", 300)
+        .attr("cy", 250)
         .attr('r',50).attr('stroke','#000000').attr('stroke-width', 3);
 
-    var background = d3.select('svg');
+    //creating the background
+    var background = d3.select('svg').style('background-color','#97f2f7');
 
+    //action listener for keyboard inputs. detects if s and w keys get pressed
     document.addEventListener('keydown', (event) =>{
         var keyName = event.key;
 
@@ -21,55 +24,243 @@
         }
     })
 
+    //action listenter when the keys arent pressed
     document.addEventListener('keyup', (event) =>{
         sun.transition().stop();
     })
 
-
+    //these two functions change the colors of the scene based on whether the sun is up or not
+    //function when sun moves down
     function p1Down() {
         sun.transition()
             .ease(d3.easeLinear)
             .duration(500)
-            .attr("cy",700);
+            .attr("cy",500);
         var circleBox = sun.node().getBBox();
 
         if(circleBox.y < 250){
             sun.attr('fill', '#ffff00')
-            background.style('background-color','#0000ff')
+            background.style('background-color','#97f2f7')
+            firstMountain.attr("fill", "#16371c");
+            secondMountain.attr("fill", "#21542b");
+            thirdMountain.attr("fill", "#108948")
+            mountain1Top.attr("fill", "#5e5e5e")
+            mountain2Top.attr("fill", '#bfbfbf')
+            mountain3Top.attr("fill", '#ebebeb')
+            pond.attr('fill',"#1027d5")
+            wall.attr('fill',"#575757")
+            cloud.attr("fill", '#f5f5f5')
         } else{
             sun.attr('fill', "#000000")
-            background.style('background-color','#ff00ff')
+            background.style('background-color','#260b5b')
+            firstMountain.attr("fill", "#0c1d0f");
+            secondMountain.attr('fill', "#173b1e")
+            thirdMountain.attr("fill", "#07361d")
+            mountain1Top.attr("fill", "#2e2e2e")
+            mountain2Top.attr("fill", '#666666')
+            mountain3Top.attr("fill", '#7d7d7d')
+            pond.attr('fill',"#07115a")
+            wall.attr('fill',"#171717")
+            cloud.attr("fill", '#5e5e5e')
         }
     }
+
+    //function for when suin moves up.
     function p1Up() {
         sun.transition()
             .ease(d3.easeLinear)
             .duration(500)
-            .attr("cy",50);
+            .attr("cy",75);
         var circleBox = sun.node().getBBox();
 
         if(circleBox.y < 250){
             sun.attr('fill', '#ffff00')
-            background.style('background-color','#0000ff')
-
+            background.style('background-color','#97f2f7')
+            firstMountain.attr("fill", "#16371c");
+            secondMountain.attr("fill", "#21542b");
+            thirdMountain.attr("fill", "#108948");
+            mountain1Top.attr("fill", "#5e5e5e")
+            mountain2Top.attr("fill", '#bfbfbf')
+            mountain3Top.attr("fill", '#ebebeb')
+            pond.attr('fill',"#1027d5")
+            wall.attr('fill',"#575757")
+            cloud.attr("fill", '#f5f5f5')
         } else{
             sun.attr('fill', "#000000")
-            background.style('background-color','#ff00ff')
+            background.style('background-color','#260b5b')
+            firstMountain.attr("fill", "#0c1d0f")
+            secondMountain.attr('fill', "#173b1e")
+            thirdMountain.attr("fill", "#07361d")
+            mountain1Top.attr("fill", "#2e2e2e")
+            mountain2Top.attr("fill", '#666666')
+            mountain3Top.attr("fill", '#7d7d7d')
+            pond.attr('fill',"#07115a")
+            wall.attr('fill',"#171717")
+            cloud.attr("fill", '#5e5e5e')
         }
 
     }
 
-    var triangle = d3.symbol().type(d3.symbolTriangle).size(76000);
-    d3.select("svg")
+    //code for the mountains
+    var mountain1 = d3.symbol().type(d3.symbolTriangle).size(76000);
+    var firstMountain = d3.select("svg")
         .append("path")
-        .attr("d", triangle)
-        .attr("fill", "green")
+        .attr("d", mountain1)
+        .attr("fill", "#16371c")
         .attr("transform", "translate(65, 450)").attr('stroke','#000000').attr('stroke-width', 3);
 
-    var triangle2 = d3.symbol().type(d3.symbolTriangle).size(115000);
-    d3.select("svg")
+    var triangle1Top = d3.symbol().type(d3.symbolTriangle).size(3000);
+    var mountain1Top = d3.select("svg")
         .append("path")
-        .attr("d", triangle2)
-        .attr("fill", "green")
+        .attr("d", triangle1Top)
+        .attr("fill", "#5e5e5e")
+        .attr("transform", "translate(65, 260)")
+
+    var mountain2 = d3.symbol().type(d3.symbolTriangle).size(115000);
+    var secondMountain = d3.select("svg")
+        .append("path")
+        .attr("d", mountain2)
+        .attr("fill", "#21542b")
         .attr("transform", "translate(275, 550)").attr('stroke','#000000').attr('stroke-width', 3);
+
+    var triangle2Top = d3.symbol().type(d3.symbolTriangle).size(6900);
+    var mountain2Top = d3.select("svg")
+        .append("path")
+        .attr("d", triangle2Top)
+        .attr("fill", "#bfbfbf")
+        .attr("transform", "translate(275, 330)");
+    //code for the pond
+    var pond = d3.select('svg').append("ellipse")
+        .attr("cx", 750)
+        .attr("cy", 725)
+        .attr("rx", 500)
+        .attr("ry", 60).attr('fill',"#1027d5").attr('stroke','#000000').attr('stroke-width', 3);
+
+    var mountain3 = d3.symbol().type(d3.symbolTriangle).size(185000);
+    var thirdMountain =d3.select("svg")
+        .append("path")
+        .attr("d", mountain3)
+        .attr("fill", "#108948")
+        .attr("transform", "translate(150, 650)").attr('stroke','#000000').attr('stroke-width', 3);
+
+    var triangle3Top = d3.symbol().type(d3.symbolTriangle).size(8500);
+    var mountain3Top = d3.select("svg")
+        .append("path")
+        .attr("d", triangle3Top)
+        .attr("fill", "#ebebeb")
+        .attr("transform", "translate(150, 358)");
+
+    //code for the wall
+    var wall = d3.select("svg")
+        .append('rect')
+        .attr('x', 1020)
+        .attr('y', 550)
+        .attr('width', 80)
+        .attr('height', 250)
+        .attr('stroke', 'black').attr('stroke-width',4)
+        .attr('fill', '#575757');
+
+    //code for then lines that make up the bricks in the wall
+    d3.select("svg").append("line").style("stroke", "black")
+        .attr("x1", 1046)
+        .attr("y1", 550)
+        .attr("x2", 1046)
+        .attr("y2", 580)
+    d3.select("svg").append("line").style("stroke", "black")
+        .attr("x1", 1072)
+        .attr("y1", 550)
+        .attr("x2", 1072)
+        .attr("y2", 580)
+    d3.select("svg").append("line").style("stroke", "black")
+        .attr("x1", 1020)
+        .attr("y1", 580)
+        .attr("x2", 1100)
+        .attr("y2", 580)
+
+    d3.select("svg").append("line").style("stroke", "black")
+        .attr("x1", 1060)
+        .attr("y1", 580)
+        .attr("x2", 1060)
+        .attr("y2", 610)
+    d3.select("svg").append("line").style("stroke", "black")
+        .attr("x1", 1020)
+        .attr("y1", 610)
+        .attr("x2", 1100)
+        .attr("y2", 610)
+
+
+
+    d3.select("svg").append("line").style("stroke", "black")
+        .attr("x1", 1046)
+        .attr("y1", 610)
+        .attr("x2", 1046)
+        .attr("y2", 640)
+    d3.select("svg").append("line").style("stroke", "black")
+        .attr("x1", 1072)
+        .attr("y1", 610)
+        .attr("x2", 1072)
+        .attr("y2", 640)
+    d3.select("svg").append("line").style("stroke", "black")
+        .attr("x1", 1020)
+        .attr("y1", 640)
+        .attr("x2", 1100)
+        .attr("y2", 640)
+
+    d3.select("svg").append("line").style("stroke", "black")
+        .attr("x1", 1060)
+        .attr("y1", 640)
+        .attr("x2", 1060)
+        .attr("y2", 670)
+    d3.select("svg").append("line").style("stroke", "black")
+        .attr("x1", 1020)
+        .attr("y1", 670)
+        .attr("x2", 1100)
+        .attr("y2", 670)
+
+
+    d3.select("svg").append("line").style("stroke", "black")
+        .attr("x1", 1046)
+        .attr("y1", 670)
+        .attr("x2", 1046)
+        .attr("y2", 700)
+    d3.select("svg").append("line").style("stroke", "black")
+        .attr("x1", 1072)
+        .attr("y1", 670)
+        .attr("x2", 1072)
+        .attr("y2", 700)
+    d3.select("svg").append("line").style("stroke", "black")
+        .attr("x1", 1020)
+        .attr("y1", 700)
+        .attr("x2", 1100)
+        .attr("y2", 700)
+
+    d3.select("svg").append("line").style("stroke", "black")
+        .attr("x1", 1060)
+        .attr("y1", 700)
+        .attr("x2", 1060)
+        .attr("y2", 730)
+    d3.select("svg").append("line").style("stroke", "black")
+        .attr("x1", 1020)
+        .attr("y1", 730)
+        .attr("x2", 1100)
+        .attr("y2", 730)
+
+    //code for creating the cloud polygon
+    var cloud = d3.select("svg").append("polygon")
+        .attr("points",
+            "600,80, " +
+            "500,90 , " +
+            "550, 110, " +
+            "610, 150 , " +
+            "650, 170 , " +
+            "700, 150 , " +
+            "720, 140 , " +
+            "735, 110 , " +
+            "750, 80, 650, 50")
+        .attr("fill", '#f5f5f5')
+        .attr("stroke", "#000000").attr("stroke-width", 3)
+
+//TODO add detail to wall, add fish?
+
+
 </script>
