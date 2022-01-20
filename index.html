@@ -91,16 +91,9 @@ d3.select("svg")
   // <!-- Example of the same polygon shape with stroke and no fill -->
   // <polygon points="100,100 150,25 150,75 200,0"
   //           fill="none" stroke="black" />
-  d3.select("svg")
-  .selectAll("polygon")
-  .data(ourdata)
-  .enter().append("polygon")
-  .attr("points",[
-      {"x":function(d) { return d*10; }, "y":function(d) { return d*10+100; }},
-      {"x":function(d) { return d*10+50; }, "y":function(d) { return d*10+25; }},
-      {"x":function(d) { return d*10+50; }, "y":function(d) { return d*10+75; }},
-      {"x":function(d) { return d*10+100; }, "y":function(d) { return d*10; }}      
-    ])
+d3.select('svg')
+  .append('polygon')
+  .attr(points, "100,100 150,25 150,75 200,0")
   .attr('fill', '#F2EA07')
   .attr('stroke', '#078CB8')
   .on('click', function(evt, d) {
