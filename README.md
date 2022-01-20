@@ -31,7 +31,7 @@ Link to Glitch page: https://a1-datavisualization-orestropi.glitch.me/
 
 - Shapes change size when clicked: They will grow, get smaller, or remain the same size.
 
-- Shapes change color when clicked: Some change color completely some are inverted.
+- Shapes change color when clicked: Some change color completely, some are inverted.
 
 - Some shapes are reliant on a dataset, while others are manually inputed.
 
