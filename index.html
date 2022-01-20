@@ -22,7 +22,7 @@
   <script>
     console.log(d3); // test if d3 is loaded
     // Add an SVG
-    var width = window.innerWidth;
+    var width = window.innerHeight;
     var height = window.innerHeight;
     
     const svg = d3.select("body")
@@ -50,7 +50,7 @@
       .attr("y1", 0)
       .attr("y2", height)
       .attr("stroke", "green")
-      .attr("stroke-width", 2);
+      .attr("stroke-width", 4);
     d3.select('svg')
       .append('line')
       .attr("x1", 0)
@@ -58,7 +58,7 @@
       .attr("y1", height/2)
       .attr("y2", height/2)
       .attr("stroke", "green")
-      .attr("stroke-width", 2);
+      .attr("stroke-width", 4);
     // Add Polygons
     d3.select('svg')
       .append('polygon')
