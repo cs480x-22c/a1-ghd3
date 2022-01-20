@@ -74,7 +74,7 @@ d3.select("svg")
   .attr('y2', function(d) { return d*10; })
   .attr('stroke', 'black')
   .on('click', function(evt, d) {
-      console.log(evt);
+      console.log(evt);http-server &
       d3.select(this)
         .transition()
         .duration(750)
