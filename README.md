@@ -1,16 +1,12 @@
 Assignment 1 - Hello World: GitHub and d3  
 ===
 
-This is a starting project to make sure you can write and host a webpage that generates graphics using d3. 
-
-The primary goal is to be able to generate graphics primitives (circles, rectangles, lines, polygons) at different locations on the screen with different colors. 
-
-The secondary goal is to introduce you to coding on GitHub, including creating a gh-pages branch to host your visualizations.
-
-You may write everything from scratch, or start with demo programs from books or the web. 
-If you do start with code that you found, you **must identify** the source of the code in your README and, most importantly, make non-trivial changes to the code to make it your own so you really learn what you're doing. 
-
-For example, you could download one of the d3.js examples, read it through so you understand what it's doing, and then change the appearance of the graphical output to use different color schemes, different primitive shapes, different layouts of the primitives, and so on.
+For this project the user is to interact with a circle and a rectangle. The goal is to drag and drop the shapes into a box at the bottom of the page. When the user drags the shape within the bounds of the box, user will be alerted of their success.
+The user has these capabilities when interacting with these shapes:
+ - Mouseover the shapes: when mousing over a given shape, the shape will change color. Mouse out of the shape: when the mouse is no longer over the shape, the shape will return to it's original color. These mouse over and out capabilities will allow the user clearly idenitfy what shape there mouse is hovering over. This could be more helpful when more shapes are added to the game. 
+ - Selection: The user has the option to select the shape by clicking on it. The first click will change the color to yellow. When clicked again, the shape will revert back to its' original color. Addiotionally, if the shape is selected when the object is placed in the box, it will return to it's original color. 
+ - Drag and Drop: The user can drag a shape by clicking and holding down on the mouse. The user can drop the item by letting go of the mouse.
+ 
 
 Resources
 ---
@@ -43,19 +39,6 @@ a1-your Gh username-your first name-your lastname
 
 ```
 
-Vis Details
----
-
-For this project you should use d3.js. 
-You can learn from examples on the [d3.js](http://d3js.org) site or start from scratch.
-
-See the [Using d3js](https://github.com/mbostock/d3/wiki#using) documentation for how to run your own local server.
-
-Creative solutions are welcome! In the past I've seen recreations of paintings, interactives, and more.
-
-Go beyond the minimum requirements of this project.
-Experiment with other aspects of the [d3 API](https://github.com/mbostock/d3/wiki/API-Reference) and [d3 Tutorials](https://github.com/mbostock/d3/wiki/Tutorials). 
-Try making the elements interactive, for example, or animate them.
 
 Grading
 ---
