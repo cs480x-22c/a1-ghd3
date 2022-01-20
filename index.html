@@ -72,4 +72,46 @@
    .style("fill", "purple")
    .style("stroke", "green")
    .style("strokeWidth", "20px");
+
+   d3.select("body")
+    .transition()
+    .duration(1000)
+    .style("background-color", "#EAFAF1");
+
+  d3.selectAll("rect").transition()
+    .delay(function(d, i) { return i * 50; })
+    .on("start", function repeat() {
+        d3.active(this)
+            .style("fill", "#EB984E")
+          .duration(5000)
+          .transition()
+            .style("fill", "blue")
+          .transition()
+            .on("start", repeat);
+      });
+
+  d3.selectAll("circle").transition()
+    .delay(function(d, i) { return i * 50; })
+    .on("start", function repeat() {
+        d3.active(this)
+            .style("fill", "#ABEBC6")
+          .duration(5000)
+          .transition()
+            .style("fill", "#F4D03F")
+          .transition()
+            .on("start", repeat);
+      });
+
+  d3.selectAll("polygon").transition()
+    .delay(function(d, i) { return i * 50; })
+    .on("start", function repeat() {
+        d3.active(this)
+            .style("fill", "purple")
+          .duration(5000)
+          .transition()
+            .style("fill", "green")
+          .transition()
+            .on("start", repeat);
+      });
+
 </script>

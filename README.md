@@ -1,6 +1,29 @@
 Assignment 1 - Hello World: GitHub and d3  
 ===
 
+My Edits to the README:
+
+-My goal for this page was for it to resemble an abstract modern-like painting composed of a variety of shapes with largely complmentary colors. I added an animation to the page to give it life and allow it to be non-static.
+
+-screenshots:
+
+![alt text](s1.png)
+![alt text](s2.png)
+![alt text](s3.png)
+
+-insert link
+
+-I edited the code from the second answer as an example to base my polygons off of. https://stackoverflow.com/questions/13204562/proper-format-for-drawing-polygon-data-in-d3
+
+-I edited the code for rectangles, circles, and lines as examples that I based my shapes off of from this website. https://www.d3-graph-gallery.com/graph/shape.html
+
+-Technical Achievement Desription: I made my the colors of each set of shapes (rect, circle, and polygon) move along a gradient between two colors (differnt for each shape). This is an animation which allows the page to be constantly changing and interesting to look at.
+
+-Design Achievement Desription: I arranged my choosen shapes such that were visually pleasing which would enable one to enjoy looking at the page.
+
+
+---
+
 This is a starting project to make sure you can write and host a webpage that generates graphics using d3. 
 
 The primary goal is to be able to generate graphics primitives (circles, rectangles, lines, polygons) at different locations on the screen with different colors. 
