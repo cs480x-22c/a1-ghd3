@@ -111,7 +111,7 @@
     function wave() {
       var hsl = 0;
       while (hsl < 360) {
-        ds.selectAll('circle')
+        d3.selectAll('circle')
           .attr('fill','hsl(' + hsl+ ', 100%, 50%)');
       }
     }
