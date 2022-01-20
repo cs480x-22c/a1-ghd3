@@ -1,6 +1,32 @@
 Assignment 1 - Hello World: GitHub and d3  
 ===
 
+This demo places rectangles, circles, lines, and stars on the canvas. 
+![Screenshot 1](Screenshot1.png)
+With each page load, a new set of data is created, with 15 of each object. When
+the page visitor refreshes the page, they are presented with a new abstract 
+set of objects.
+When a circle is clicked, it turns dark red.
+![Screenshot 2](Screenshot2.png)
+
+Technical Achievements:
+* data is generated on the page
+* data generation composes simpler objects (a line is 2 points)
+* event handler used on individual elements created by d3
+
+Design Achievements:
+* users can interact by changing the color of the circles
+
+My completed page is accessible here: https://drewsapple.github.io/a1-ghd3/
+
+Resources I used to complete the assignment:
+* Class 2 Exoplanet example code: https://cs480x-22c.github.io/cal/
+* D3 in Depth - Shapes: https://www.d3indepth.com/shapes/
+* D3 Selection Docs: https://github.com/d3/d3-selection/blob/v3.0.0/README.md
+
+Assignment Description
+---
+
 This is a starting project to make sure you can write and host a webpage that generates graphics using d3. 
 
 The primary goal is to be able to generate graphics primitives (circles, rectangles, lines, polygons) at different locations on the screen with different colors. 
