@@ -96,16 +96,16 @@ d3.select('svg')
   .attr(points, "100,100 150,25 150,75 200,0")
   .attr('fill', '#F2EA07')
   .attr('stroke', '#078CB8')
-  .on('click', function(evt) {
-      console.log(evt);
-      d3.select(this)
-        .transition()
-        .duration(1000)
-        .ease(d3.easeLinear)
-        .attr('fill', '#078CB8')
-        .attr('stroke', '#F2EA07')
-      d3.select("#info").text('Polygon');
-  })
+  // .on('click', function(evt) {
+  //     console.log(evt);
+  //     d3.select(this)
+  //       .transition()
+  //       .duration(1000)
+  //       .ease(d3.easeLinear)
+  //       .attr('fill', '#078CB8')
+  //       .attr('stroke', '#F2EA07')
+  //     d3.select("#info").text('Polygon');
+  // })
 
 
 //  .text(function(d) { return "I’m number " + d + "!"; });
