@@ -11,7 +11,7 @@
       }
       body {
         margin: 0px;
-        min-height: 100%;
+        height: 100%;
         width: 100%;
       }
     </style>
@@ -24,10 +24,6 @@
     var width = window.innerHeight;
     var height = window.innerHeight;
     var angle = 0;
-    var timer;
-    var indexA = 0;
-    var indexB = -1;
-    var hsl = 0;
 
     const svg = d3.select("body")
       .append("svg")
@@ -52,15 +48,15 @@
         d3.selectAll('#rainbow')
           .transition().duration(0)
           .style('fill','hsl(0, 100%, 0%)')
-          .transition().duration(500)
+          .transition().duration(250)
           .style('fill','hsl(0, 100%, 50%)')
-          .transition().delay(500).duration(500)
+          .transition().delay(250).duration(250)
           .style('fill','hsl(90, 100%, 50%)')
-          .transition().delay(1000).duration(500)
+          .transition().delay(500).duration(250)
           .style('fill','hsl(180, 100%, 50%)')
-          .transition().delay(1500).duration(500)
+          .transition().delay(750).duration(250)
           .style('fill','hsl(270, 100%, 50%)')
-          .transition().delay(2000).duration(500)
+          .transition().delay(1000).duration(250)
           .style('fill','hsl(0, 100%, 0%)');
       });
     // Add Lines
@@ -83,6 +79,7 @@
     // Add Polygons
     d3.select('svg')
       .append('polygon')
+      .attr('id', 'stopsign')
       .attr('points', 
         [0, height/8+height/2,
         0, 3*height/8+height/2,
@@ -91,7 +88,14 @@
         width/2, 3*height/8+height/2,
         width/2, height/8+height/2,
         3*width/8, height/2,
-        width/8, height/2]);
+        width/8, height/2])
+      .on('mouseover', function() {
+        console.log("stopsign clicked");
+        d3.selectAll('#stopsign')
+          .style('fill', 'red')
+          .style('border-color', 'black')
+          .style('border-width', '3px');
+      });
     d3.select('svg')
       .append('polygon')
       .attr('id', 'cog')
