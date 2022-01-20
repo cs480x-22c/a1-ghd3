@@ -49,18 +49,18 @@
       .attr("y", 3*height/16)
       .attr("width", width/2 - 3*width/8)
       .attr("height", height/2 - 3*height/8)
-      .attr('stroke', 'hsl(0, 100%, 50%)')
+      .attr('stroke', 'green')
       .attr('stroke-width', '10px')
       .attr('fill', 'none');
-    //d3.select('svg')
-      //.append('rect')
-      //.attr("x", width/2+width/4)
-      //.attr("y", height/4)
-      //.attr("width", width/2 - width/2)
-      //.attr("height", height/2 - height/2)
-      //.attr('stroke', 'hsl(0, 100%, 75%)')
-     // .attr('stroke-width', '10px')
-      //.attr('fill', 'none');
+    d3.select('svg')
+      .append('rect')
+      .attr("x", width/2+width/4)
+      .attr("y", height/4)
+      .attr("width", width/2 - width/2)
+      .attr("height", height/2 - height/2)
+      .attr('stroke', 'hsl(0, 100%, 75%)')
+      .attr('stroke-width', '10px')
+      .attr('fill', 'none');
     // Add Circles
     d3.select('svg')
       .append('circle')
