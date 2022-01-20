@@ -1,10 +1,117 @@
 <script src="https://d3js.org/d3.v6.min.js"></script>
 
+<svg width=600 height=600></svg>
+
 <script>
   console.log(d3); // test if d3 is loaded
   // Add an SVG
   // Add Rectangles
+  d3.select("svg")
+  .append('rect')
+  .attr('x', 30)
+  .attr('y', 30)
+  .attr('width', 500)
+  .attr('height', 40)
+  .attr('stroke', 'blue')
+  .attr('fill', '#EB984E');
+
+  d3.select("svg")
+  .append('rect')
+  .attr('x', 30)
+  .attr('y', 280)
+  .attr('width', 30)
+  .attr('height', 250)
+  .attr('stroke', '#EB984E')
+  .attr('fill', 'blue');
+
   // Add Circles
+  d3.select("svg")
+    .append('circle')
+    .attr('cx', 350)
+    .attr('cy', 150)
+    .attr('r', 50)
+    .attr('stroke', '#ABEBC6')
+    .attr('fill', '#F4D03F');
+
+  d3.select("svg")
+    .append('circle')
+    .attr('cx', 500)
+    .attr('cy', 460)
+    .attr('r', 30)
+    .attr('stroke', '#F4D03F')
+    .attr('fill', '#ABEBC6');
+
   // Add Lines
+  d3.select("svg")
+    .append('line')
+    .attr('x1', 300)
+    .attr('y1', 200)
+    .attr('x2', 200)
+    .attr('y2', 400)
+    .attr('stroke', '#CB4335')
+
+  d3.select("svg")
+    .append('line')
+    .attr('x1', 300)
+    .attr('y1', 250)
+    .attr('x2', 450)
+    .attr('y2', 250)
+    .attr('stroke', '#1A5276')
+
   // Add Polygons
+  d3.select("svg")
+   .append("polygon")
+   .attr("points", "100 300,50 200,100 100,200 100,250 200,200 300")
+   .style("fill", "green")
+   .style("stroke", "purple")
+   .style("strokeWidth", "20px");
+
+   d3.select("svg")
+   .append("polygon")
+   .attr("points", "300 500,250 400,300 300,400 300,450 400,400 500")
+   .style("fill", "purple")
+   .style("stroke", "green")
+   .style("strokeWidth", "20px");
+
+   d3.select("body")
+    .transition()
+    .duration(1000)
+    .style("background-color", "#EAFAF1");
+
+  d3.selectAll("rect").transition()
+    .delay(function(d, i) { return i * 50; })
+    .on("start", function repeat() {
+        d3.active(this)
+            .style("fill", "#EB984E")
+          .duration(5000)
+          .transition()
+            .style("fill", "blue")
+          .transition()
+            .on("start", repeat);
+      });
+
+  d3.selectAll("circle").transition()
+    .delay(function(d, i) { return i * 50; })
+    .on("start", function repeat() {
+        d3.active(this)
+            .style("fill", "#ABEBC6")
+          .duration(5000)
+          .transition()
+            .style("fill", "#F4D03F")
+          .transition()
+            .on("start", repeat);
+      });
+
+  d3.selectAll("polygon").transition()
+    .delay(function(d, i) { return i * 50; })
+    .on("start", function repeat() {
+        d3.active(this)
+            .style("fill", "purple")
+          .duration(5000)
+          .transition()
+            .style("fill", "green")
+          .transition()
+            .on("start", repeat);
+      });
+
 </script>
