@@ -7,6 +7,18 @@ Credit to: For this project I used parts of the the code from the first class as
 
 Project Description: Interact with diffrent types of shapes in a "shape playbox" by clicking on them. Shapes move, change size, and change color. The shape that is being modified will be displayed in the bottom left corner. Refreshing the page will reset the "playbox".
 
+Project Pictures:
+
+Before Fun:
+
+![image](https://user-images.githubusercontent.com/73619173/150288352-2e3ff8b0-7f6c-4791-86fd-fcc3b7ce94cb.png)
+
+
+After Fun:
+
+![image](https://user-images.githubusercontent.com/73619173/150288424-112b9c58-e204-46cf-8f18-a3b412e22dab.png)
+
+
 Link to gh-page: https://orestropi.github.io/a1-ghd3/
 
 Link to Glitch page: https://a1-datavisualization-orestropi.glitch.me/
