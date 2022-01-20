@@ -25,22 +25,23 @@
     .attr('y', offset)
     .attr('height', size - offset * 2)
     .attr('width', size - offset * 2)
-    .attr('stroke', 'black')
+    .attr('stroke', 'white')
     .attr('fill', '#7f7f7fff');
+
+  d3.select('svg')
+    .append('rect')
+    .attr('x', offset)
+    .attr('y', 435)
+    .attr('height', 30)
+    .attr('width', size - offset * 2)
+    .attr('stroke', '#7f7f7fff')
+    .attr('fill', 'white');
 
   // Add Circles
   var bubble_number = 8;
   var audio = new Audio('pop.mp3');
   var used_len = size - (2 * offset);
   update_bubbles();
-
-  // // get a new date (locale machine date time)
-  // var date = new Date();
-  // // get the date as a string
-  // var n = date.toDateString();
-  // // get the time as a string
-  // var time = date.toLocaleTimeString();
-  // console.log(time);
 
   // Add Lines
   //setup done here, lines added in circle click event
@@ -51,7 +52,7 @@
     [100, 450],
     [400, 450]
   ];
-  var pathData = lineGenerator(points); 
+  var pathData = lineGenerator(points);
 
   // Add Polygons
   d3.select('svg')
@@ -62,19 +63,21 @@
       bubble_number = bubble_number - 1;
       console.log(bubble_number);
       update_bubbles()
-      line_counter = 0;
-                  var points = [
-              [100 + (line_counter * ((size-2*offset)/(bubble_number*bubble_number-1))), 435],
-              [100 + (line_counter * ((size-2*offset)/(bubble_number*bubble_number-1))), 465]
-            ];
-            var pathData = lineGenerator(points); // returns "M0,80L100,100L200,30L300,50L400,40L500,80"
-            d3.select('svg')
-              .append('path');
 
-            d3.select('path')
-              .attr('d', pathData)
-              .attr("stroke", "black")
-              .attr("fill", "none");
+      // Add Lines
+      line_counter = 0;
+      var points = [
+        [100 + (line_counter * ((size - 2 * offset) / (bubble_number * bubble_number - 2))), 435],
+        [100 + (line_counter * ((size - 2 * offset) / (bubble_number * bubble_number - 2))), 465]
+      ];
+      var pathData = lineGenerator(points); // returns "M0,80L100,100L200,30L300,50L400,40L500,80"
+      d3.select('svg')
+        .append('path');
+
+      d3.select('path')
+        .attr('d', pathData)
+        .attr("stroke", "#d62728ff")
+        .attr("fill", "none");
     });
 
   d3.select('svg')
@@ -85,19 +88,21 @@
       bubble_number = bubble_number + 1;
       console.log(bubble_number);
       update_bubbles()
+
+      // Add Lines
       line_counter = 0;
       var points = [
-              [100 + (line_counter * ((size-2*offset)/(bubble_number*bubble_number-1))), 435],
-              [100 + (line_counter * ((size-2*offset)/(bubble_number*bubble_number-1))), 465]
-            ];
-            var pathData = lineGenerator(points); // returns "M0,80L100,100L200,30L300,50L400,40L500,80"
-            d3.select('svg')
-              .append('path');
+        [100 + (line_counter * ((size - 2 * offset) / (bubble_number * bubble_number - 2))), 435],
+        [100 + (line_counter * ((size - 2 * offset) / (bubble_number * bubble_number - 2))), 465]
+      ];
+      var pathData = lineGenerator(points); // returns "M0,80L100,100L200,30L300,50L400,40L500,80"
+      d3.select('svg')
+        .append('path');
 
-            d3.select('path')
-              .attr('d', pathData)
-              .attr("stroke", "black")
-              .attr("fill", "none");
+      d3.select('path')
+        .attr('d', pathData)
+        .attr("stroke", "#d62728ff")
+        .attr("fill", "none");
     });
 
 
@@ -125,9 +130,11 @@
               .ease(d3.easeLinear)
               .attr('fill', 'white');
 
+            line_counter = line_counter + 1;
+
             var points = [
-              [100 + (line_counter * ((size-2*offset)/(bubble_number*bubble_number-1))), 435],
-              [100 + (line_counter * ((size-2*offset)/(bubble_number*bubble_number-1))), 465]
+              [100 + (line_counter * ((size - 2 * offset) / (bubble_number * bubble_number ))), 435],
+              [100 + (line_counter * ((size - 2 * offset) / (bubble_number * bubble_number ))), 465]
             ];
             var pathData = lineGenerator(points); // returns "M0,80L100,100L200,30L300,50L400,40L500,80"
             d3.select('svg')
@@ -135,10 +142,9 @@
 
             d3.select('path')
               .attr('d', pathData)
-              .attr("stroke", "black")
+              .attr("stroke", "#d62728ff")
               .attr("fill", "none");
 
-            line_counter = line_counter + 1;
           });
       }
     }
