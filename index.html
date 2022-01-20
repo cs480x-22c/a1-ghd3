@@ -1,10 +1,180 @@
-<script src="https://d3js.org/d3.v6.min.js"></script>
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+        <script src="https://d3js.org/d3.v7.min.js"></script>
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+ 
+        <div class="vis" id="vis">
+        </div>
+  <script>
 
-<script>
-  console.log(d3); // test if d3 is loaded
-  // Add an SVG
-  // Add Rectangles
-  // Add Circles
-  // Add Lines
-  // Add Polygons
-</script>
+
+      //Builld a tree with Squares! place circles at the end
+      let params = {
+          maxLevels: 4,
+          levelBlocks: 7,
+          basewidth: 100,
+          height: 10,
+          heightSpacing: 10,
+          growOffset: 3,
+      }; 
+
+       //first we generate the data recursively, then we hand our set to d3
+       class treeBlock {
+          constructor(x, y, width, height, color){
+              this.x = x;
+              this.y = y;
+              this.width = width;
+              this.height = height;
+              this.color = color;
+          }
+      }
+
+      let treeBlocks = [];
+      growTree();
+
+      document.addEventListener('keydown', (e) => {
+        if(e.code == 'Space'){
+            growTree();
+        }
+      })
+
+
+     //from a a base block, split into two
+     //RECURSUVE FUNCTION HERE
+      function makeBranch( baseBlock, xOffset, level ) {
+        let lastBlock = baseBlock;
+    
+        for (let i = 0; i < params.levelBlocks + (Math.random() * 10); i++) {
+
+            let levelCont = level + ((1/params.levelBlocks) * i);
+            let blockWidth = 0 * baseBlock.width * Math.pow(.96, i+1);
+            //lastBlock = new treeBlock(baseBlock.x + blockWidth + (xOffset * Math.sqrt(i+1) * (level) * (3 + .5 * Math.random()) ), baseBlock.y - (params.heightSpacing * i), baseBlock.width * Math.pow(.96, i+1), baseBlock.height, "#000000");
+
+            lastBlock = new treeBlock(baseBlock.x + blockWidth + (xOffset * Math.pow(i + 1, 1/2) * (level ) * (3 + 1.5 * Math.random()) ), baseBlock.y - (params.heightSpacing * i), baseBlock.width * Math.pow(.96, i+1), Math.abs(baseBlock.height - (Math.random() * 2.5)), "#000000");
+            treeBlocks.push(lastBlock);
+        }
+        //always grow up
+        //end at levelBlocks number of tree blocks
+        //if less than maxLevels, make two new branches
+        if(level < params.maxLevels) {
+            makeBranch( lastBlock, params.growOffset, level + 1 )
+            makeBranch( lastBlock, -params.growOffset, level + 1 )
+        }
+        
+      }
+
+      // return an array of Tree Blocks
+      // every 20 blocks, it should branch into two, left and right
+      // the x position should offset positive and negative
+      function generateTree(){
+          treeBlocks = [];
+          let baseBlock = new treeBlock(window.innerWidth/2, window.innerHeight, params.basewidth, params.height, "#000000");
+          //recursive function
+          treeBlocks.push(baseBlock);
+
+          makeBranch( baseBlock, 0, 0);
+          return treeBlocks;
+      }
+
+      function generateStars(){
+          let stars = [];
+          for (let i = 0; i < 100; i++) {
+              stars.push({x: Math.random() * window.innerWidth, y: Math.random() * window.innerHeight, r: Math.random() * 5 }); 
+          }
+          return stars;
+      }
+
+      function generateGround(){
+          let grounds = [];
+          let ground = {x1: window.innerWidth, y: window.innerHeight, x2: 0, y2: window.innerHeight, width: 10};
+          for (let i = 0; i < 20; i++) {
+              ground = { x1: ground.x1 - Math.random() * 20, x2: ground.x2 + Math.random() * 20, y: ground.y - 3 };
+              grounds.push(ground); 
+          }
+          return grounds;
+      }
+
+      function colorToHex(r, g, b) {
+        return "#" + (Math.floor(r)).toString(16) + (Math.floor(g)).toString(16) + (Math.floor(b)).toString(16);
+      }
+
+      function growTree() {
+        d3.select('.vis').selectAll("*").remove();
+          let skyColor = `linear-gradient(${colorToHex(200 * Math.random() + 16, 123, 155)}, ${colorToHex(40, 200 * Math.random() + 16, 255)})`;
+          console.log(skyColor);
+        document.getElementById("vis").style.backgroundImage = skyColor;
+
+        //"linear-gradient(#000f4f, #694400)";
+        
+        let svg = d3.select('.vis').append("svg")
+        .attr("viewBox", [0, 0, window.innerWidth, window.innerHeight]);
+
+          //polygons
+    svg
+    .selectAll('polygon')
+    .data([
+        {a: [window.innerWidth, window.innerHeight], b: [window.innerWidth * .77, window.innerHeight - 200], e: [window.innerWidth * .6, window.innerHeight - 100], c: [window.innerWidth * .35, window.innerHeight - 300], d: [0,window.innerHeight]}
+    ])
+    .join('polygon')
+    .attr("points", d => `${d.a[0]},${d.a[1]} ${d.b[0]},${d.b[1]} ${d.e[0]},${d.e [1]} ${d.c[0]},${d.c[1]} ${d.d[0]},${d. d[1]}`)
+    .attr('x1', d => d.x1)
+    .attr('y1', d => d.y)
+    .attr('x2', d => d.x2)
+    .attr('y2', d => d.y)
+    .attr('stroke', "none")
+    .attr('fill', '#aaaaaa')
+    .attr('opacity', '40%');
+
+ //stars
+        svg.selectAll("circle")
+        .data(generateStars())
+        .join("circle")
+        .attr("r", d => d.r)
+        .attr("cx", d => (d.x))
+        .attr("cy", d => d.y)
+        .attr("fill", "#f9f4f0" );
+
+        //tree
+        svg.selectAll("rect")
+        .data(generateTree())
+        .join("rect")
+        .attr("x", d => d.x)
+        .attr("y", d => d.y - 70)
+        .attr("width", d => d.width)
+        .attr("height", d => d.height)
+        .attr("fill", "#000000" );
+
+        //ground
+      svg
+    .selectAll('line')
+    .data(generateGround())
+    .join('line')
+    .attr('x1', d => d.x1)
+    .attr('y1', d => d.y)
+    .attr('x2', d => d.x2)
+    .attr('y2', d => d.y)
+    .attr('stroke', "white")
+
+  
+        
+      }
+
+
+  </script>      
+    </body>
+</html>
