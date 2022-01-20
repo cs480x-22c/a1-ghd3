@@ -63,6 +63,27 @@ d3.select("svg")
         .attr('width', 20)
       d3.select("#info").text(d);
   })
+  //x1="0" y1="80" x2="100" y2="20" stroke="black"
+  d3.select("svg")
+  .selectAll("line")
+  .data(ourdata)
+  .enter().append("rect")
+  .attr('x1', function(d) { return d*10; })
+  .attr('x2', function(d) { return d*10; })  
+  .attr('y1', function(d) { return d*10; })
+  .attr('y2', function(d) { return d*10; })
+  .attr('stroke', 'black')
+  .on('click', function(evt, d) {
+      console.log(evt);
+      d3.select(this)
+        .transition()
+        .duration(750)
+        .ease(d3.easeLinear)
+        .attr('fill', '#EB8900')
+        .attr('stroke', '#EB8900')
+      d3.select("#info").text(d);
+  })
+
 //  .text(function(d) { return "I’m number " + d + "!"; });
 
 
