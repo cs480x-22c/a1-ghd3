@@ -4,6 +4,7 @@ Hi!
 This is my A1 assignment site here: https://alexiscaira.github.io/a1-ghd3/ using d3 and graphics/animations made by me.
 You can see that I was able to use primitive graphics like circles, rectangles, and polygons at different locations on the screen with different colors to make the moon, cow, spaceship, and star. From there I animated it using D3 to have the spaceship and cow move together back and forth on screen and the star twinkling on and off in the sky. For the background, I used Canva to generate a SVG transparent background, which features the barn, fence, and grass on screen.
 
+![Alt text](https://raw.githubusercontent.com/alexiscaira/a1-ghd3/cf0314aa48d4ae4ce58dc1cd5447f0755d74225c/graphics/back.svg)
 
 
 From there, I imported it in the style page, and added the night sky blue in the background.  
