@@ -6,19 +6,11 @@ For my Assignment 1, I decided to create a picture. This picture contains a car 
 Design Achievement Description
 ---
 
-In this project, I was able to create a picture using lines, polygons, circles, and rectangles. When I first started playing around with d3, I tried to make a polygon and the first shape that popped into my head was an octagon, and the color I chose was red. Once I created this shape, I realized that it looked like a stop sign, and started to design the rest of my picture around that. I then had a circle in the upper right hand corner of the page, and decided to make it the sun, containing thick lines coming off of the sun as rays
+In this project, I was able to create a picture using lines, polygons, circles, and rectangles. When I first started playing around with d3, I tried to make a polygon and the first shape that popped into my head was an octagon, and the color I chose was red. Once I created this shape, I realized that it looked like a stop sign, and started to design the rest of my picture around that. I then had a circle in the upper right hand corner of the page, and decided to make it the sun, containing thick orange lines coming off of the sun as rays. I decided to make the clouds blue since I created lines around the border of the picture to be blue, and the background is white. I designed another polygon (trapezoid) to act as a car, and added circles to the bottom of the car. This car is green, since I wanted to use another color that I hadn't yet. Finally I was able to design a road using a black rectangle and adding thick yellow lines on top of it to act as the lines on a road. This was my first time using d3 and at the beginning of the assignment my goal was just to be able to print the different types of shapes on an svg. Once I realized I could do this, I decided to make these shapes into objects that could be made into a picure. These objects that I designed were objects most people are familiar with, so that this image would be easily understood.
 
 Technical Achievement Desription
 ---
 
-
-- Circles and Rectangles  
-- Lines  
-- Polygons  
-- Different colors  
-- README Quality
-    - A description of what you have created. 1-2 screenshots are recommended for the README.  
-    - A working link to the hosted files (usually the gh-pages 'live' url)  
-    - Section for Technical and Design Achievements
+On
 
 
