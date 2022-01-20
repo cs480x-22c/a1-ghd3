@@ -69,12 +69,12 @@ d3.select("svg")
   .data(ourdata)
   .enter().append("rect")
   .attr('x1', function(d) { return d*10; })
-  .attr('x2', function(d) { return d*10; })  
+  .attr('x2', function(d) { return d*10+150; })  
   .attr('y1', function(d) { return d*10; })
   .attr('y2', function(d) { return d*10; })
   .attr('stroke', 'black')
   .on('click', function(evt, d) {
-      console.log(evt);http-server &
+      console.log(evt);
       d3.select(this)
         .transition()
         .duration(750)
