@@ -15,4 +15,4 @@ Design Achievement Description
 
 This was my first time using github for something like this and also my first time using JavaScript,
 so getting the page to display the way I wanted it to wasn't as easy as I'd hoped, 
-but I'm still happy with how it turned out.
+but I'm still happy with how it turned out. The background color is random and the size of the shapes is also random
