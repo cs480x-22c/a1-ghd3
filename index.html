@@ -91,24 +91,22 @@ d3.select("svg")
   // <!-- Example of the same polygon shape with stroke and no fill -->
   // <polygon points="100,100 150,25 150,75 200,0"
   //           fill="none" stroke="black" />
-  d3.select('svg')
-  .append('polygon')
-  .attr('points', '300,300 300,350 350,400 350,500')
-  .style('stroke', 'black')
-  .style('strokeWidth', '15px')
-  .style('fill', 'orange');
-  // .attr('fill', '#F2EA07')
-  // .attr('stroke', '#078CB8')
-  // .on('click', function(evt) {
-  //     console.log(evt);
-  //     d3.select(this)
-  //       .transition()
-  //       .duration(1000)
-  //       .ease(d3.easeLinear)
-  //       .attr('fill', '#078CB8')
-  //       .attr('stroke', '#F2EA07')
-  //     d3.select("#info").text('Polygon');
-  // })
+  d3.select("svg")
+  .append("polygon")
+  .attr('points', '300,400 350,375 350,375 400,300')
+  .style('strokeWidth', '20px')
+  .attr('fill', '#F2EA07')
+  .attr('stroke', '#078CB8')
+  .on('click', function(evt) {
+      console.log(evt);
+      d3.select(this)
+        .transition()
+        .duration(1000)
+        .ease(d3.easeLinear)
+        .attr('fill', '#078CB8')
+        .attr('stroke', '#F2EA07')
+      d3.select("#info").text('Polygon');
+  })
 
 
 //  .text(function(d) { return "I’m number " + d + "!"; });
