@@ -1,5 +1,7 @@
 # Description
 
+![_home_liam_Documents_GitHub_a1-ghd3_index html](https://user-images.githubusercontent.com/33555592/150334516-349ba1bd-2e3b-4677-9667-ece26aa7763f.png)
+
 My intention with this project was to create a simple, static world map in D3 that would track the various countries I've lived in. When hovering over a highlighted country, the project would display the country name, as well as the period in which I lived in the country. Points on the map would identify the location within each country that I lived, and lines (or more specifically, arcs) between each city/point would indicate the city I lived in next.
 
 The first few features ended up being implemented rather easily. D3 renders a world map, applying a map projection, and displays each of the 6 countries I've lived in (Russia, Ireland, USA, Germany, Belgium, and Malaysia) in a different color. Hovering over one such country adds a rectangular border around the landmass outline, and changes HTML text to display the name and the period of time during which I lived in said country. 
