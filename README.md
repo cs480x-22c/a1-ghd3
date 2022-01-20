@@ -30,7 +30,7 @@ Link to Glitch page:
 
 **Design Achievement Description -- 12**
 
-- **Created color palette using adobe**: I used the hash numbers from my palette. Changing color of some shapes andd background-color.
+- **Created color palette using adobe**: I used the hash numbers from my palette. Changing color of some shapes, text, and background-color.
 ![AdobeColor-My Color Theme](https://user-images.githubusercontent.com/73619173/131264408-2958291f-d7da-4b77-aa55-674150e36d84.jpeg)
 
 - **Used the Ubuntu Font from Google Fonts**: I used Ubuntu as the font for the primary copy text in my site.
