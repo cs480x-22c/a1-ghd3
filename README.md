@@ -1,86 +1,48 @@
 Assignment 1 - Hello World: GitHub and d3  
 ===
+Link to gh-pages
+https://obliiviion.github.io/
 
-This is a starting project to make sure you can write and host a webpage that generates graphics using d3. 
+Daytime screenshot
+![img.png](img.png)
 
-The primary goal is to be able to generate graphics primitives (circles, rectangles, lines, polygons) at different locations on the screen with different colors. 
+Nighttime screenshot
+![img_1.png](img_1.png)
 
-The secondary goal is to introduce you to coding on GitHub, including creating a gh-pages branch to host your visualizations.
+Image description:
+I used various shapes to create a scene. There are 3 mountains, a sun, a cloud, a pond, and a castle wall.
+Each element is created from basic shapes. 
+The mountains and their tops are all triangles. The sun is a circle. The pond is an ellipse. The castle wall is a rectangle. The cloud is a polygon.
+To add detais to each elements, I used other shapes. The mountains are composed of 2 triangles, one for the base, one for the snowy top.
+The castle wall is made of one main rectangle and of several lines drawn within the rectangle. The lines are used to add the details and appearance of bricks on the wall.
 
-You may write everything from scratch, or start with demo programs from books or the web. 
-If you do start with code that you found, you **must identify** the source of the code in your README and, most importantly, make non-trivial changes to the code to make it your own so you really learn what you're doing. 
+I started with the code we had in class and then searched for help online.
+I found shape assistance at https://lucidar.me/en/d3.js/part-06-basic-shapes/ and http://www.d3noob.org/2014/02/d3js-elements.html
+For moving the sun up and down, I used 2 resources to find out how to make the shape move and how to detect keyboard input.
+Making shape move : https://www.tutorialsteacher.com/d3js/animation-with-d3js
+Detecting input: https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent
 
-For example, you could download one of the d3.js examples, read it through so you understand what it's doing, and then change the appearance of the graphical output to use different color schemes, different primitive shapes, different layouts of the primitives, and so on.
+Technical Achievement:
+My goal in this project was to have some sort of user controlled moving element.
+In my first couple of commits to this project, I started out by trying to make a game of pong. 
+During that, I was able to make 2 moving paddles on the screen. 
+When I changed the concept of my project, I decided I still wanted some moving element and decided to make the sun that element.
+Using references that I indicated in the previous section under "Making Shape move", I was able to create a sun that moved. 
+I didnt want the sun moving randomly or only once however, so I decided to make it user controlled. I used the code under
+"Detecting input" to find out how to get inputs from my keyboard to control the sun. I played around with different keys 
+and timings and speeds for the sun should move. I also programmed it so that the scene would change when the sun was up or not to 
+indicate daytime or night time. 
+Using the W and the S key on the keyboard, we can control the movement of the sun.
+When the sun is high up, the scene depicts daytime.  
+When the sun goes down, the scene changes and every color in the scene gets darker to show it is nighttime.
 
-Resources
----
-
-If you need a JavaScript/HTML/CSS refresher, see [JavaScript Codeacademy](https://www.codecademy.com/en/tracks/javascript) or find one of your choosing on the web.
-
-If you need a Git/GitHub refreseher, some possible resources include [Getting Started with GitHub](https://help.github.com/categories/bootcamp/), the [GitHub Guides](https://guides.github.com/) (especially the ones on Hello World, and Understanding the GitHub Flow, and Forking Projects), and [CodeSchool's Try Git Course](https://www.codeschool.com/courses/try-git).
-
-Requirements
----
-
-1. Your project should contain at least four kinds of graphics primitives (circles, rectangles, lines, polygons) in different colors. 
-2. Your document should identify the source of the code if you start with code that you found. 
-3. Your code should be forked from the GitHub repo and linked using GitHub pages. See the "GitHub Details" section below for detailed instructions on how to do this.
-
-GitHub Details
----
-
-- Fork the GitHub Repository for Assignment 1. You now have a copy associated with your username.
-- Make changes to index.html to fulfill the project requirements. 
-- Make sure your "main" branch matches your "gh-pages" branch. See the GitHub Guides referenced above if you need help.
-- Edit the README.md with a link to your gh-pages site "http://YourUsernameGoesHere.github.io/01-ghd3/index.html".
-
-Submission Details
----
-- To submit, make a [Pull Request](https://help.github.com/articles/using-pull-requests/) on the original repository.
-- Note: name your pull request using the following scheme: 
-```
-a1-your Gh username-your first name-your lastname
-
-```
-
-Vis Details
----
-
-For this project you should use d3.js. 
-You can learn from examples on the [d3.js](http://d3js.org) site or start from scratch.
-
-See the [Using d3js](https://github.com/mbostock/d3/wiki#using) documentation for how to run your own local server.
-
-Creative solutions are welcome! In the past I've seen recreations of paintings, interactives, and more.
-
-Go beyond the minimum requirements of this project.
-Experiment with other aspects of the [d3 API](https://github.com/mbostock/d3/wiki/API-Reference) and [d3 Tutorials](https://github.com/mbostock/d3/wiki/Tutorials). 
-Try making the elements interactive, for example, or animate them.
-
-Grading
----
-
-Grades are on a 120 point scale. 
-96 points will be graded for functionality: the program does what the assignment requests with an informative README. 
-
-We will use Google Chrome to view submissions. 
-Be sure to test your code there.
-
-Below are some, but not necessarily all, of the key points we will consider during grading:
-
-- Circles and Rectangles  
-- Lines  
-- Polygons  
-- Different colors  
-- README Quality
-    - A description of what you have created. 1-2 screenshots are recommended for the README.  
-    - A working link to the hosted files (usually the gh-pages 'live' url)  
-    - Section for Technical and Design Achievements
-
-Technical Achievement Desription -- 12  
-Design Achievement Description -- 12
-
-Remember, it is up to *you* to define what constitutes a technical and design achievements.
-Be ambitious as these are designed to allow you to shape your learning.
-These are the only way to move from B to A territory.
-
+Design elements
+My design elements tie into my Technical Achievements.
+I wanted to create a scene with mountains and some sort of building. I settled on mountains, a pond, and a castle. 
+I used basic shapes to make each element, but I wanted to add more depth to the image. So, to the mountains, I first atted a snowy
+top. And then, I changed the colors of each mountain to try and reflect which ones were in the foreground and background.
+Next I created the pond. The pond is an ellipse, which is a circle with elongated ends. 
+Then, I created the wall. This wall is one rectangle with lines drawn over it. The lines are there to give the wall a detail of bricks.
+I also created a cloud out of a polygon. When placing the points for the polygon, I tried to make the shape as cloud like as possible.
+After the scene was set, I made the scene change color based on the hieght of the sun. When the sun is up, it is a normal, bright day.
+Once the sun goes down, the colors of all the different shapes on the scene change to be darker colors to show that it is nighttime.

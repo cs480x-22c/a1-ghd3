@@ -1,5 +1,7 @@
 <script src="https://d3js.org/d3.v4.min.js"></script>
 
+<h1>Press the S key to move sun down. Press W to move it back up</h1>
+
 <svg width="1100" height= "750" style =  "border:5px solid black" bac></svg>
 <script>
 
@@ -165,28 +167,28 @@
         .attr("x1", 1046)
         .attr("y1", 550)
         .attr("x2", 1046)
-        .attr("y2", 580)
+        .attr("y2", 580);
     d3.select("svg").append("line").style("stroke", "black")
         .attr("x1", 1072)
         .attr("y1", 550)
         .attr("x2", 1072)
-        .attr("y2", 580)
+        .attr("y2", 580);
     d3.select("svg").append("line").style("stroke", "black")
         .attr("x1", 1020)
         .attr("y1", 580)
         .attr("x2", 1100)
-        .attr("y2", 580)
+        .attr("y2", 580);
 
     d3.select("svg").append("line").style("stroke", "black")
         .attr("x1", 1060)
         .attr("y1", 580)
         .attr("x2", 1060)
-        .attr("y2", 610)
+        .attr("y2", 610);
     d3.select("svg").append("line").style("stroke", "black")
         .attr("x1", 1020)
         .attr("y1", 610)
         .attr("x2", 1100)
-        .attr("y2", 610)
+        .attr("y2", 610);
 
 
 
@@ -194,56 +196,56 @@
         .attr("x1", 1046)
         .attr("y1", 610)
         .attr("x2", 1046)
-        .attr("y2", 640)
+        .attr("y2", 640);
     d3.select("svg").append("line").style("stroke", "black")
         .attr("x1", 1072)
         .attr("y1", 610)
         .attr("x2", 1072)
-        .attr("y2", 640)
+        .attr("y2", 640);
     d3.select("svg").append("line").style("stroke", "black")
         .attr("x1", 1020)
         .attr("y1", 640)
         .attr("x2", 1100)
-        .attr("y2", 640)
+        .attr("y2", 640);
 
     d3.select("svg").append("line").style("stroke", "black")
         .attr("x1", 1060)
         .attr("y1", 640)
         .attr("x2", 1060)
-        .attr("y2", 670)
+        .attr("y2", 670);
     d3.select("svg").append("line").style("stroke", "black")
         .attr("x1", 1020)
         .attr("y1", 670)
         .attr("x2", 1100)
-        .attr("y2", 670)
+        .attr("y2", 670);
 
 
     d3.select("svg").append("line").style("stroke", "black")
         .attr("x1", 1046)
         .attr("y1", 670)
         .attr("x2", 1046)
-        .attr("y2", 700)
+        .attr("y2", 700);
     d3.select("svg").append("line").style("stroke", "black")
         .attr("x1", 1072)
         .attr("y1", 670)
         .attr("x2", 1072)
-        .attr("y2", 700)
+        .attr("y2", 700);
     d3.select("svg").append("line").style("stroke", "black")
         .attr("x1", 1020)
         .attr("y1", 700)
         .attr("x2", 1100)
-        .attr("y2", 700)
+        .attr("y2", 700);
 
     d3.select("svg").append("line").style("stroke", "black")
         .attr("x1", 1060)
         .attr("y1", 700)
         .attr("x2", 1060)
-        .attr("y2", 730)
+        .attr("y2", 730);
     d3.select("svg").append("line").style("stroke", "black")
         .attr("x1", 1020)
         .attr("y1", 730)
         .attr("x2", 1100)
-        .attr("y2", 730)
+        .attr("y2", 730);
 
     //code for creating the cloud polygon
     var cloud = d3.select("svg").append("polygon")
@@ -258,9 +260,6 @@
             "735, 110 , " +
             "750, 80, 650, 50")
         .attr("fill", '#f5f5f5')
-        .attr("stroke", "#000000").attr("stroke-width", 3)
-
-//TODO add detail to wall, add fish?
-
+        .attr("stroke", "#000000").attr("stroke-width", 3);
 
 </script>
