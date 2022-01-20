@@ -3,19 +3,13 @@
 <svg width="1100" height= "750" style =  "border:5px solid black"></svg>
 <script>
 
-    var bar1 = d3.select('svg').append("rect")
-        .attr("fill", "#ff0000")
-        .attr("x", 30)
-        .attr("y", 300)
-        .attr("height", 150)
-        .attr("width", 20);
+    var sun = d3.select('svg').append("circle")
+        .attr("fill", "#ffff00")
+        .attr("cx", 150)
+        .attr("cy", 300)
+        .attr('r',50).attr('stroke','#000000').attr('stroke-width', 3);
 
-    var bar2 = d3.select('svg').append("rect")
-        .attr("fill", "#ff00ff")
-        .attr("x", 1050)
-        .attr("y", 300)
-        .attr("height", 150)
-        .attr("width", 20);
+    var background = d3.select('svg');
 
     document.addEventListener('keydown', (event) =>{
         var keyName = event.key;
@@ -24,60 +18,58 @@
             p1Down();
         } else if(keyName === 'w'){
             p1Up();
-        }else if(keyName === 'i'){
-            p2Up();
-        }else if(keyName === 'k'){
-            p2Down();
         }
     })
 
     document.addEventListener('keyup', (event) =>{
-        bar1.transition().stop();
+        sun.transition().stop();
     })
-    document.addEventListener('keyup', (event) =>{
-        bar2.transition().stop();
-    })
+
+
     function p1Down() {
-        bar1.transition()
+        sun.transition()
             .ease(d3.easeLinear)
             .duration(500)
-            .attr("y",600)
+            .attr("cy",700);
+        var circleBox = sun.node().getBBox();
+
+        if(circleBox.y < 250){
+            sun.attr('fill', '#ffff00')
+            background.style('background-color','#0000ff')
+        } else{
+            sun.attr('fill', "#000000")
+            background.style('background-color','#ff00ff')
+        }
     }
     function p1Up() {
-        bar1.transition()
+        sun.transition()
             .ease(d3.easeLinear)
             .duration(500)
-            .attr("y",0)
-    }
-    function p2Down() {
-        bar2.transition()
-            .ease(d3.easeLinear)
-            .duration(500)
-            .attr("y",600)
-    }
-    function p2Up() {
-        bar2.transition()
-            .ease(d3.easeLinear)
-            .duration(500)
-            .attr("y",0)
+            .attr("cy",50);
+        var circleBox = sun.node().getBBox();
+
+        if(circleBox.y < 250){
+            sun.attr('fill', '#ffff00')
+            background.style('background-color','#0000ff')
+
+        } else{
+            sun.attr('fill', "#000000")
+            background.style('background-color','#ff00ff')
+        }
+
     }
 
-    d3.select('svg')
-    .append('circle')
-    .attr('cx',550)
-    .attr('cy',375)
-    .attr('r', 100)
-    .attr('stroke','#000000')
-    .attr('fill', '#ffffff')
-    .attr('stroke-width', 5);
+    var triangle = d3.symbol().type(d3.symbolTriangle).size(76000);
+    d3.select("svg")
+        .append("path")
+        .attr("d", triangle)
+        .attr("fill", "green")
+        .attr("transform", "translate(65, 450)").attr('stroke','#000000').attr('stroke-width', 3);
 
-    d3.select('svg')
-        .append('line')
-        .style("stroke", "#000000")
-        .style("stroke-width", 5)
-        .attr('x1',550)
-        .attr('y1',0)
-        .attr('x2',550)
-        .attr('y2',750)
-        .attr('r', 100);
+    var triangle2 = d3.symbol().type(d3.symbolTriangle).size(115000);
+    d3.select("svg")
+        .append("path")
+        .attr("d", triangle2)
+        .attr("fill", "green")
+        .attr("transform", "translate(275, 550)").attr('stroke','#000000').attr('stroke-width', 3);
 </script>
