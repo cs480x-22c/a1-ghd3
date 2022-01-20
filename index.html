@@ -1,10 +1,118 @@
-<script src="https://d3js.org/d3.v6.min.js"></script>
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+   
+    <script src="https://d3js.org/d3.v6.min.js"></script>
+    
+</head>
+<body>
+    <p id="animation" onclick="myFunction()">Click me to change my text color.</p>
+    <p id="animation" onclick="alert('you clicked me!')">Click me for an alert.</p>
+</body>
 <script>
-  console.log(d3); // test if d3 is loaded
-  // Add an SVG
-  // Add Rectangles
-  // Add Circles
-  // Add Lines
-  // Add Polygons
+//sources 
+//https://www.tutorialsteacher.com/d3js/create-svg-elements-in-d3js
+//https://lucidar.me/en/d3.js/part-06-basic-shapes/
+
+    console.log("Hello");
+
+    var svg = d3.select("body")
+        .append("svg")
+        .attr("width", 500)
+        .attr("height", 500);
+
+
+    svg.append("rect") //body
+        .attr("x", 225)
+        .attr("y", 225)
+        .attr("width", 100)
+        .attr("height", 200)
+        .attr("fill", "#328ba8")
+
+    svg.append("circle") //head
+        .attr("cx", 275)
+        .attr("cy", 175)
+        .attr("r", 50)
+        .attr("fill", "#e3c571")
+
+    svg.append("rect") //right arm
+        .attr("x", 325)
+        .attr("y", 235)
+        .attr("width", 150)
+        .attr("height", 15)
+        .attr("fill", "#ede609")
+
+    svg.append("rect") //left arm
+        .attr("x", 75)
+        .attr("y", 235)
+        .attr("width", 150)
+        .attr("height", 15)
+        .attr("fill", "#ede609")
+    
+    svg.append("rect") //right leg 
+        .attr("x", 290)
+        .attr("y", 425)
+        .attr("width", 25)
+        .attr("height", 60)
+        .attr("fill", "#945c31")
+
+    svg.append("rect") //left leg
+        .attr("x", 235)
+        .attr("y", 425)
+        .attr("width", 25)
+        .attr("height", 60)
+        .attr("fill", "#945c31")
+    
+    svg.append("ellipse") //right foot   
+        .attr("cx", 320)
+        .attr("cy", 485)
+        .attr("rx", 30)
+        .attr("ry", 10)
+        .attr("fill", "#ed0909")
+
+    svg.append("ellipse") //left foot
+        .attr("cx", 230)
+        .attr("cy", 485)
+        .attr("rx", 30)
+        .attr("ry", 10)
+        .attr("fill", "#ed0909")
+
+    svg.append("polygon") //hat
+        .attr("points", "200,130 350,130 275,50")
+        .attr("fill", "#09614c")
+
+    svg.append("polyline") //smile
+        .attr("points", "250,190 265,205 290,205 305,190")
+        .attr("fill", "none")
+        .attr("stroke", "black")
+    
+    svg.append("polygon") //left eye
+        .attr("points", "250,160 260,160 270,150 260,140 250,140 240,150")
+        .attr("fill", "purple")
+
+    svg.append("polygon") //right eye
+        .attr("points", "300,160 310,160 320,150 310,140 300,140 290,150")
+        .attr("fill", "purple")
+
+    svg.append("polyline") //nose
+        .attr("points", "275,170 275,185 285,185")
+        .attr("fill", "none")
+        .attr("stroke", "black")
+
+    svg.append("text") //text
+        .attr("x", 50 )
+        .attr("y", 350)
+        .attr("stroke", "#e610d0")
+        .attr("font-family", "sans-serif")
+        .attr("font-size", "16px")
+        .text("This is my dorky robot :)");  
+        
+    function myFunction() {
+    document.getElementById("animation").style.color = "red";
+}
 </script>
+</html>
