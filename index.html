@@ -27,12 +27,12 @@
     // Add Rectangles
     d3.select('svg')
       .append('rect')
-      .attr("x", width/2)
-      .attr("y", 0)
-      .attr("width", width/2)
-      .attr("height", height/2)
+      .attr("x", width/2+width/32)
+      .attr("y", height/32)
+      .attr("width", width/2 - width/16)
+      .attr("height", height/2 - height/16)
       .attr('stroke', 'black')
-      .attr('stroke-width', '5px')
+      .attr('stroke-width', '10px')
       .attr('fill', 'none');
     d3.selectAll('rect')
       .on('mousemove', function() {
@@ -116,8 +116,8 @@
         });
     d3.select('svg')
       .append('text')
-      .attr('x', width/16)
-      .attr('y', 17*height/64+height/2)
+      .attr('x', width/32)
+      .attr('y', 19*height/64+height/2)
       .attr('stroke', 'black')
       .attr('font-size', '180px')
       .text("STOP")
