@@ -1,86 +1,77 @@
-Assignment 1 - Hello World: GitHub and d3  
-===
+<h1>Assignment 1 - Hello World: GitHub and d3</h1>
+<h3> Mattheus Faria </h3>
+<h3> Links </h3>
+Github Page: https://mfaria27.github.io/a1-ghd3/index.html
 
-This is a starting project to make sure you can write and host a webpage that generates graphics using d3. 
+<h3> Overview </h3>
 
-The primary goal is to be able to generate graphics primitives (circles, rectangles, lines, polygons) at different locations on the screen with different colors. 
+With this first data visualization assignment, I went in next-to completely blind when it came to Javascript and web development with GitHub pages. As such, I thought I'd keep it relatively simple by having different shapes do different things.
 
-The secondary goal is to introduce you to coding on GitHub, including creating a gh-pages branch to host your visualizations.
+<img src="https://github.com/MFaria27/a1-ghd3/blob/master/media/PageOpen.png" style="width:550px;height:600px;"> 
 
-You may write everything from scratch, or start with demo programs from books or the web. 
-If you do start with code that you found, you **must identify** the source of the code in your README and, most importantly, make non-trivial changes to the code to make it your own so you really learn what you're doing. 
+This page features 4 shapes, each showcases some basic javascript/d3 library features. The page itself is set to make an svg of the window's initial height by that same height so that each square is of equal size.
 
-For example, you could download one of the d3.js examples, read it through so you understand what it's doing, and then change the appearance of the graphical output to use different color schemes, different primitive shapes, different layouts of the primitives, and so on.
+<h3> Shapes </h3>
+<ul>
+  <li>Circle
+    <ul>
+      <li>The circle object is clickable, transitioning from multiple colors during a short time</li>
+    </ul>
+  </li>
+  <li>Rectangle
+    <ul>
+      <li>While doing the rectangles, I was hoping to make it so that, when clicked, the rectangle would split into four smaller rectangles, which you could do infinitely. Unfortunately, time constaints.</li>
+      <li>Instead, I opted for a series of rectangular borders, each decreasing in equal size and increasing hue, going from black to white. </li>
+      <li>I didn't use any interactables, but I hope to come back to this in order to do the spliting idea</li>
+    </ul>
+  </li>
+  <li>Line
+    <ul>
+      <li>I couldn't think of anything interesting to do with lines, so I used two to split the svg into four parts</li>
+      <li>I did experiment with multiple svgs in each square, but debugging was a nightmare, so I stuck with lines in an open svg</li>
+    </ul>
+  </li>
+  <li>Polygon
+    <ul>
+      <li>Octagon</li>
+        <ul>
+          <li>For the octagon polygon, I gave it a mouse-on interactable.</li>
+          <li>Hovering over the octagon reveals a stop sign, which incorporates a text from the d3 library. Hovering away makes it a black octagon again.</li>
+        </ul>
+      <li>X/gear</li>
+        <ul>
+          <li>The gear is made up of a polygon forming an X shape and a small circle object in the middle.</li>
+          <li>The gray part of the gear is interactable; clicking on it will cause the gear to spin 45 degrees</li>
+          <li>I'd like to eventually go back and figure out how to make it so that the gear does not cross the border as it spins</li>
+        </ul>
+    </ul>
+  </li>
+</ul>
+<h3>The Objects in their Interacted States</h3>
+<img src="https://github.com/MFaria27/a1-ghd3/blob/master/media/activePage.png" style="width:550px;height:550px;">
+<h3>Colors</h3>
+Each object has color, either static or transforming
+<ul>
+  <li>The circle transitions between 4 different colors before returning to its black state</li>
+  <li>The rectangles have static colors, each with an hsl value of (0, 100%, <increment of 20% to 100%>)</li>
+  <li>The octagon goes from a static black to a red color when hovered over</li>
+  <li>The gear is a static gray</li>
+</ul>
+<h3>Technical Achievements</h3>
+<ul>
+  <li>Animations with D3</li>
+  <ul><li>Animating transitions and color changes was actually very challenging. Especially with animating the 45 degree gear turn while also keeping the scaling correct, as rotating around the center of the object had to be done while also being dynamic. It also took a while to understand how duration() and delay() worked for the circle's color changing property</li></ul>
+  <li>Interactables</li>
+  <ul><li>Figuring out how to properly work with the .on("click",..) or .on("mouseover",..) with proper functions to do visual changes was the most difficult part of my learning experience. I had a lot of issues with on click events only happening once and figuring out pairing mouseover and mouse out events.</li></ul>
+  <li>Pretty much learning Javascript and a bit more of GitHub from Scratch</li>
+</ul>
+<h3>Design Achievements</h3>
+<ul>
+  <li>Dynamic Page Sizes</li>
+  <ul><li>The sizes of every object scale with the initial size of the height of the page (as most desktops are horizontal). Refreshing the page after changing the dimensions of the browser should scale the sizes. I'd like to eventually learn how to make this a real-time change.</li></ul>
+  <li>CSS Coloring with more specific color coding such as HSL instead of using basic keywords like 'red' or 'black'</li>
+  <li>Dynamic font size changing was a bit of a design pain to implement, as there isn't a diirect way to change font size (at least in pixels) with window size</li>
+</ul>
 
-Resources
----
-
-If you need a JavaScript/HTML/CSS refresher, see [JavaScript Codeacademy](https://www.codecademy.com/en/tracks/javascript) or find one of your choosing on the web.
-
-If you need a Git/GitHub refreseher, some possible resources include [Getting Started with GitHub](https://help.github.com/categories/bootcamp/), the [GitHub Guides](https://guides.github.com/) (especially the ones on Hello World, and Understanding the GitHub Flow, and Forking Projects), and [CodeSchool's Try Git Course](https://www.codeschool.com/courses/try-git).
-
-Requirements
----
-
-1. Your project should contain at least four kinds of graphics primitives (circles, rectangles, lines, polygons) in different colors. 
-2. Your document should identify the source of the code if you start with code that you found. 
-3. Your code should be forked from the GitHub repo and linked using GitHub pages. See the "GitHub Details" section below for detailed instructions on how to do this.
-
-GitHub Details
----
-
-- Fork the GitHub Repository for Assignment 1. You now have a copy associated with your username.
-- Make changes to index.html to fulfill the project requirements. 
-- Make sure your "main" branch matches your "gh-pages" branch. See the GitHub Guides referenced above if you need help.
-- Edit the README.md with a link to your gh-pages site "http://YourUsernameGoesHere.github.io/01-ghd3/index.html".
-
-Submission Details
----
-- To submit, make a [Pull Request](https://help.github.com/articles/using-pull-requests/) on the original repository.
-- Note: name your pull request using the following scheme: 
-```
-a1-your Gh username-your first name-your lastname
-
-```
-
-Vis Details
----
-
-For this project you should use d3.js. 
-You can learn from examples on the [d3.js](http://d3js.org) site or start from scratch.
-
-See the [Using d3js](https://github.com/mbostock/d3/wiki#using) documentation for how to run your own local server.
-
-Creative solutions are welcome! In the past I've seen recreations of paintings, interactives, and more.
-
-Go beyond the minimum requirements of this project.
-Experiment with other aspects of the [d3 API](https://github.com/mbostock/d3/wiki/API-Reference) and [d3 Tutorials](https://github.com/mbostock/d3/wiki/Tutorials). 
-Try making the elements interactive, for example, or animate them.
-
-Grading
----
-
-Grades are on a 120 point scale. 
-96 points will be graded for functionality: the program does what the assignment requests with an informative README. 
-
-We will use Google Chrome to view submissions. 
-Be sure to test your code there.
-
-Below are some, but not necessarily all, of the key points we will consider during grading:
-
-- Circles and Rectangles  
-- Lines  
-- Polygons  
-- Different colors  
-- README Quality
-    - A description of what you have created. 1-2 screenshots are recommended for the README.  
-    - A working link to the hosted files (usually the gh-pages 'live' url)  
-    - Section for Technical and Design Achievements
-
-Technical Achievement Desription -- 12  
-Design Achievement Description -- 12
-
-Remember, it is up to *you* to define what constitutes a technical and design achievements.
-Be ambitious as these are designed to allow you to shape your learning.
-These are the only way to move from B to A territory.
-
+<h3> Quick Afterword </h3>
+This is the first major time that I've used GitHub this much. A good way to see that is the sheer amount of commits I've made to this one main branch. I realized a good 20 minutes ago from when I'm writing this that I could have made another branch and checked for visual updates there before uplaoding to the main branch. You live and learn.

@@ -1,10 +1,205 @@
-<script src="https://d3js.org/d3.v6.min.js"></script>
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>MFaria DataVis Assignmnet 1</title>
+    <script src="https://d3js.org/d3.v6.min.js"></script>
+    <style>
+      html,body {
+        margin: 0px;
+        height: 100%;
+        width: 100%;
+      }
+    </style>
+  </head>
+  
+  <body>
+  <script>
+    console.log(d3); // test if d3 is loaded
+    // Add an SVG
+    var width = window.innerHeight;
+    var height = window.innerHeight;
+    var angle = 0;
+    var textSize = height/5;
+    var textSizeString = textSize + "px";
+    console.log(textSizeString);
 
-<script>
-  console.log(d3); // test if d3 is loaded
-  // Add an SVG
-  // Add Rectangles
-  // Add Circles
-  // Add Lines
-  // Add Polygons
-</script>
+    const svg = d3.select("body")
+      .append("svg")
+      .attr("width", width)
+      .attr("height", height);
+    // Add Rectangles
+    d3.select('svg')
+      .append('rect')
+      .attr("x", width/2+width/32)
+      .attr("y", height/32)
+      .attr("width", width/2 - width/16)
+      .attr("height", height/2 - height/16)
+      .attr('stroke', 'hsl(0, 100%, 0%)')
+      .attr('stroke-width', '10px')
+      .attr('fill', 'none');
+    d3.select('svg')
+      .append('rect')
+      .attr("x", width/2+width/16)
+      .attr("y", height/16)
+      .attr("width", width/2 - width/8)
+      .attr("height", height/2 - height/8)
+      .attr('stroke', 'hsl(0, 100%, 20%)')
+      .attr('stroke-width', '10px')
+      .attr('fill', 'none');
+    d3.select('svg')
+      .append('rect')
+      .attr("x", width/2 + 3*width/32)
+      .attr("y", 3*height/32)
+      .attr("width", width/2 - 3*width/16)
+      .attr("height", height/2 - 3*height/16)
+      .attr('stroke', 'hsl(0, 100%, 40%)')
+      .attr('stroke-width', '10px')
+      .attr('fill', 'none');
+    d3.select('svg')
+      .append('rect')
+      .attr("x", width/2+width/8)
+      .attr("y", height/8)
+      .attr("width", width/2 - width/4)
+      .attr("height", height/2 - height/4)
+      .attr('stroke', 'hsl(0, 100%, 60%)')
+      .attr('stroke-width', '10px')
+      .attr('fill', 'none');
+    d3.select('svg')
+      .append('rect')
+      .attr("x", width/2 + 5*width/32)
+      .attr("y", 5*height/32)
+      .attr("width", width/2 - 5*width/16)
+      .attr("height", height/2 - 5*height/16)
+      .attr('stroke', 'hsl(0, 100%, 80%)')
+      .attr('stroke-width', '10px')
+      .attr('fill', 'none');
+    // Add Circles
+    d3.select('svg')
+      .append('circle')
+      .attr('id', 'rainbow')
+      .attr('cx', width/4)
+      .attr('cy', height/4)
+      .attr('r', width/4)
+      .on('click', function(){
+        console.log("clicked circle");
+        d3.selectAll('#rainbow')
+          .transition().duration(0)
+          .style('fill','hsl(0, 100%, 0%)')
+          .transition().duration(400)
+          .style('fill','hsl(0, 100%, 50%)')
+          .transition().delay(400).duration(400)
+          .style('fill','hsl(90, 100%, 50%)')
+          .transition().delay(800).duration(400)
+          .style('fill','hsl(180, 100%, 50%)')
+          .transition().delay(1200).duration(400)
+          .style('fill','hsl(270, 100%, 50%)')
+          .transition().delay(1600).duration(400)
+          .style('fill','hsl(0, 100%, 0%)');
+      });
+    // Add Lines
+    d3.select('svg')
+      .append('line')
+      .attr("x1", width/2)
+      .attr("x2", width/2)
+      .attr("y1", 0)
+      .attr("y2", height)
+      .attr("stroke", "green")
+      .attr("stroke-width", 4);
+    d3.select('svg')
+      .append('line')
+      .attr("x1", 0)
+      .attr("x2", width)
+      .attr("y1", height/2)
+      .attr("y2", height/2)
+      .attr("stroke", "green")
+      .attr("stroke-width", 4);
+    // Add Polygons
+    d3.select('svg')
+      .append('polygon')
+      .attr('id', 'stopsign')
+      .attr('points', 
+        [0, height/8+height/2,
+        0, 3*height/8+height/2,
+        width/8, height,
+        3*width/8, height,
+        width/2, 3*height/8+height/2,
+        width/2, height/8+height/2,
+        3*width/8, height/2,
+        width/8, height/2])
+      .on('mouseover', function() {
+        console.log("stopsign moused over");
+        d3.selectAll('#stopsign')
+          .style('fill', 'red')
+          .attr('stroke', 'black')
+          .attr('stroke-width', '3px');
+        d3.selectAll('text')
+          .style('fill', 'white');
+       })
+       .on('mouseout', function() {
+        console.log("stopsign moused out");
+        d3.selectAll('#stopsign')
+          .style('fill', 'black')
+          .attr('stroke', 'black');
+        d3.selectAll('text')
+          .style('fill', 'black');
+        });
+    d3.select('svg')
+      .append('text')
+      .attr('x', width/64)
+      .attr('y', 19*height/64+height/2)
+      .attr('stroke', 'black')
+      .attr('font-size', textSizeString)
+      .text("STOP")
+      .on('mouseover', function() {
+        console.log("stopsign moused over");
+        d3.selectAll('#stopsign')
+          .style('fill', 'red')
+          .attr('stroke', 'black')
+          .attr('stroke-width', '3px');
+        d3.selectAll('text')
+          .style('fill', 'white');
+       })
+       .on('mouseout', function() {
+        console.log("stopsign moused out");
+        d3.selectAll('#stopsign')
+          .style('fill', 'black')
+          .attr('stroke', 'black');
+        d3.selectAll('text')
+          .style('fill', 'black');
+        });
+    d3.select('svg')
+      .append('polygon')
+      .attr('id', 'cog')
+      .attr('points', 
+        [width/2+width/4, height/2+height/8,
+        width/2+width/8, height/2,
+        width/2, height/2+height/8,
+        width/2+width/8, height/2+height/4,
+        width/2, height/2+3*height/8,
+        width/2+width/8, height,
+        width/2+width/4, height/2+3*height/8,
+        width/2+3*width/8, height,
+        width, height/2+3*height/8,
+        width/2+3*width/8, height/2+height/4,
+        width, height/2+height/8,
+        width/2+3*width/8, height/2])
+      .attr('fill', 'gray')
+      .on("click", function(){
+        console.log("Clicked");
+        var x = width/2+width/4;
+        var y = height/2+height/4;
+        angle += 45;
+        d3.selectAll('#cog')
+          .attr('transform', 'rotate(' + angle + ',' + x + ',' +  y +')');
+      });
+    d3.select('svg')
+      .append('circle')
+      .attr('cx', width/2+width/4)
+      .attr('cy', height/2+height/4)
+      .attr('r', height/16)
+      .attr('fill', 'black');
+    
+    
+  </script>  
+  </body>
+</html>
