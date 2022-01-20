@@ -17,7 +17,15 @@
       .attr("heigth", windowSize.height)
     // Add Rectangles
     // Add Circles
+    d3.select('svg')
+      .append(circle)
+      .attr('cx', width/8)
+      .attr('cy', height/8)
+      .attr('r', width/8)
     // Add Lines
     // Add Polygons
   </script>
+  <body>
+    
+  </body>
 </html>
