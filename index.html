@@ -36,6 +36,15 @@
       .attr("y", 0)
       .attr("width", width/2)
       .attr("height", height/2)
+      .on('mousemove', function() {
+        var mouseLocation = d3.mouse(this);
+        d3.select(this)
+          .append('circle')
+          .attr('fill','green')
+          .attr('cx', mouseLocation[0])
+          .attr('cy', mouseLocation[1])
+          .attr('r', 2);
+      });
     // Add Circles
     d3.select('svg')
       .append('circle')
@@ -109,7 +118,7 @@
     d3.select('svg')
       .append('text')
       .attr('x', width/16)
-      .attr('y', 5*height/16+height/2)
+      .attr('y', 17*height/64+height/2)
       .attr('stroke', 'black')
       .attr('font-size', '144px')
       .text("STOP")
