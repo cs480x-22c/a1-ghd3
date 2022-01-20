@@ -36,7 +36,7 @@
       .attr("y", 0)
       .attr("width", width/2)
       .attr("height", height/2);
-    ds.selectAll('rect')
+    d3.selectAll('rect')
       .on('mousemove', function() {
         let mouseLocation = d3.mouse(this);
         d3.select(this)
