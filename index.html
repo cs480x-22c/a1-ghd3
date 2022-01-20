@@ -4,60 +4,65 @@
     <title>MFaria DataVis Assignmnet 1</title>
     <script src="https://d3js.org/d3.v6.min.js"></script>
     <style>
-      html, body {
-        margin: 0;
-        padding: 0;
-        height: 800px;
-        width: 800px;
+      html {
+        margin: 0px;
+        height: 100%;
+        width: 100%;
       }
-      div {
-        height: 400px;
-        width: 400px;
-        float: left;
+      body {
+        margin: 0px;
+        min-height: 100%;
+        width: 100%;
       }
     </style>
   </head>
   
-
-  
+  <body>
   <script>
     console.log(d3); // test if d3 is loaded
     // Add an SVG
-    var width = 400;
-    var height = 400;
-    
-    var svg1 = d3.select("#div1")
+    var width = window.innerHeight;
+    var height = window.innerHeight;
+
+    const svg = d3.select("body")
       .append("svg")
       .attr("width", width)
       .attr("height", height);
-    var svg2 = d3.select("#div2")
-      .append("svg")
-      .attr("width", width)
-      .attr("height", height);
-    var svg3 = d3.select("#div3")
-      .append("svg")
-      .attr("width", width)
-      .attr("height", height);
-    var svg4 = d3.select("#div4")
-      .append("svg")
-      .attr("width", width)
-      .attr("height", height);
-    
     // Add Rectangles
-    svg1.append('rect')
+    d3.select('svg')
+      .append('rect')
       .attr("x", width/2)
       .attr("y", 0)
       .attr("width", width/2)
       .attr("height", height/2)
     // Add Circles
-    svg2.append('circle')
+    d3.select('svg')
+      .append('circle')
       .attr('cx', width/4)
       .attr('cy', height/4)
       .attr('r', width/4);
     // Add Lines
-
+    d3.select('svg')
+      .append('line')
+      .attr("x1", width/2)
+      .attr("x2", width/2)
+      .attr("y1", 0)
+      .attr("y2", height)
+      .attr("stroke", "green")
+      .attr("stroke-width", 2);
+      .attr("stroke-width", 4);
+    d3.select('svg')
+      .append('line')
+      .attr("x1", 0)
+      .attr("x2", width)
+      .attr("y1", height/2)
+      .attr("y2", height/2)
+      .attr("stroke", "green")
+      .attr("stroke-width", 2);
+      .attr("stroke-width", 4);
     // Add Polygons
-    svg3.append('polygon')
+    d3.select('svg')
+      .append('polygon')
       .attr('points', 
         [0, height/8+height/2,
         0, 3*height/8+height/2,
@@ -67,7 +72,8 @@
         width/2, height/8+height/2,
         3*width/8, height/2,
         width/8, height/2]);
-    svg4.append('polygon')
+    d3.select('svg')
+      .append('polygon')
       .attr('points', 
         [width/2+width/4, height/2+height/8,
         width/2+width/8, height/2,
@@ -82,11 +88,5 @@
         width, height/2+height/8,
         width/2+3*width/8, height/2]);
   </script>  
-  
-  
-  <div id="div1"></div>
-  <div id="div2"></div>
-  <div id="div3"></div>
-  <div id="div4"></div>
-  
+  </body>
 </html>
