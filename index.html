@@ -1,10 +1,146 @@
 <script src="https://d3js.org/d3.v6.min.js"></script>
 
+
+
+<div class="vis">
+</div>
+
+<!-- testing2
+<svg width=600 height=600></svg> -->
+
 <script>
   console.log(d3); // test if d3 is loaded
   // Add an SVG
+  var size = 500;
+  var offset = 100;
+
+  var svg = d3.select('.vis').append("svg")
+    .attr("viewBox", [0, 0, size, size]);
+
+
   // Add Rectangles
+  d3.select('svg')
+    .append('rect')
+    .attr('x', offset)
+    .attr('y', offset)
+    .attr('height', size - offset * 2)
+    .attr('width', size - offset * 2)
+    .attr('stroke', 'black')
+    .attr('fill', '#7f7f7fff');
+
   // Add Circles
+  var bubble_number = 8;
+  var audio = new Audio('pop.mp3');
+  var used_len = size - (2 * offset);
+  update_bubbles();
+
+  // // get a new date (locale machine date time)
+  // var date = new Date();
+  // // get the date as a string
+  // var n = date.toDateString();
+  // // get the time as a string
+  // var time = date.toLocaleTimeString();
+  // console.log(time);
+
   // Add Lines
+  //setup done here, lines added in circle click event
+  var lineGenerator = d3.line();
+  var line_counter = 0;
+
+  var points = [
+    [100, 450],
+    [400, 450]
+  ];
+  var pathData = lineGenerator(points); 
+
   // Add Polygons
+  d3.select('svg')
+    .append('polyline')
+    .attr('points', '100 50, 150 25, 150 75')
+    .style('fill', '#d62728ff')
+    .on('click', function (evt, d) {
+      bubble_number = bubble_number - 1;
+      console.log(bubble_number);
+      update_bubbles()
+      line_counter = 0;
+                  var points = [
+              [100 + (line_counter * ((size-2*offset)/(bubble_number*bubble_number-1))), 435],
+              [100 + (line_counter * ((size-2*offset)/(bubble_number*bubble_number-1))), 465]
+            ];
+            var pathData = lineGenerator(points); // returns "M0,80L100,100L200,30L300,50L400,40L500,80"
+            d3.select('svg')
+              .append('path');
+
+            d3.select('path')
+              .attr('d', pathData)
+              .attr("stroke", "black")
+              .attr("fill", "none");
+    });
+
+  d3.select('svg')
+    .append('polyline')
+    .attr('points', '400 50, 350 25, 350 75')
+    .style('fill', '#d62728ff')
+    .on('click', function (evt, d) {
+      bubble_number = bubble_number + 1;
+      console.log(bubble_number);
+      update_bubbles()
+      line_counter = 0;
+      var points = [
+              [100 + (line_counter * ((size-2*offset)/(bubble_number*bubble_number-1))), 435],
+              [100 + (line_counter * ((size-2*offset)/(bubble_number*bubble_number-1))), 465]
+            ];
+            var pathData = lineGenerator(points); // returns "M0,80L100,100L200,30L300,50L400,40L500,80"
+            d3.select('svg')
+              .append('path');
+
+            d3.select('path')
+              .attr('d', pathData)
+              .attr("stroke", "black")
+              .attr("fill", "none");
+    });
+
+
+
+  function update_bubbles() {
+    d3.select('svg')
+      .selectAll('circle')
+      .remove();
+
+
+    for (let i = 1; i < (bubble_number + 1); i++) {
+      for (let j = 1; j < (bubble_number + 1); j++) {
+        d3.select("svg")
+          .append('circle')
+          .attr('cx', i * (used_len / (bubble_number + 1)) + offset)//+2 for ends
+          .attr('cy', j * (used_len / (bubble_number + 1)) + offset)
+          .attr('r', .45 * (used_len / (bubble_number + 1)))
+          .attr('fill', 'steelgrey')
+          .on('click', function (evt, d) {
+            console.log(evt);
+            audio.play();
+            d3.select(this)
+              .transition()
+              .duration(750)
+              .ease(d3.easeLinear)
+              .attr('fill', 'white');
+
+            var points = [
+              [100 + (line_counter * ((size-2*offset)/(bubble_number*bubble_number-1))), 435],
+              [100 + (line_counter * ((size-2*offset)/(bubble_number*bubble_number-1))), 465]
+            ];
+            var pathData = lineGenerator(points); // returns "M0,80L100,100L200,30L300,50L400,40L500,80"
+            d3.select('svg')
+              .append('path');
+
+            d3.select('path')
+              .attr('d', pathData)
+              .attr("stroke", "black")
+              .attr("fill", "none");
+
+            line_counter = line_counter + 1;
+          });
+      }
+    }
+  };
 </script>
