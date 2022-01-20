@@ -93,7 +93,8 @@
         console.log("stopsign moused over");
         d3.selectAll('#stopsign')
           .style('fill', 'red')
-          .attr('stroke', 'black');
+          .attr('stroke', 'black')
+          .attr('stroke-width', '3px');
         d3.selectAll('text')
           .style('fill', 'white');
        })
@@ -111,7 +112,24 @@
       .attr('y', 3*height/16+height/2)
       .attr('stroke', 'black')
       .attr('font-size', '144px')
-      .text("STOP");
+      .text("STOP")
+      .on('mouseover', function() {
+        console.log("stopsign moused over");
+        d3.selectAll('#stopsign')
+          .style('fill', 'red')
+          .attr('stroke', 'black')
+          .attr('stroke-width', '3px');
+        d3.selectAll('text')
+          .style('fill', 'white');
+       })
+       .on('mouseout', function() {
+        console.log("stopsign moused out");
+        d3.selectAll('#stopsign')
+          .style('fill', 'black')
+          .attr('stroke', 'black');
+        d3.selectAll('text')
+          .style('fill', 'black');
+        });
     d3.select('svg')
       .append('polygon')
       .attr('id', 'cog')
