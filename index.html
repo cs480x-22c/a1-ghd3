@@ -70,7 +70,7 @@
         width/2, height/8+height/2,
         3*width/8, height/2,
         width/8, height/2]);
-    d3.select('svg')
+    let cog = d3.select('svg')
       .append('polygon')
       .attr('points', 
         [width/2+width/4, height/2+height/8,
@@ -84,7 +84,12 @@
         width, height/2+3*height/8,
         width/2+3*width/8, height/2+height/4,
         width, height/2+height/8,
-        width/2+3*width/8, height/2]);
+        width/2+3*width/8, height/2])
+      .attr("onclick", "cogspin();");
+    
+    function cogspin(){
+      cog.attr("transform","rotate(45)");
+    }
   </script>  
   </body>
 </html>
