@@ -46,7 +46,13 @@
       .attr('cx', width/4)
       .attr('cy', height/4)
       .attr('r', width/4)
-      .on('click', startWave());
+      .on('click', function() {
+        while (hsl < 360) {
+        d3.selectAll('circle')
+          .transition().duration(1000)
+          .style('fill','hsl(' + hsl+ ', 100%, 50%)');
+        hsl++;
+      });
     // Add Lines
     d3.select('svg')
       .append('line')
@@ -107,17 +113,7 @@
       .attr('cy', height/2+height/4)
       .attr('r', height/16)
       .attr('fill', 'white');
-    function startWave () {
-      clearInterval(timer);
-      timer = setInterval(wave, 100)
-    }
-    function wave() {
-      while (hsl < 360) {
-        d3.selectAll('circle')
-          .attr('fill','hsl(' + hsl+ ', 100%, 50%)');
-        hsl++;
-      }
-    }
+    
     
   </script>  
   </body>
