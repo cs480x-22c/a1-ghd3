@@ -9,7 +9,7 @@ Project Description: Interact with diffrent types of shapes in a "shape playbox"
 
 Link to gh-page: https://orestropi.github.io/a1-ghd3/
 
-Link to Glitch page:
+Link to Glitch page: https://a1-datavisualization-orestropi.glitch.me/
 
 **Technical Achievement Desription -- 12**
 
