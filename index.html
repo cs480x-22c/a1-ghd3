@@ -1,10 +1,91 @@
 <script src="https://d3js.org/d3.v6.min.js"></script>
 
+<div class="vis"></div>
+
 <script>
+  let size = 1000;
+  let data = [];
+  function newPoint(){
+    return {
+      type: "point",
+      x: Math.floor(Math.random()*size),
+      y: Math.floor(Math.random()*size),
+    }
+  }
+  function newCircle() {
+    let point = newPoint()
+    point.r = Math.floor(Math.random()*size/8)+1
+    point.type = "circle"
+    return point
+  }
+  function newRect() {
+    let point = newPoint()
+    point.width = Math.floor(Math.random()*size/4)+10
+    point.height = Math.floor(Math.random()*size/4)+10
+    point.type = "rect"
+    return point
+  }
+  function newLine() {
+    let point1 = newPoint()
+    let point2 = newPoint()
+    return {
+      type: "line",
+      x1: point1.x,
+      y1: point1.y,
+      x2: point2.x,
+      y2: point2.y
+    }
+  }
+
+
+  for(let i = 0; i < 15; i++){
+    let circle = newCircle();
+    data.push(circle);
+    let rect = newRect();
+    data.push(rect);
+    let line = newLine();
+    data.push(line)
+    let poly = newPoint();
+    poly.type = "poly"
+    data.push(poly)
+  }
+
   console.log(d3); // test if d3 is loaded
   // Add an SVG
+  let svg = d3.select('.vis').append('svg')
+    .attr("viewBox", [0, 0, size, size])
   // Add Rectangles
+  const rectangle = svg.selectAll("rect")
+      .data(data.filter(d => d.type == "rect"))
+      .join("rect")
+      .attr("x", d => d.x)
+      .attr("y", d => d.y)
+      .attr("width", d => d.width)
+      .attr("height", d => d.height)
+      .attr("fill", "#907f10");
   // Add Circles
+  const circle = svg.selectAll("circle")
+      .data(data.filter(d => d.type == "circle"))
+      .join("circle")
+      .attr("cx", d => d.x)
+      .attr("cy", d => d.y)
+      .attr("r", d => d.r)
+      .attr("fill", "#10907f")
+      .on("click", (event, d) => {event.target.setAttribute("fill", "darkred")});
   // Add Lines
+  const line = svg.selectAll("line")
+      .data(data.filter(d => d.type == "line"))
+      .join("line")
+      .attr("x1", d => d.x1)
+      .attr("x2", d => d.x2)
+      .attr("y1", d => d.y1)
+      .attr("y2", d => d.y2)
+      .attr("stroke", "#90107f");
   // Add Polygons
+  const stars = svg.selectAll("path")
+      .data(data.filter(d => d.type == "poly"))
+      .join("path")
+      .attr("d", d3.symbol().type(d3.symbolStar).size(size/5))
+      .attr("transform", d => `translate( ${d.x} ${d.y})`)
+      .attr("fill", "#70B0AF");
 </script>
