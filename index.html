@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
   <head>
     <title>MFaria DataVis Assignmnet 1</title>
@@ -16,7 +17,7 @@ const svg = d3.select("body")
   .attr("heigth", height);
 // Add Rectangles
 d3.select('svg')
-	.append('rect')
+  .append('rect')
   .attr("x", width/2)
   .attr("y", 0)
   .attr("width", width/2)
@@ -29,14 +30,14 @@ d3.select('svg')
   .attr('r', width/4);
 // Add Lines
 d3.select('svg')
-	.append('line')
+  .append('line')
   .attr("x1", width/2)
   .attr("x2", width/2)
   .attr("y1", 0)
   .attr("y2", height)
   .attr("stroke", "green");
 d3.select('svg')
-	.append('line')
+  .append('line')
   .attr("x1", 0)
   .attr("x2", width)
   .attr("y1", height/2)
