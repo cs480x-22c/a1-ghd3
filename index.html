@@ -25,6 +25,9 @@
     var height = window.innerHeight;
     var angle = 0;
     var timer;
+    var indexA = 0;
+    var indexB = -1;
+    var hsl = 0;
 
     const svg = d3.select("body")
       .append("svg")
@@ -109,10 +112,10 @@
       timer = setInterval(wave, 100)
     }
     function wave() {
-      var hsl = 0;
       while (hsl < 360) {
         d3.selectAll('circle')
           .attr('fill','hsl(' + hsl+ ', 100%, 50%)');
+        hsl++;
       }
     }
     
