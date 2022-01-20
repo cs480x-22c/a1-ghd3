@@ -58,16 +58,27 @@
         }
       }
 
-      const paths = []
+      const paths = [
+        { coords: [[30, -10], [40, 25]], color: '#641e16' },
+        { coords: [[40, 25], [70, 15]], color: '#4a235a' },
+        { coords: [[70, 15], [30, -10]], color: '#0b5345' },
+      ]
+
+      // const cities = [
+      //   { coords: [55.751, 37.618], color: '#641e16' },
+      //   { coords: [53.350, -6.266], color: '#4a235a' },
+      //   { coords: [38.889, -77.050], color: '#154360' },
+      //   { coords: [52.520, 13.404], color: '#0b5345' },
+      //   { coords: [50.850, 4.348], color: '#7e5109' },
+      //   { coords: [3.140, 101.693], color: '#6e2c00' }
+      // ]
 
       const cities = [
-        { coords: [55.751, 37.618], color: '#641e16' },
-        { coords: [53.350, -6.266], color: '#4a235a' },
-        { coords: [38.889, -77.050], color: '#154360' },
-        { coords: [52.520, 13.404], color: '#0b5345' },
-        { coords: [50.850, 4.348], color: '#7e5109' },
-        { coords: [3.140, 101.693], color: '#6e2c00' }
+        { coords: [30, -10], color: '#641e16' },
+        { coords: [40, 25], color: '#4a235a' },
+        { coords: [70, 15], color: '#0b5345' },
       ]
+
 
       const map = d3.select('#map')
       const width = map.attr('width')
@@ -113,14 +124,25 @@
           })
           .on('mouseover', handleHover)
 
+        d3.select('.paths')
+          .selectAll('line')
+          .data(paths).enter()
+          .append('line')
+          .attr('x1', d => projection(d.coords[0].reverse())[0])
+          .attr('y1', d => projection(d.coords[0].reverse())[1])
+          .attr('x2', d => projection(d.coords[1].reverse())[0])
+          .attr('y2', d => projection(d.coords[1].reverse())[1])
+          .attr('stroke', d => d.color)
+          .attr('stroke-width', 5)
+
         d3.select('.cities')
-        .selectAll('circle')
-        .data(cities).enter()
-        .append('circle')
-        .attr('cx', d => projection(d.coords.reverse())[0])
-        .attr('cy', d => projection(d.coords.reverse())[1])
-        .attr('r', 10)
-        .style('fill', d => d.color)
+          .selectAll('circle')
+          .data(cities).enter()
+          .append('circle')
+          .attr('cx', d => projection(d.coords.reverse())[0])
+          .attr('cy', d => projection(d.coords.reverse())[1])
+          .attr('r', 10)
+          .style('fill', d => d.color)
       })
     </script>
   </body>
