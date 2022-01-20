@@ -34,16 +34,33 @@
       .attr('stroke', 'black')
       .attr('stroke-width', '10px')
       .attr('fill', 'none');
-    d3.selectAll('rect')
-      .on('mousemove', function() {
-        let mouseLocation = d3.mouse(this);
-        d3.select(this)
-          .append('circle')
-          .attr('fill','green')
-          .attr('cx', mouseLocation[0])
-          .attr('cy', mouseLocation[1])
-          .attr('r', 2);
-      });
+    d3.select('svg')
+      .append('rect')
+      .attr("x", width/2+width/16)
+      .attr("y", height/16)
+      .attr("width", width/2 - width/8)
+      .attr("height", height/2 - height/8)
+      .attr('stroke', 'black')
+      .attr('stroke-width', '10px')
+      .attr('fill', 'none');
+    d3.select('svg')
+      .append('rect')
+      .attr("x", width/2+width/8)
+      .attr("y", height/8)
+      .attr("width", width/2 - width/4)
+      .attr("height", height/2 - height/4)
+      .attr('stroke', 'black')
+      .attr('stroke-width', '10px')
+      .attr('fill', 'none');
+    d3.select('svg')
+      .append('rect')
+      .attr("x", width/2+width/4)
+      .attr("y", height/4)
+      .attr("width", width/2 - width/2)
+      .attr("height", height/2 - height/2)
+      .attr('stroke', 'black')
+      .attr('stroke-width', '10px')
+      .attr('fill', 'none');
     // Add Circles
     d3.select('svg')
       .append('circle')
@@ -116,7 +133,7 @@
         });
     d3.select('svg')
       .append('text')
-      .attr('x', width/32)
+      .attr('x', width/64)
       .attr('y', 19*height/64+height/2)
       .attr('stroke', 'black')
       .attr('font-size', '180px')
