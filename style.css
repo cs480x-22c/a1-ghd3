@@ -1,0 +1,8 @@
+body {
+  background-color: #0e1e34;
+  background-image: url("https://raw.githubusercontent.com/alexiscaira/a1-ghd3/2f3942a881c1259cd34747152aa91bf280338db3/graphics/back.svg");
+  background-position: bottom-center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
