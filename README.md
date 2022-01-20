@@ -6,12 +6,17 @@ To practice using shapes and colors I decided that I wanted to make some sort of
 
 The robot consists of different shapes inclduing, rectangles, circles, hexagons, ellipses, and a triangle! There are also som features drawn with lines as well. To keep it funky, each shape is a different color, courtesy of the google hex color picker.
 
-Technical Achievement: To add some sort of interaction feature, I decided to create two onclick actions. 
+Technical Achievement: 
+To add some sort of interaction feature, I decided to create two onclick actions. 
 the first paragraph in the top left hand corner that says "click me to change my text color" ---> changes the text color on click to be a red. 
 
 The second paragraph in the top left corner says "click me for an alert" 
 On click, an alert message appears. 
 
-the before and after images of click are shows below. 
+the before and after images of click are shows below.
 
-Design Achievement: Rather than putting random shapes on the screen, i made an actual picture. I also experimented with how to make different shapes with lines, for example the smile. 
+![before](img/b4_click.png) 
+![after](img/after_click.png)
+
+Design Achievement: 
+Rather than putting random shapes on the screen, I made an actual picture. I also experimented with how to make different shapes with lines, for example the smile. 
