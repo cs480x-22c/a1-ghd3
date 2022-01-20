@@ -3,9 +3,11 @@
 <script>
   console.log(d3);
   
+  //random background color generation
   var color = "#" + Math.floor(Math.random()*16777215).toString(16);
   d3.select("svg").style("background-color", color );
   
+  //random circle generation
   var data = [];
   for(let i = 0 ; i < 3; i++){
     data[i] = Math.random()*10*(i+1);
@@ -21,13 +23,14 @@
     .append("svg:title")
     .text("Circle");
   
+  //random rectangle generation
   var data2 = [];
   for(let i = 0 ; i < 3; i++){
     data2[i] = Math.random()*10*(i+1);
   }
   
   d3.select("svg")
-    .selectAll("square")
+    .selectAll("rect")
     .data(data2)
     .enter().append('rect')
     .attr('x', function(d) { return (Math.random()*d)*100; })
@@ -45,6 +48,7 @@
           .attr('transform', 'rotate(' + angle + ',' + x + ',' +  y +')');
       });
   
+  //random line generation
   var data3 = [];
   for(let i = 0 ; i < 3; i++){
     data3[i] = Math.random()*10*(i+1);
