@@ -7,6 +7,14 @@
   <script>
     console.log(d3); // test if d3 is loaded
     // Add an SVG
+    const windowSize = {
+      width: window.innerWidth, height: window.innerHeight  
+    }
+    
+    const svg = d3.select("body")
+      .append("svg")
+      .attr("width", windowSize.width)
+      .attr("heigth", windowSize.height)
     // Add Rectangles
     // Add Circles
     // Add Lines
