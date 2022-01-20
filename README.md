@@ -3,7 +3,7 @@ Assignment 1 - Hello World: GitHub and d3
 
 Edits to the README:
 
--My goal for this page was for it to resemble an abstract modern-like painting composed of a variety of shapes. There are two of each shape and the colors of the border and inside of the shape are largely complmentary. In addition, added an animation to the colors of each set of shapes to give the page life and allow it to be non-static. The animation is described below.
+-My goal for this page was for it to resemble an abstract modern-like painting composed of a variety of shapes. There are two of each shape and the colors of the border and inside of the shape are largely complementary. In addition, added an animation to the colors of each set of shapes to give the page life and allow it to be non-static. The animation is described below.
 
 -Screenshots:
 
@@ -17,9 +17,9 @@ Edits to the README:
 
 -I edited the code for rectangles, circles, and lines as examples that I based my shapes off of from this website. https://www.d3-graph-gallery.com/graph/shape.html
 
--Technical Achievement Desription: I made the colors of each set of shapes (rect, circle, and polygon) move along a gradient between two colors (differnt for each shape). This is an animation which allows the page to be constantly changing and interesting to look at.
+-Technical Achievement Description: I made the colors of each set of shapes (rect, circle, and polygon) move along a gradient between two colors (different for each shape). This is an animation which allows the page to be constantly changing and interesting to look at.
 
--Design Achievement Desription: I arranged my choosen shapes such that were visually pleasing which would enable one to enjoy looking at the page. I also achieved my goal of creating a digital modern-like painting using shapes.
+-Design Achievement Description: I arranged my chosen shapes such that were visually pleasing which would enable one to enjoy looking at the page. I also achieved my goal of creating a digital modern-like painting using shapes.
 
 
 ---
