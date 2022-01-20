@@ -1,10 +1,290 @@
 <script src="https://d3js.org/d3.v6.min.js"></script>
-
+  <svg width=600 height=600></svg>
 <script>
   console.log(d3); // test if d3 is loaded
-  // Add an SVG
+  // SVG added above
   // Add Rectangles
+  //rectangle for stop sign
+  d3.select('svg')
+    .append('rect')
+    .attr('x', 120)
+    .attr('y', 200)
+    .attr('height', 200)
+    .attr('width', 10)
+  //rectangle as road
+  d3.select('svg')
+    .append('rect')
+    .attr('x', 0)
+    .attr('y', 400)
+    .attr('height', 200)
+    .attr('width', 600)
   // Add Circles
+  //the sun
+  d3.select('svg')
+    .append('circle')
+    .attr('cx', 500)
+    .attr('cy', 100)
+    .attr('r', 50)
+    .style('fill', 'yellow');
+  //wheels of car
+  d3.select('svg')
+    .append('circle')
+    .attr('cx', 400)
+    .attr('cy', 420)
+    .attr('r', 40)
+    .style('fill', 'green');
+  d3.select('svg')
+    .append('circle')
+    .attr('cx', 300)
+    .attr('cy', 420)
+    .attr('r', 40)
+    .style('fill', 'green');
+  //clouds
+  d3.select('svg')
+    .append('circle')
+    .attr('cx', 30)
+    .attr('cy', 30)
+    .attr('r', 25)
+    .style('fill', 'blue');
+  d3.select('svg')
+    .append('circle')
+    .attr('cx', 60)
+    .attr('cy', 35)
+    .attr('r', 25)
+    .style('fill', 'blue');
+  d3.select('svg')
+    .append('circle')
+    .attr('cx', 55)
+    .attr('cy', 55)
+    .attr('r', 25)
+    .style('fill', 'blue');
+  //another cloud
+  d3.select('svg')
+    .append('circle')
+    .attr('cx', 300)
+    .attr('cy', 50)
+    .attr('r', 50)
+    .style('fill', 'blue');
+  d3.select('svg')
+    .append('circle')
+    .attr('cx', 320)
+    .attr('cy', 70)
+    .attr('r', 50)
+    .style('fill', 'blue');
+    d3.select('svg')
+    .append('circle')
+    .attr('cx', 280)
+    .attr('cy', 80)
+    .attr('r', 50)
+    .style('fill', 'blue');
+  
   // Add Lines
+  //https://webdva.github.io/how-to-draw-a-line-in-d3js/
+  //two yellow lines for the road
+  d3.select('svg')
+    .append('line')
+    .style('stroke', 'yellow')
+    .style('stroke-width', 5)
+    .attr("x1", 0)
+    .attr("y1", 490)
+    .attr("x2", 600)
+    .attr("y2", 490);
+  d3.select('svg')
+    .append('line')
+    .style('stroke', 'yellow')
+    .style('stroke-width', 5)
+    .attr("x1", 0)
+    .attr("y1", 510)
+    .attr("x2", 600)
+    .attr("y2", 510);
+  //4 border lines
+  d3.select('svg')
+    .append('line')
+    .style('stroke', 'blue')
+    .style('stroke-width', 1)
+    .attr("x1", 0)
+    .attr("y1", 0)
+    .attr("x2", 0)
+    .attr("y2", 600);
+  d3.select('svg')
+    .append('line')
+    .style('stroke', 'blue')
+    .style('stroke-width', 1)
+    .attr("x1", 0)
+    .attr("y1", 0)
+    .attr("x2", 600)
+    .attr("y2", 0);
+  d3.select('svg')
+    .append('line')
+    .style('stroke', 'blue')
+    .style('stroke-width', 1)
+    .attr("x1",600)
+    .attr("y1", 600)
+    .attr("x2", 600)
+    .attr("y2", 0);
+  d3.select('svg')
+    .append('line')
+    .style('stroke', 'blue')
+    .style('stroke-width', 1)
+    .attr("x1", 600)
+    .attr("y1", 600)
+    .attr("x2", 0)
+    .attr("y2", 600);
+  //the sun's rays
+  d3.select('svg')
+    .append('line')
+    .style('stroke', 'orange')
+    .style('stroke-width', 10)
+    .attr("x1", 500)
+    .attr("y1", 10)
+    .attr("x2", 500)
+    .attr("y2", 45);
+  d3.select('svg')
+    .append('line')
+    .style('stroke', 'orange')
+    .style('stroke-width', 10)
+    .attr("x1", 500)
+    .attr("y1", 155)
+    .attr("x2", 500)
+    .attr("y2", 190);
+  d3.select('svg')
+    .append('line')
+    .style('stroke', 'orange')
+    .style('stroke-width', 10)
+    .attr("x1", 555)
+    .attr("y1", 100)
+    .attr("x2", 590)
+    .attr("y2", 100);
+  d3.select('svg')
+    .append('line')
+    .style('stroke', 'orange')
+    .style('stroke-width', 10)
+    .attr("x1", 445)
+    .attr("y1", 100)
+    .attr("x2", 410)
+    .attr("y2", 100);
+  d3.select('svg')
+    .append('line')
+    .style('stroke', 'orange')
+    .style('stroke-width', 10)
+    .attr("x1", 535)
+    .attr("y1", 15)
+    .attr("x2", 520)
+    .attr("y2", 50);
+  d3.select('svg')
+    .append('line')
+    .style('stroke', 'orange')
+    .style('stroke-width', 10)
+    .attr("x1", 565)
+    .attr("y1", 30)
+    .attr("x2", 540)
+    .attr("y2", 60);
+  d3.select('svg')
+    .append('line')
+    .style('stroke', 'orange')
+    .style('stroke-width', 10)
+    .attr("x1", 585)
+    .attr("y1", 65)
+    .attr("x2", 550)
+    .attr("y2", 75);
+  //upper left
+  d3.select('svg')
+    .append('line')
+    .style('stroke', 'orange')
+    .style('stroke-width', 10)
+    .attr("x1", 480)
+    .attr("y1", 50)
+    .attr("x2", 465)
+    .attr("y2", 20);
+  d3.select('svg')
+    .append('line')
+    .style('stroke', 'orange')
+    .style('stroke-width', 10)
+    .attr("x1", 460)
+    .attr("y1", 65)
+    .attr("x2", 440)
+    .attr("y2", 35);
+  d3.select('svg')
+    .append('line')
+    .style('stroke', 'orange')
+    .style('stroke-width', 10)
+    .attr("x1", 450)
+    .attr("y1", 80)
+    .attr("x2", 420)
+    .attr("y2", 65);
+  //bottom left
+  d3.select('svg')
+    .append('line')
+    .style('stroke', 'orange')
+    .style('stroke-width', 10)
+    .attr("x1", 450)
+    .attr("y1", 125)
+    .attr("x2", 415)
+    .attr("y2", 130);
+  d3.select('svg')
+    .append('line')
+    .style('stroke', 'orange')
+    .style('stroke-width', 10)
+    .attr("x1", 463)
+    .attr("y1", 140)
+    .attr("x2", 435)
+    .attr("y2", 163);
+  d3.select('svg')
+    .append('line')
+    .style('stroke', 'orange')
+    .style('stroke-width', 10)
+    .attr("x1", 480)
+    .attr("y1", 155)
+    .attr("x2", 467)
+    .attr("y2", 185);
+  //bottom right
+  d3.select('svg')
+    .append('line')
+    .style('stroke', 'orange')
+    .style('stroke-width', 10)
+    .attr("x1", 515)
+    .attr("y1", 155)
+    .attr("x2", 530)
+    .attr("y2", 185);
+  d3.select('svg')
+    .append('line')
+    .style('stroke', 'orange')
+    .style('stroke-width', 10)
+    .attr("x1", 530)
+    .attr("y1", 145)
+    .attr("x2", 555)
+    .attr("y2", 170);
+  d3.select('svg')
+    .append('line')
+    .style('stroke', 'orange')
+    .style('stroke-width', 10)
+    .attr("x1", 555)
+    .attr("y1", 125)
+    .attr("x2", 580)
+    .attr("y2", 140);
+    //Text to STOP sign
+  var g= d3.select('svg')
+    .append('g')
+    .attr("transform", function(d, i){
+      return "translate(0,0)";
+    })
   // Add Polygons
+  //stop sign
+  var stopSign = g.append('polygon')
+    .style('fill', 'red')
+    .style('stroke-width', '3')
+    .attr('points', '100,100 150,100 175,125 175,175 150,200 100,200 75,175 75,125')
+    .append("text")
+  //car
+  d3.select('svg')
+    .append('polygon')
+    .style('fill', 'green')
+    .style('stroke-width', '3')
+    .attr('points', '300,275 400,275 475,420 225,420')
+  //text
+  g.append("text")
+    .attr("x", 105)
+    .attr("y", 155)
+    .attr("stroke", "#fff")
+    .text("STOP");
 </script>
