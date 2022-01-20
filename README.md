@@ -1,86 +1,56 @@
 Assignment 1 - Hello World: GitHub and d3  
 ===
 
-This is a starting project to make sure you can write and host a webpage that generates graphics using d3. 
+Orest Ropi
 
-The primary goal is to be able to generate graphics primitives (circles, rectangles, lines, polygons) at different locations on the screen with different colors. 
+**Credit to:** For this project I used parts of the the code from the first class as well as learning from https://developer.mozilla.org/.
 
-The secondary goal is to introduce you to coding on GitHub, including creating a gh-pages branch to host your visualizations.
+**Project Description:** Interact with diffrent types of shapes in a "shape playbox" by clicking on them. Shapes move, change size, and change color. The shape that is being modified will be displayed in the bottom left corner. Refreshing the page will reset the "playbox".
 
-You may write everything from scratch, or start with demo programs from books or the web. 
-If you do start with code that you found, you **must identify** the source of the code in your README and, most importantly, make non-trivial changes to the code to make it your own so you really learn what you're doing. 
+**Project Pictures:**
 
-For example, you could download one of the d3.js examples, read it through so you understand what it's doing, and then change the appearance of the graphical output to use different color schemes, different primitive shapes, different layouts of the primitives, and so on.
+Before Fun:
 
-Resources
----
+![image](https://user-images.githubusercontent.com/73619173/150288352-2e3ff8b0-7f6c-4791-86fd-fcc3b7ce94cb.png)
 
-If you need a JavaScript/HTML/CSS refresher, see [JavaScript Codeacademy](https://www.codecademy.com/en/tracks/javascript) or find one of your choosing on the web.
 
-If you need a Git/GitHub refreseher, some possible resources include [Getting Started with GitHub](https://help.github.com/categories/bootcamp/), the [GitHub Guides](https://guides.github.com/) (especially the ones on Hello World, and Understanding the GitHub Flow, and Forking Projects), and [CodeSchool's Try Git Course](https://www.codeschool.com/courses/try-git).
+After Fun:
 
-Requirements
----
+![image](https://user-images.githubusercontent.com/73619173/150288424-112b9c58-e204-46cf-8f18-a3b412e22dab.png)
 
-1. Your project should contain at least four kinds of graphics primitives (circles, rectangles, lines, polygons) in different colors. 
-2. Your document should identify the source of the code if you start with code that you found. 
-3. Your code should be forked from the GitHub repo and linked using GitHub pages. See the "GitHub Details" section below for detailed instructions on how to do this.
 
-GitHub Details
----
+Link to gh-page: https://orestropi.github.io/a1-ghd3/
 
-- Fork the GitHub Repository for Assignment 1. You now have a copy associated with your username.
-- Make changes to index.html to fulfill the project requirements. 
-- Make sure your "main" branch matches your "gh-pages" branch. See the GitHub Guides referenced above if you need help.
-- Edit the README.md with a link to your gh-pages site "http://YourUsernameGoesHere.github.io/01-ghd3/index.html".
+Link to Glitch page: https://a1-datavisualization-orestropi.glitch.me/
 
-Submission Details
----
-- To submit, make a [Pull Request](https://help.github.com/articles/using-pull-requests/) on the original repository.
-- Note: name your pull request using the following scheme: 
-```
-a1-your Gh username-your first name-your lastname
+**Technical Achievement Desription -- 12**
 
-```
+- **Was able to launch my program on another website host**: This allows me to not need to have a project on github to launch it.
 
-Vis Details
----
+- **Shapes move when clicked**: They move in all types of directions.
 
-For this project you should use d3.js. 
-You can learn from examples on the [d3.js](http://d3js.org) site or start from scratch.
+- Shapes change size when clicked: They will grow, get smaller, or remain the same size.
 
-See the [Using d3js](https://github.com/mbostock/d3/wiki#using) documentation for how to run your own local server.
+- Shapes change color when clicked: Some change color completely, some are inverted.
 
-Creative solutions are welcome! In the past I've seen recreations of paintings, interactives, and more.
+- Some shapes are reliant on a dataset, while others are manually inputed.
 
-Go beyond the minimum requirements of this project.
-Experiment with other aspects of the [d3 API](https://github.com/mbostock/d3/wiki/API-Reference) and [d3 Tutorials](https://github.com/mbostock/d3/wiki/Tutorials). 
-Try making the elements interactive, for example, or animate them.
+- Shapes sit on the edge of the svg when they float or fall. This allows for a cool effect and maximum space efficiency.
 
-Grading
----
+- Polygons have depth of colors.
 
-Grades are on a 120 point scale. 
-96 points will be graded for functionality: the program does what the assignment requests with an informative README. 
 
-We will use Google Chrome to view submissions. 
-Be sure to test your code there.
+**Design Achievement Description -- 12**
 
-Below are some, but not necessarily all, of the key points we will consider during grading:
+- **Created color palette using adobe**: I used the hash numbers from my palette. Changing color of some shapes, text, and background-color.
+![AdobeColor-My Color Theme](https://user-images.githubusercontent.com/73619173/131264408-2958291f-d7da-4b77-aa55-674150e36d84.jpeg)
 
-- Circles and Rectangles  
-- Lines  
-- Polygons  
-- Different colors  
-- README Quality
-    - A description of what you have created. 1-2 screenshots are recommended for the README.  
-    - A working link to the hosted files (usually the gh-pages 'live' url)  
-    - Section for Technical and Design Achievements
+- **Used the Ubuntu Font from Google Fonts**: I used Ubuntu as the font for the primary copy text in my site.
 
-Technical Achievement Desription -- 12  
-Design Achievement Description -- 12
+- **I asked for feedback from my brother who tested the program**: Indicated the lines and edges were not thick enough, so I decided to research how to make them thicker(changed  stroke-width attribute).
 
-Remember, it is up to *you* to define what constitutes a technical and design achievements.
-Be ambitious as these are designed to allow you to shape your learning.
-These are the only way to move from B to A territory.
+- I made a title using intresting colors, that also gives an idea of what the website is about.
 
+- I placed the shapes so they appear to be attached to the line, and similar to a music note.
+
+- Indicator for what shape/id number is shown on the bottom left, to allow a user to make sure the website is running correctly.

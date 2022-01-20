@@ -1,10 +1,150 @@
-<script src="https://d3js.org/d3.v6.min.js"></script>
+<script src="https://d3js.org/d3.v7.min.js"></script>
+
+
+<style>
+  @import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap");
+</style>
+
+<style>
+  h1 {
+    color: #3305B0;
+    text-align: center;
+    font-size: 50px;
+    background-color: #F2EA07;
+  }
+</style>
+
+<body>
+  <h1>Shape Animations! Have Fun</h1></body>
+Modifying:
+
+<span id="info">asdf</span>
+
+<svg width=1000 height=1000></svg>
 
 <script>
-  console.log(d3); // test if d3 is loaded
-  // Add an SVG
-  // Add Rectangles
-  // Add Circles
-  // Add Lines
-  // Add Polygons
+
+console.log(d3);
+
+  var ourdata = [23, 80, 47, 17, 5];
+
+//d3.select('svg')
+//  .append('circle')
+//  .attr('cx', 20)
+//  .attr('cy', 20)
+//  .attr('r', 5);
+//
+//d3.select('svg')
+//  .append('rect')
+//  .attr('x', 100)
+//  .attr('y', 100)
+//  .attr('height', 50)
+//  .attr('width', 10)
+
+
+d3.select("svg")
+  .selectAll("circle")
+  .data(ourdata)
+  .enter().append("circle")
+  .attr('cx', function(d) { return d*10; })
+  .attr('cy', function(d) { return d*10; })
+  .attr('r', 20)
+  .on('click', function(evt, d) {
+      console.log(evt);
+      d3.select(this)
+        .transition()
+        .duration(750)
+        .ease(d3.easeLinear)
+        .attr('fill', '#3305B0')
+        .attr('cy', '995')
+        .attr('r', '5');
+      d3.select("#info").text("Circle "+d);
+  })
+
+d3.select("svg")
+  .selectAll("rect")
+  .data(ourdata)
+  .enter().append("rect")
+  .attr('x', function(d) { return d*10 + 100; })
+  .attr('y', function(d) { return d*10; })
+  .attr('height', 50)
+  .attr('width', 10)
+  .on('click', function(evt, d) {
+      console.log(evt);
+      d3.select(this)
+        .transition()
+        .duration(750)
+        .ease(d3.easeLinear)
+        .attr('fill', '#12DB37')
+        .attr('y', 25)
+        .attr('height', 100)
+        .attr('width', 20)
+      d3.select("#info").text("Recangle "+d);
+  })
+  //x1="0" y1="80" x2="100" y2="20" stroke="black"
+  d3.select("svg")
+  .selectAll("line")
+  .data(ourdata)
+  .enter().append("line")
+  .attr('x1', function(d) { return d*10; })
+  .attr('x2', function(d) { return d*10+100; })  
+  .attr('y1', function(d) { return d*10; })
+  .attr('y2', function(d) { return d*10; })
+  .attr('stroke', 'black')
+  .style('stroke-width', '3px')
+  .on('click', function(evt, d) {
+      console.log(evt);
+      d3.select(this)
+        .transition()
+        .duration(750)
+        .ease(d3.easeLinear)
+        .attr('fill', '#EB8900')
+        .attr('stroke', '#EB8900')
+      d3.select("#info").text("Line "+d);
+  })
+
+
+  // <!-- Example of a polygon with the default fill -->
+  // <polygon points="0,100 50,25 50,75 100,0" />
+
+  // <!-- Example of the same polygon shape with stroke and no fill -->
+  // <polygon points="100,100 150,25 150,75 200,0"
+  //           fill="none" stroke="black" />
+  d3.select("svg")
+  .append("polygon")
+  .attr('points', '300,400 350,375 350,375 400,300')
+  .style('stroke-width', '5px')
+  .attr('fill', '#F2EA07')
+  .attr('stroke', '#078CB8')
+  .on('click', function(evt) {
+      console.log(evt);
+      d3.select(this)
+        .transition()
+        .duration(1000)
+        .ease(d3.easeLinear)
+        .attr('fill', '#078CB8')
+        .attr('stroke', '#F2EA07')
+      d3.select("#info").text('Polygon');
+  })
+
+  d3.select("svg")
+  .append("polygon")
+  .attr('points', '300,450 350,425 350,425 400,350')
+  .style('stroke-width', '5px')
+  .attr('fill', '#078CB8')
+  .attr('stroke', '#F2EA07')
+  .on('click', function(evt) {
+      console.log(evt);
+      d3.select(this)
+        .transition()
+        .duration(1000)
+        .ease(d3.easeLinear)
+        .attr('fill', '#F2EA07')
+        .attr('stroke', '#078CB8')
+      d3.select("#info").text('Polygon');
+  })
+
+//  .text(function(d) { return "I’m number " + d + "!"; });
+
+
 </script>
