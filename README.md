@@ -95,3 +95,6 @@ The number of bubbles can be changed by clicking the top arrows, the one pointin
 
 
 Screenshot 2: A game modified to have a differnet number of bubbles.
+
+For design achivements I used a know color pallet throughout the entier page.
+For technical achicements I created a game with severa interactive elements.
