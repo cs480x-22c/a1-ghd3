@@ -29,12 +29,6 @@
       .append("svg")
       .attr("width", width)
       .attr("height", height);
-    d3.select('svg')
-      .append('text')
-      .attr('x', 0)
-      .attr('y', height/8+height/2)
-      .attr('stroke', 'white')
-      .text("STOP");
     // Add Rectangles
     d3.select('svg')
       .append('rect')
@@ -99,12 +93,23 @@
         console.log("stopsign moused over");
         d3.selectAll('#stopsign')
           .style('fill', 'red');
+        d3.selectAll('text')
+          .attr('stoke', 'white');
        })
        .on('mouseout', function() {
         console.log("stopsign moused out");
         d3.selectAll('#stopsign')
           .style('fill', 'black');
+        d3.selectAll('text')
+          .attr('stoke', 'black');
         });
+    d3.select('svg')
+      .append('text')
+      .attr('x', width/8)
+      .attr('y', height/8+height/2)
+      .attr('stroke', 'black')
+      .attr('font-size', '36px')
+      .text("STOP");
     d3.select('svg')
       .append('polygon')
       .attr('id', 'cog')
