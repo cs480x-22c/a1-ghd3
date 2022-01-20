@@ -1,10 +1,81 @@
 <script src="https://d3js.org/d3.v6.min.js"></script>
 
+<svg width="1000" height="1000"></svg>
+
 <script>
   console.log(d3); // test if d3 is loaded
   // Add an SVG
+
+//text for fortune
+ d3.select('svg').append('text')
+var textblock = d3.select('svg').select('text').attr("dy",225)
+
+var fortunes = ["Ask Again Later", "Yes", "No", "Maybe", "Try Again", "Signs Point to Yes"]
+var randomFortune = fortunes[Math.floor(Math.random()*fortunes.length)];
+
+d3.selectAll("text").on("mouseover", function(){
+    d3.select(this).raise(); 
+});
+
   // Add Rectangles
+  //shadow rectangle
+  d3.select("svg")
+  .append('rect')
+  .attr('x', 300)
+  .attr('y', 300)
+  .attr('width', 400)
+  .attr('height', 400)
+  .attr('stroke', 'black')
+  .attr('fill', 'grey');
   // Add Circles
+
+  //8ball circle
+  d3.select("svg")
+  .append('circle')
+  .attr('cx', 300)
+  .attr('cy', 300)
+  .attr('r', 200)
+  .attr('stroke', 'purple')
+  .attr('fill', 'black');
+
+  //8ball design
+  d3.select("svg")
+  .append('circle')
+  .attr('cx', 250)
+  .attr('cy', 250)
+  .attr('r', 100)
+  .attr('stroke', 'red')
+  .attr('fill', 'white');
   // Add Lines
+  d3.select("svg")
+    .append('line')
+    .attr('x1', 300)
+    .attr('y1', 600)
+    .attr('x2', 200)
+    .attr('y2', 600)
+    .attr('stroke', 'red')
+
+  d3.select("svg")
+    .append('line')
+    .attr('x1', 300)
+    .attr('y1', 50)
+    .attr('x2', 450)
+    .attr('y2', 50)
+    .attr('stroke', 'blue')
   // Add Polygons
+  //upside down triangle for prompt
+
+  d3.select("svg")
+   .append("polygon")
+   .attr("points", "300 200,200 300,100 200")
+   .style("fill", "blue")
+   .style("stroke", "purple")
+   .style("strokeWidth", "20px").on('click', function(d){
+   	d3.select(this).style("fill","purple")
+   	textblock.text(randomFortune)
+   	textblock.moveToFront()
+   });
+
+
+
 </script>
