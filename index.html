@@ -1,10 +1,109 @@
-<script src="https://d3js.org/d3.v6.min.js"></script>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://d3js.org/d3.v6.min.js"></script>
+</head>
+<body>
+  <div class="svg-container">
 
-<script>
-  console.log(d3); // test if d3 is loaded
-  // Add an SVG
-  // Add Rectangles
-  // Add Circles
-  // Add Lines
-  // Add Polygons
-</script>
+  </div>
+  <script>
+    console.log(d3); 
+    var height = 1500;
+    var width = 1500;
+    var svg = d3.select('.svg-container')
+      .append("svg")
+      .attr("width", height)
+      .attr("height", width);
+
+    
+      // Add Rectangles
+      svg.append('rect')
+      .attr('x', 10)
+      .attr('y', 120)
+      .attr('width', 200)
+      .attr('height', 20)
+      .attr('stroke', 'black')
+      .attr('fill', '#69a3b2')
+      .attr('class', 'table')
+
+      svg.append('rect')
+      .attr('x', 10)
+      .attr('y', 120)
+      .attr('width', 20)
+      .attr('height', 200)
+      .attr('stroke', 'black')
+      .attr('fill', '#69a3b2')
+      .attr('class', 'table')
+
+      svg.append('rect')
+      .attr('x', 210)
+      .attr('y', 120)
+      .attr('width', 20)
+      .attr('height', 200)
+      .attr('stroke', 'black')
+      .attr('fill', '#69a3b2')
+      .attr('class', 'table')
+
+      //making path
+      svg.append('line')
+      .attr('x1', 440)
+      .attr('y1', 420)
+      .attr('x2', 700)
+      .attr('y2', 500)
+      .style('stroke', 'lightgreen')
+      .style('stroke-width', 10)
+
+      svg.append('rect')
+      .attr('x', 700)
+      .attr('y', 600)
+      .attr('width', 200)
+      .attr('height', 200)
+      .attr('stroke', 'black')
+      .attr('fill', '#000000')
+      .attr('class', 'box')
+
+      function circleTransition() { 
+        var timeCircle = svg.append("circle")
+        .attr("fill", "steelblue")
+        .attr("r", 20);
+        repeat();
+
+        function repeat() {
+          timeCircle
+            .attr('cx', 40)      // position the circle at 40 on the x axis
+            .attr('cy', 100)     // position the circle at 250 on the y axis
+            .transition()
+            .ease(d3.easeCubicIn)        // apply a transition
+            .duration(1500)      // apply it over 2000 milliseconds
+            .attr('cx', 290)
+            .transition()
+            .ease(d3.easeBounceOut)
+            .duration(1000)
+            .attr('cx', 450)
+            .attr('cy', 400)
+            .transition()
+            .duration(4000)
+            .attr('cx', 700)
+            .attr('cy', 480)
+            .transition()
+            .ease(d3.easeBounceOut)
+            .duration(1500)
+            .attr('cx', 750)
+            .attr('cy', 780)
+            .on("end", repeat);  // when the transition finishes start again
+        };
+      };
+
+
+
+      circleTransition();
+    
+  </script>
+</body>
+</html>
+
