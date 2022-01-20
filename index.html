@@ -47,15 +47,14 @@
       .attr('cy', height/4)
       .attr('r', width/4)
       .on('click', function(){
-        hsl = 0;
+        console.log("clicked circle");
         d3.selectAll('circle')
-          .style('fill','hsl(' + hsl+ ', 100%, 50%)');
-        while (hsl < 360) {
-          d3.selectAll('circle')
-            .transition().duration(1000)
-            .style('fill','hsl(' + hsl+ ', 100%, 50%)');
-          hsl++;
-        }
+          .transition().duration(0)
+          .style('fill','hsl(0, 100%, 50%)')
+          .transition().duration(1000)
+          .style('fill','hsl(180, 100%, 50%)')
+          .transition().delay(1000).duration(1000)
+          .style('fill','hsl(360, 100%, 50%)');
       });
     // Add Lines
     d3.select('svg')
