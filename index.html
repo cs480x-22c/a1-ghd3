@@ -1,9 +1,19 @@
 <script src="https://d3js.org/d3.v6.min.js"></script>
 
 <h1> WELCOME TO ASSIGNMENT ONE. PAIN. </h1>
+<p> this is a paragraph shithead </p>
+<svg id="dataVis" height=250 width=500></svg>
+
 <script>
   console.log(d3); // test if d3 is loaded
   // Add an SVG
+  var svg = d3.select("#dataVis")
+  
+  svg.append("circle")
+  .attr("cx", 2) // x position
+  .attr("cy", 2) // y position
+  .attr("r", 4) // radius
+  .style("fill", "green"); // set color, end with semicolon
   // Add Rectangles
   // Add Circles
   // Add Lines
