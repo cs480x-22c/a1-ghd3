@@ -1,10 +1,57 @@
 <script src="https://d3js.org/d3.v6.min.js"></script>
+//Add an SVG
+<svg width = 800 height = 800>
+</svg>
 
 <script>
   console.log(d3); // test if d3 is loaded
-  // Add an SVG
-  // Add Rectangles
+  var coords = [
+    [12,26],
+    [63,16],
+    [34,42],
+    [50,14],
+    [55,33],
+  ];
+
   // Add Circles
+  d3.select("svg")
+    .selectAll("circle")
+    .data(coords)
+    .enter().append("circle")
+    .attr('cx',function(d){return d[0]*10;})
+    .attr('cy',function(d){return d[1]*10;})
+    .attr('r',20)
+    .attr('stroke','black')
+    .attr('stroke-width',10)
+    .attr('fill','red')
+  // Add Rectangles
+  d3.select("svg")
+    .selectAll("rect")
+    .data(coords)
+    .enter().append("rect")
+    .attr('x', function(d){return (d[1]*10)-20;})
+    .attr('y', function(d){return (d[0]*10)-20;})
+    .attr('width',40)
+    .attr('height',40)
+    .attr('stroke','red')
+    .attr('stroke-width',10)
+    .attr('fill','black')
   // Add Lines
+  d3.select("svg")
+    .selectAll("line")
+    .data(coords)
+    .enter().append("line")
+    .attr('x1',function(d){return d[0]*10;})
+    .attr('y1',function(d){return d[1]*10;})
+    .attr('x2', function(d){return d[1]*10;})
+    .attr('y2', function(d){return d[0]*10;})
+    .attr('stroke','black')
+    .attr('stroke-width',2)
   // Add Polygons
+   d3.select("svg")
+    .append("polygon")
+    .attr('points', '726,752 783,715 700,700')
+    .attr('fill','blue')
+    
+
 </script>

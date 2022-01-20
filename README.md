@@ -1,3 +1,20 @@
+Ben Kresge
+
+
+Link: https://autumnusomega.github.io/a1-ghd3/
+
+Credit: first d3 code example posted
+
+Please note that I am completely new to HTML and JavaScript. I intend to learn as I go in this course. I am aware that will make certain aspects of the class difficult, but I am willing to stick with it.
+
+---Technical Achievement---
+I was able to use coordinates instead of the one number based location used in the example.
+
+---Design Achievement---
+I used inverted color schemes to mirror the inverted coordinates (x->y and y->x).
+
+
+
 Assignment 1 - Hello World: GitHub and d3  
 ===
 
