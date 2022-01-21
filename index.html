@@ -36,7 +36,7 @@
           growOffset: size/250,
           branchRandom: 0.7,
           branchSpread: 3,
-          heightBias: 2.4,
+          heightBias: 2,
           
       }; 
 
@@ -92,7 +92,7 @@
       // the x position should offset positive and negative
       function generateTree(){
           treeBlocks = [];
-          let baseBlock = new treeBlock(window.innerWidth/2, window.innerHeight, params.basewidth, params.height, "#000000");
+          let baseBlock = new treeBlock(window.innerWidth/2, window.innerHeight, params.basewidth, params.height, "#dddddd");
           treeBlocks.push(baseBlock);
 
           //recursive function
