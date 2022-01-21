@@ -1,10 +1,224 @@
-<script src="https://d3js.org/d3.v6.min.js"></script>
+ <script src="https://d3js.org/d3.v6.min.js"></script>
+
+<h1> WELCOME TO ASSIGNMENT ONE </h1>
+<p> I really wanted to make a turtle</p>
+<svg id="dataVis" height= 600 width=1500 style="background-color:#9DF2F0"></svg>
 
 <script>
   console.log(d3); // test if d3 is loaded
   // Add an SVG
-  // Add Rectangles
+  var svg = d3.select("#dataVis")
+  // Creating a scale to bound x and y axis
+  var x = d3.scaleLinear()
+    .domain([0, 100])         // This is the min and the max of the data: 0 to 100 if percentages
+    .range([5, 1490]);       //scales to my svg size
+// Show axis and scale
+svg
+.call(d3.axisBottom(x));
+
+
+/* var y = d3.scaleLinear()
+    .domain([0, 100])         // for some inexplicable reason this does not create a y axis
+    .range([590, 10]);  
+  svg
+  .attr("transform", "translate(0," + 10 + ")")
+  .call(d3.axisLeft(y)); */
+
+/*
+<rect x="0" y="0" width="10" height="10"></rect>
+<circle cx="5" cy="5" r="5"></circle>
+<ellipse cx="10" cy="5" rx="10" ry="5"></ellipse>
+<polygon points="0,0 10,5 20,0 20,20 10,15 0,20"></polygon>
+<path d="M65,10 a50,25 0 1,0 50,25"></path> */
+
   // Add Circles
+  svg.append("circle")
+  .attr("cx", x(40)) // x position
+  .attr("cy", 390) // y position
+  .attr("r", 15) // radius
+  .style("fill", "#53E61E") // set color, end with semicolon
+  .attr("id", "turtle");
+  
+   svg.append("circle")
+  .attr("cx", x(45)) // x position
+  .attr("cy", 390) // y position
+  .attr("r", 15) // radius
+  .style("fill", "#53E61E") // set color, end with semicolon
+  .attr("id", "turtle");
+  
+  	svg.append("ellipse")
+    .attr("cx", x(20))  
+    .attr("cy", 200) 
+    .attr("rx", x(4))
+    .attr("ry", 40)
+	.style("fill", "white") 
+    .attr("id", "cloud");
+	
+	 svg.append("ellipse")
+    .attr("cx", x(24))  
+    .attr("cy", 180) 
+    .attr("rx", x(2))
+    .attr("ry", 40)
+	.style("fill", "white") 
+    .attr("id", "cloud");
+	
+	svg.append("ellipse")
+    .attr("cx", x(86))  
+    .attr("cy", 145) 
+    .attr("rx", x(4))
+    .attr("ry", 40)
+	.style("fill", "white") 
+    .attr("id", "cloud");
+	
+	 svg.append("ellipse")
+    .attr("cx", x(90))  
+    .attr("cy", 125) 
+    .attr("rx", x(2))
+    .attr("ry", 40)
+	.style("fill", "white") 
+    .attr("id", "cloud");
+  
+  
+	svg.append("ellipse")
+    .attr("cx", x(42))  
+    .attr("cy", 345) 
+    .attr("rx", x(5))
+    .attr("ry", 40)
+	.style("fill", "#563D2C") 
+    .attr("id", "turtle");
+	
+	svg.append("ellipse")
+    .attr("cx", x(48))  
+    .attr("cy", 325) 
+    .attr("rx", 20)
+    .attr("ry", 40)
+	.style("fill", "#53E61E") 
+    .attr("id", "turtle");
+	
+	svg.append("circle")
+  .attr("cx", x(49)) // x position
+  .attr("cy", 310) // y position
+  .attr("r", 5) // radius
+  .style("fill", "black") // set color, end with semicolon
+  .attr("id", "turtle");
+  
+  const curve = d3.line().curve(d3.curveNatural);
+  const points = [[x(48), 318], [x(49),332], [738,325]];
+  
+  svg.append("path")
+  .attr('d', curve(points))
+  .attr('stroke', 'black');
+	
+	const shellPoints = [[x(37),360], [x(39),370], [x(42),375],[x(45),370], [x(47),360]];
+	  svg.append("path")
+  .attr('d', curve(shellPoints))
+  .attr('stroke', 'black');
+  
+  const scalePoints = [[x(37),360], [x(39),320], [x(42),375],[x(45),320], [x(47),360]];
+  svg.append("path") 
+    .style("stroke", "black")
+    .attr('d', curve(scalePoints)); 
+	
   // Add Lines
-  // Add Polygons
+svg.append("line")       
+    .style("stroke", "yellow")  // line color, also border line color on shapes
+    .attr("x1", x(77)) // the line begins at x1,y1 and ends at x2,y2
+    .attr("y1", 100)  
+    .attr("x2", x(78))
+	.attr("id", "butterfly")
+    .attr("y2", 80); 
+	
+	svg.append("line")       
+    .style("stroke", "yellow") 
+    .attr("x1", x(77)) 
+    .attr("y1", 100)  
+    .attr("x2", x(78))
+	.attr("id", "butterfly")
+    .attr("y2", 120);
+	
+	svg.append("rect")  
+    .attr("x", x(74))         
+    .attr("y", 100)         
+    .attr("height", 10) 
+    .attr("width", x(3))
+    .attr("rx", 10) // corner curve radius x
+    .attr("ry", 10) // corner curve radius y
+	.attr("id", "butterfly")
+	.style("fill", "yellow");
+	  
+  	svg.append("ellipse")
+    .attr("cx", x(75))  
+    .attr("cy", 90) 
+    .attr("rx", 17)
+    .attr("ry", 12)
+	.style("fill", "red") 
+    .attr("id", "butterfly");
+	
+	 svg.append("ellipse")
+    .attr("cx", x(76))  
+    .attr("cy", 90) 
+    .attr("rx", 15)
+    .attr("ry", 10)
+	.style("fill", "red") 
+    .attr("id", "butterfly");
+	
+	  	svg.append("ellipse")
+    .attr("cx", x(75))  
+    .attr("cy", 120) 
+    .attr("rx", 17)
+    .attr("ry", 12)
+	.style("fill", "red") 
+    .attr("id", "butterfly");
+	
+	 svg.append("ellipse")
+    .attr("cx", x(76))  
+    .attr("cy", 120) 
+    .attr("rx", 15)
+    .attr("ry", 10)
+	.style("fill", "red") 
+    .attr("id", "butterfly");
+  // Add Polygons and Rectangles
+    svg.append("rect")  
+    .attr("x", x(0))         
+    .attr("y", 400)         
+    .attr("height", 1400) 
+    .attr("width", 1500)
+    .attr("rx", 10) // corner curve radius x
+    .attr("ry", 10) // corner curve radius y
+	.style("fill", "#387921");
+	
+	svg.append("polygon")
+   .attr("points", "70,15 55,5 30,15 30,45 55,50 70,40")
+   .style("fill", "yellow")
+   .style("stroke", "black")
+   .style("strokeWidth", "10px");
+  // x,y points on shape, more points more corners
+   
+   function cloudOffLeft(offset){
+   var cloudSpacing = 50;
+   
+	svg.append("ellipse")
+    .attr("cx", x(100 + (offset * cloudSpacing)))  
+    .attr("cy", 145) 
+    .attr("rx", x(4))
+    .attr("ry", 40)
+	.style("fill", "white") 
+    .attr("id", "cloud");
+	
+	 svg.append("ellipse")
+    .attr("cx", x(104 + (offset * cloudSpacing)))  
+    .attr("cy", 125) 
+    .attr("rx", x(2))
+    .attr("ry", 40)
+	.style("fill", "white") 
+    .attr("id", "cloud");
+	
+   }
+   
+	for (let i = 1; i < 300; i++) { 
+		cloudOffLeft(i);
+	}
+   d3.selectAll("#butterfly").transition().attr("transform", "translate(-510,200)").duration(4000).ease(d3.easeBounceInOut);
+   d3.selectAll("#cloud").transition().attr("transform", "translate(-200000)").duration(1800000).ease(d3.easeLinear);
+   
 </script>
