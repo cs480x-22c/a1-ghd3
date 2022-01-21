@@ -1,7 +1,11 @@
 Sophia Strano's Assignment 1 - Hello World: GitHub and d3 
 ===
 
+![image](https://user-images.githubusercontent.com/64103447/150470038-54a02f6f-5372-49e1-8d54-9a5f092143a8.png)
+
+
 For this assignment, being very new to JS, html and d3, I consulted multiple articles to learn more about the basics of creating primitives. I mainly modeled my code with examples from http://www.d3noob.org/2014/02/d3js-elements.html and https://www.d3-graph-gallery.com/intro_d3js.html to gain a basic understanding the relationship between html and JS, and to reference basic syntax to generate primitives. 
+
 
 Technical Achievements -- 
 
