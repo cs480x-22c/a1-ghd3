@@ -23,14 +23,21 @@
   <script>
 
 
-      //Builld a tree with Squares! place circles at the end
+      //make smaller side of screen effect scaling
+      let size = Math.min(window.innerHeight, window.innerWidth);
+
       let params = {
+          gRand: 1.0,
           maxLevels: 4,
-          levelBlocks: 7,
-          basewidth: 100,
-          height: 10,
-          heightSpacing: 10,
-          growOffset: 3,
+          levelBlocks: 6,
+          basewidth: size/10,
+          height: size/70,
+          heightSpacing: size/70,
+          growOffset: size/250,
+          branchRandom: 0.7,
+          branchSpread: 3,
+          heightBias: 2.4,
+          
       }; 
 
        //first we generate the data recursively, then we hand our set to d3
@@ -58,14 +65,16 @@
      //RECURSUVE FUNCTION HERE
       function makeBranch( baseBlock, xOffset, level ) {
         let lastBlock = baseBlock;
+        let branchDist = params.levelBlocks + (Math.random() * 8 * params.gRand);
     
-        for (let i = 0; i < params.levelBlocks + (Math.random() * 10); i++) {
+        for (let i = 0; i < branchDist; i++) {
 
-            let levelCont = level + ((1/params.levelBlocks) * i);
-            let blockWidth = 0 * baseBlock.width * Math.pow(.96, i+1);
             //lastBlock = new treeBlock(baseBlock.x + blockWidth + (xOffset * Math.sqrt(i+1) * (level) * (3 + .5 * Math.random()) ), baseBlock.y - (params.heightSpacing * i), baseBlock.width * Math.pow(.96, i+1), baseBlock.height, "#000000");
-
-            lastBlock = new treeBlock(baseBlock.x + blockWidth + (xOffset * Math.pow(i + 1, 1/2) * (level ) * (3 + 1.5 * Math.random()) ), baseBlock.y - (params.heightSpacing * i), baseBlock.width * Math.pow(.96, i+1), Math.abs(baseBlock.height - (Math.random() * 2.5)), "#000000");
+            lastBlock = new treeBlock(
+                baseBlock.x + (xOffset * Math.pow(i + 1, 1/params.heightBias) * (level ) * (params.branchSpread + params.branchRandom  * params.gRand * Math.random()) ),
+                baseBlock.y - (params.heightSpacing * i), baseBlock.width * Math.pow(.96, i+1),
+                Math.abs(baseBlock.height - (Math.random() * params.gRand * 2.5)),
+                baseBlock.color);
             treeBlocks.push(lastBlock);
         }
         //always grow up
@@ -79,14 +88,14 @@
       }
 
       // return an array of Tree Blocks
-      // every 20 blocks, it should branch into two, left and right
+      // every x blocks, it should branch into two, left and right
       // the x position should offset positive and negative
       function generateTree(){
           treeBlocks = [];
           let baseBlock = new treeBlock(window.innerWidth/2, window.innerHeight, params.basewidth, params.height, "#000000");
-          //recursive function
           treeBlocks.push(baseBlock);
 
+          //recursive function
           makeBranch( baseBlock, 0, 0);
           return treeBlocks;
       }
@@ -116,7 +125,6 @@
       function growTree() {
         d3.select('.vis').selectAll("*").remove();
           let skyColor = `linear-gradient(${colorToHex(200 * Math.random() + 16, 123, 155)}, ${colorToHex(40, 200 * Math.random() + 16, 255)})`;
-          console.log(skyColor);
         document.getElementById("vis").style.backgroundImage = skyColor;
 
         //"linear-gradient(#000f4f, #694400)";
@@ -157,7 +165,7 @@
         .attr("y", d => d.y - 70)
         .attr("width", d => d.width)
         .attr("height", d => d.height)
-        .attr("fill", "#000000" );
+        .attr("fill", d => d.color );
 
         //ground
       svg
