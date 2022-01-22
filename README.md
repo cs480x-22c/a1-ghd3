@@ -84,3 +84,16 @@ Remember, it is up to *you* to define what constitutes a technical and design ac
 Be ambitious as these are designed to allow you to shape your learning.
 These are the only way to move from B to A territory.
 
+
+**Read Me**
+https://dshanes.github.io
+![Screen Shot 2022-01-21 at 6 48 39 PM](https://user-images.githubusercontent.com/73267805/150615426-6d86f4da-0d98-40ee-8c3b-e88cf4b94b05.png)
+![Screen Shot 2022-01-21 at 6 48 49 PM](https://user-images.githubusercontent.com/73267805/150615432-5b4455cd-4db6-4a00-87ff-cf9daff365ef.png)
+
+My creation is the Lane Harrison building. It features 0 doors and 72 red windows. When the green button next to the tower is pressed, all of the buildings
+change to a blue color. If the button is pressed again, they will change back. As for the shapes, the circle is used as an interactable button, the rectangles
+are windows that respond to the pressing of the button, the polygon is used as the shape of the building, and the lines are used to create the letters on top
+of the building.
+For my technical achievement, I enabled user interaction by including a button that toggles the color of all of the windows at once between red and blue. 
+For my design achiement, I added the feature of the button darkening in color when the mouse is hovering over it to indicate to the user that they can
+interact with it.
