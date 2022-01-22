@@ -12,6 +12,8 @@
       // Add Lines
       // Add Polygons
 
+      var bottomYValue = 0;
+
       d3.select("svg")
         .append("text")
         .attr("x", 20)
@@ -25,6 +27,10 @@
         var x = (window.innerWidth/count)*i+50;
         var y = d3.randomUniform(100, window.innerHeight*0.7)();
         data.push({"x": x, "y": y});
+
+        if (y > bottomYValue) {
+          bottomYValue = y;
+        }
       }
 
       for (var i = 0; i < data.length; i++) {
@@ -55,6 +61,10 @@
         var x = (window.innerWidth/count2)*i+50;
         var y = d3.randomUniform(100, window.innerHeight*0.7)();
         data2.push({"x": x, "y": y});
+
+        if (y > bottomYValue) {
+          bottomYValue = y;
+        }
       }
 
       for (var i = 0; i < data2.length; i++) {
@@ -87,6 +97,10 @@
         var x = (window.innerWidth/count2)*i+50;
         var y = d3.randomUniform(100, window.innerHeight*0.7)();
         data3.push({"x": x, "y": y});
+
+        if (y < bottomYValue) {
+          bottomYValue = y;
+        }
       }
 
       for (var i = 0; i < data3.length; i++) {
@@ -110,6 +124,10 @@
           var x = data3[i].x - pendegonSide[j][0];
           var y = data3[i].y - pendegonSide[j][1];
           outputString += x.toString() + "," + y.toString() + " "
+
+          if (y > bottomYValue) {
+            bottomYValue = y;
+          }
         }
         console.log(outputString);
         polyPoints.push(outputString);
@@ -121,6 +139,24 @@
         .enter().append("polygon")
         .attr("points", function(d) { return d })
         .style("fill", "#1900ff");
+
+      console.log(bottomYValue);
+
+      d3.select("svg")
+        .append("text")
+        .attr("x", window.innerWidth/2-100)
+        .attr("y", bottomYValue+100)
+        .attr("font-size", "20")
+        .text("Random X Values");
+
+      d3.select("svg")
+        .append("text")
+        .attr("x", window.innerHeight/2-100)
+        .attr("y", 0)
+        .attr("font-size", "20")
+        .attr('transform', 'rotate(90)')
+        .text("Random Y Values");
+
     </script>
   </body>
 </html>
