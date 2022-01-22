@@ -1,10 +1,127 @@
-<script src="https://d3js.org/d3.v6.min.js"></script>
+<html lang="en">
+  <head>
+    <script src="https://d3js.org/d3.v6.min.js"></script>
+  </head>
+  <body>
+    <svg width=100% height=100%></svg>
+    <script>
+      console.log(d3); // test if d3 is loaded
+      // Add an SVG
+      // Add Rectangles
+      // Add Circles
+      // Add Lines
+      // Add Polygons
 
-<script>
-  console.log(d3); // test if d3 is loaded
-  // Add an SVG
-  // Add Rectangles
-  // Add Circles
-  // Add Lines
-  // Add Polygons
-</script>
+      d3.select("svg")
+        .append("text")
+        .attr("x", 20)
+        .attr("y", 40)
+        .attr("font-size", "40px")
+        .text("CS480X Assignment 1");
+      
+      var data = []
+      var count = 10;
+      for (var i = 0; i < count; i++) {
+        var x = (window.innerWidth/count)*i+50;
+        var y = d3.randomUniform(100, window.innerHeight*0.7)();
+        data.push({"x": x, "y": y});
+      }
+
+      for (var i = 0; i < data.length; i++) {
+        if (i != data.length-1) {
+          d3.select("svg")
+            .append("line")
+            .attr("x1", data[i].x)
+            .attr("y1", data[i].y)
+            .attr("x2", data[i+1].x)
+            .attr("y2", data[i+1].y)
+            .style("stroke", "#349eeb")
+            .style("stroke-width", 3);
+        }
+      };
+
+      d3.select("svg")
+        .selectAll("circle")
+        .data(data)
+        .enter().append("circle")
+        .attr("cx", function(d) { return d.x; })
+        .attr("cy", function(d) { return d.y; })
+        .attr("r", 10)
+        .style("fill", "#ff8c00");
+
+      var data2 = []
+      var count2 = 10;
+      for (var i = 0; i < count2; i++) {
+        var x = (window.innerWidth/count2)*i+50;
+        var y = d3.randomUniform(100, window.innerHeight*0.7)();
+        data2.push({"x": x, "y": y});
+      }
+
+      for (var i = 0; i < data2.length; i++) {
+        if (i != data2.length-1) {
+          d3.select("svg")
+            .append("line")
+            .attr("x1", data2[i].x)
+            .attr("y1", data2[i].y)
+            .attr("x2", data2[i+1].x)
+            .attr("y2", data2[i+1].y)
+            .style("stroke", "#10e333")
+            .style("stroke-width", 3);
+        }
+      };
+
+      d3.select("svg")
+        .selectAll("rect")
+        .data(data2)
+        .enter().append("rect")
+        .attr("x", function(d) { return d.x-10; })
+        .attr("y", function(d) { return d.y-10; })
+        .attr("width", 20)
+        .attr("height", 20)
+        .style("fill", "#00ffea");
+
+      
+      var data3 = []
+      var count3 = 10;
+      for (var i = 0; i < count2; i++) {
+        var x = (window.innerWidth/count2)*i+50;
+        var y = d3.randomUniform(100, window.innerHeight*0.7)();
+        data3.push({"x": x, "y": y});
+      }
+
+      for (var i = 0; i < data3.length; i++) {
+        if (i != data3.length-1) {
+          d3.select("svg")
+            .append("line")
+            .attr("x1", data3[i].x)
+            .attr("y1", data3[i].y)
+            .attr("x2", data3[i+1].x)
+            .attr("y2", data3[i+1].y)
+            .style("stroke", "#ff0019")
+            .style("stroke-width", 3);
+        }
+      };
+
+      var polyPoints = []
+      var pendegonSide = [[-10, -10], [10, -10], [15, 5], [0, 20], [-15, 5]]
+      for (var i = 0; i < data3.length; i++) {
+        var outputString = "";
+        for (var j = 0; j < pendegonSide.length; j++) {
+          var x = data3[i].x - pendegonSide[j][0];
+          var y = data3[i].y - pendegonSide[j][1];
+          outputString += x.toString() + "," + y.toString() + " "
+        }
+        console.log(outputString);
+        polyPoints.push(outputString);
+      }
+
+      d3.select("svg")
+        .selectAll("polygon")
+        .data(polyPoints)
+        .enter().append("polygon")
+        .attr("points", function(d) { return d })
+        .style("fill", "#1900ff");
+    </script>
+  </body>
+</html>
+
