@@ -1,16 +1,26 @@
 Assignment 1 - Hello World: GitHub and d3  
 ===
 
-Contributors
+Summary
 ---
+
+For Assignment 1 in CS480X I decided to make a random graph interplation in d3js. 
 
 -   **Miles Gregg**
 
     -   GitHub: https://github.com/MilesGregg
 
-Author and Links
+Links
 ---
 
 - GitHub Pages: https://milesgregg.github.io/a1-ghd3/
 - GitHub Repository: https://github.com/MilesGregg/a1-ghd3
-- GitHub README: 
+
+Technical Achievement Description
+---
+
+
+
+Design Achievement Description
+---
+
