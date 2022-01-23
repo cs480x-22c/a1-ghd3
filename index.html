@@ -1,10 +1,184 @@
 <script src="https://d3js.org/d3.v6.min.js"></script>
+<svg width="2000" height="1000"></svg>
 
 <script>
-  console.log(d3); // test if d3 is loaded
-  // Add an SVG
-  // Add Rectangles
-  // Add Circles
-  // Add Lines
-  // Add Polygons
+
+  d3.select("svg")
+      .append("text")
+      .attr("x", 20)
+      .attr("y", 40)
+      .attr("font-size", "40px")
+      .text("CS480X Assignment 1 - California Covid Hospitalizations in Dec and March 2021");
+
+  var vax_hos_dec = [[1, 97],[2, 79],[3, 62],[4, 54],[5, 73],[6, 73],[7, 45],[8, 57],[9, 56],[10,49],[11,53],[12,48],[13,60],[14,63],[15,67],[16,62],[17,59],[18,59],[19,54],[20,84],[21,108],[22,99],[23,85],[24,92],[25,86],[26,113],[27,159],[28,136],[29,123],[30,106],[31,78]];
+  var unvax_hos_dec = [[1, 250],[2, 200],[3, 237],[4, 172],[5, 181],[6, 234],[7, 228],[8, 207],[9, 176],[10,191],[11,179],[12,147],[13,173],[14,168],[15,148],[16,154],[17,159],[18,120],[19,132],[20,185],[21,140],[22,159],[23,167],[24,178],[25,167],[26,165],[27,203],[28,181],[29,165],[30,126],[31,95]];
+  var vax_hos_march = [[1, 0],[2, 3],[3, 2],[4, 2],[5, 2],[6, 2],[7, 2],[8, 2],[9, 1],[10,4],[11,6],[12,3],[13,5],[14,2],[15,6],[16,4],[17,2],[18,3],[19,3],[20,1],[21,4],[22,4],[23,3],[24,3],[25,4],[26,6],[27,3],[28,1],[29,2],[30,8],[31,5]];
+  var unvax_hos_march = [[1, 221],[2, 174],[3, 145],[4, 168],[5, 207],[6, 137],[7, 149],[8, 183],[9, 136],[10,163],[11,148],[12,129],[13,136],[14,91],[15,160],[16,148],[17,142],[18,132],[19,144],[20,84],[21,106],[22,158],[23,125],[24,113],[25,110],[26,127],[27,101],[28,117],[29,122],[30,111],[31,110]];
+
+  var svg = d3.select("svg");
+  var xScaleGraph1 = d3.scaleLinear().domain([0, 31]).range([0, 500]);
+  var yScaleGraph1 = d3.scaleLinear().domain([0, 250]).range([500, 0]);
+  var g = svg.append("g").attr("transform", "translate(100, 100)");
+
+  svg.append('text')
+    .attr('x', 500/2 + 100)
+    .attr('y', 100)
+    .attr('text-anchor', 'middle')
+    .style('font-size', 20)
+    .text('Covid Hospitalizations in March vs December of 2021');
+  
+  svg.append('text')
+    .attr('x', 500/2+100)
+    .attr('y', 500-15+150)
+    .style('font-size', 20)
+    .text('Days');
+  
+  svg.append('text')
+    .attr('text-anchor', 'middle')
+    .attr('transform', 'translate(30, 350)rotate(-90)')
+    .style('font-size', 20)
+    .text('Hospitalizations');
+
+  g.append("g").attr("transform", "translate(0, 500)").call(d3.axisBottom(xScaleGraph1));
+  g.append("g").call(d3.axisLeft(yScaleGraph1));
+
+  var graphLines = d3.line().x(function(d) { return xScaleGraph1(d[0]); }).y(function(d) { return yScaleGraph1(d[1]); }) 
+  
+  // Vax Hospitalizations in Dec
+  svg.append("path")
+    .datum(unvax_hos_dec) 
+    .attr("class", "line") 
+    .attr("transform", "translate(100, 100)")
+    .attr("d", graphLines)
+    .style("fill", "none")
+    .style("stroke", "#03fc03")
+    .style("stroke-width", "2");
+
+  svg.append("path")
+    .datum(vax_hos_dec) 
+    .attr("class", "line") 
+    .attr("transform", "translate(100, 100)")
+    .attr("d", graphLines)
+    .style("fill", "none")
+    .style("stroke", "#fc0303")
+    .style("stroke-width", "2");
+
+  svg.append('g')
+    .selectAll("circle")
+    .data(vax_hos_dec)
+    .enter()
+    .append("circle")
+    .attr("cx", function (d) { return xScaleGraph1(d[0]); })
+    .attr("cy", function (d) { return yScaleGraph1(d[1]); })
+    .attr("r", 5)
+    .attr("transform", "translate(100, 100)")
+    .style("fill", "#03fc03");
+
+  svg.append('g')
+    .selectAll("rect")
+    .data(unvax_hos_dec)
+    .enter()
+    .append("rect")
+    .attr("x", function (d) { return xScaleGraph1(d[0])-5; })
+    .attr("y", function (d) { return yScaleGraph1(d[1])-5; })
+    .attr("width", 10)
+    .attr("height", 10)
+    .attr("transform", "translate(100, 100)")
+    .style("fill", "#fc0303");
+
+  // MARCH IS BELOW!!!!!!!!!!!!!!!!!!!
+  svg.append("path")
+    .datum(vax_hos_march) 
+    .attr("class", "line") 
+    .attr("transform", "translate(100, 100)")
+    .attr("d", graphLines)
+    .style("fill", "none")
+    .style("stroke", "#ff00e6")
+    .style("stroke-width", "2");
+
+  var polyPoints = []
+  var pendegonSide = [[-10, -10], [10, -10], [15, 5], [0, 20], [-15, 5]]
+  for (var i = 0; i < vax_hos_march.length; i++) {
+    var outputString = "";
+    for (var j = 0; j < pendegonSide.length; j++) {
+      var x = vax_hos_march[i][0] + (pendegonSide[j][0]*0.025);
+      var y = vax_hos_march[i][1] + (pendegonSide[j][1]*0.15);
+      outputString += xScaleGraph1(x.toString()) + "," + yScaleGraph1(y.toString()) + " "
+    }
+    polyPoints.push(outputString);
+  }
+
+  svg.append('g')
+    .selectAll("polygon")
+    .data(polyPoints)
+    .enter()
+    .append("polygon")
+    .attr("points", function(d) { return d })
+    .attr("transform", "translate(100, 100)")
+    .style("fill", "#1900ff");
+
+  svg.append("path")
+    .datum(unvax_hos_march) 
+    .attr("class", "line") 
+    .attr("transform", "translate(100, 100)")
+    .attr("d", graphLines)
+    .style("fill", "none")
+    .style("stroke", "#00ccff")
+    .style("stroke-width", "2");
+
+  var polyPoints2 = []
+  var triangleSide = [[-10, -10], [10, -10], [0, 20]]
+  for (var i = 0; i < unvax_hos_march.length; i++) {
+    var outputString = "";
+    for (var j = 0; j < triangleSide.length; j++) {
+      var x = unvax_hos_march[i][0] + (triangleSide[j][0]*0.025);
+      var y = unvax_hos_march[i][1] + (triangleSide[j][1]*0.15);
+      outputString += xScaleGraph1(x.toString()) + "," + yScaleGraph1(y.toString()) + " "
+    }
+    polyPoints2.push(outputString);
+  }
+
+  svg.append('g')
+    .selectAll("polygon")
+    .data(polyPoints2)
+    .enter()
+    .append("polygon")
+    .attr("points", function(d) { return d })
+    .attr("transform", "translate(100, 100)")
+    .style("fill", "#ff9900");
+
+  d3.select("svg")
+    .append("text")
+    .attr("x", 650)
+    .attr("y", 380)
+    .attr("font-size", "20")
+    .text("Lines are the Red, Green, and Blue Lines");
+
+  d3.select("svg")
+    .append("text")
+    .attr("x", 650)
+    .attr("y", 180+2)
+    .attr("font-size", "20")
+    .text("Triangle Points Orange: Unvax Hospitalizations in March 2021");
+
+  d3.select("svg")
+    .append("text")
+    .attr("x", 650)
+    .attr("y", 130+2)
+    .attr("font-size", "20")
+    .text("Pentagon Polygon Points Blue: Vax Hospitalizations in March 2021");
+
+  d3.select("svg")
+    .append("text")
+    .attr("x", 650)
+    .attr("y", 282)
+    .attr("font-size", "20")
+    .text("Circle Points Green: Vax Hospitalizations December 2021");
+
+  d3.select("svg")
+    .append("text")
+    .attr("x", 650)
+    .attr("y", 230)
+    .attr("font-size", "20")
+    .text("Rectangle Points Red: Unvax Hospitalizations December 2021");
 </script>
