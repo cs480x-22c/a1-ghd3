@@ -20,8 +20,6 @@
     .attr('cx', function(d) { return (Math.random()*d)*100; })
     .attr('cy', function(d) { return (Math.random()*d)*100; })
     .attr('r', function(d) { return (Math.random()*d)*30; })
-    .append("svg:title")
-    .text("Circle");
   
   //random rectangle generation
   var data2 = [];
@@ -38,15 +36,7 @@
     .attr('width', function(d) { return (Math.random()*d)*30; })
     .attr('height', function(d) { return (Math.random()*d)*30; })
     .attr('stroke', 'red')
-    .attr('fill', '#69a3b2')
-      .on("click", function(){
-        console.log("Clicked");
-        var x = width/2+width/4;
-        var y = height/2+height/4;
-        angle += 45;
-        d3.selectAll('#cog')
-          .attr('transform', 'rotate(' + angle + ',' + x + ',' +  y +')');
-      });
+    .attr('fill', '#69a3b2');
   
   //random line generation
   var data3 = [];
