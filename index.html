@@ -131,7 +131,6 @@
             bottomYValue = y;
           }
         }
-        console.log(outputString);
         polyPoints.push(outputString);
       }
 
@@ -141,14 +140,20 @@
         .enter().append("polygon")
         .attr("points", function(d) { return d })
         .style("fill", "#1900ff");
+
+        d3.select("svg")
+        .append("text")
+        .attr("x", 500)
+        .attr("y", window.innerHeight-50+2)
+        .attr("font-size", "20")
+        .text("Lines are the Red, Green, and Blue Lines");
+
       d3.select("svg")
         .append("text")
         .attr("x", 50)
         .attr("y", window.innerHeight-130+2)
         .attr("font-size", "20")
         .text("->Polygon Points");
-
-      console.log(window.innerHeight-130+2);
 
       /*d3.select("svg")
         .append("polygon")
