@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "d3-polygon": "^3.0.1",
+    "use-d3-transition": "^1.2.0"
+  }
+}

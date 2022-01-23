@@ -1,10 +1,126 @@
-<script src="https://d3js.org/d3.v6.min.js"></script>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script src="http://d3js.org/d3.v3.js"></script>
+    <title>Assigment 1</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+      body {
+        font-family: Arial, Helvetica, sans-serif;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Assigment 1</h1>
+    <p>A website created by me.</p>
+    <h3>SVG Bar</h3>
+    <p>Made with HTML</p>
+    <svg>
+      <rect width="50" height="200" style="fill: blue" />
+    </svg>
+    <script>
+      var dataPolygon = [
+        "400,0 375,25 425,25",
+        "0,400 25,375 25,425",
+        "800,400 775,375 775,425",
+        "400,800 375,775 425,775",
+      ];
+      var svg = d3
+        .select("#shapes")
+        .append("svg")
+        .attr("width", 800)
+        .attr("height", 800);
 
-<script>
-  console.log(d3); // test if d3 is loaded
-  // Add an SVG
-  // Add Rectangles
-  // Add Circles
-  // Add Lines
-  // Add Polygons
-</script>
+      // Add Polygons
+      svg
+        .selectAll("polygon")
+        .data(dataPolygon)
+        .enter()
+        .append("polygon")
+        .attr("points", function (d) {
+          return d;
+        })
+        .attr("fill", "red")
+        .on("mouseover", function (e) {
+          d3.select(this).attr("fill", "brown");
+        })
+        .on("mouseout", function (e) {
+          d3.select(this).attr("fill", "red");
+        });
+    </script>
+    <p>Made with JavaScript</p>
+    <script src="rectangle.js"></script>
+    <svg width="350" height="100">
+      <text x="0" y="50 ">Text in HTML</text>
+    </svg>
+    <script src="https://cdn.jsdelivr.net/npm/d3-polygon@3"></script>
+    <script src="text.js"></script>
+    <p>Circile in HTML</p>
+    <svg width="350" height="50">
+      <circle cx="20" cy="20" r="20" style="fill: darkblue"></circle>
+    </svg>
+    <script src="circle.js"></script>
+    <!-- <script src="bar.js"></script> -->
+    <svg width="400" height="60">
+      <rect
+        x="0"
+        y="0"
+        width="50"
+        height="50"
+        fill="green"
+        stroke="grey"
+        stroke-widh="5px"
+      ></rect>
+    </svg>
+    <svg width="400" height="60">
+      <circle cx="90" cy="25" r="25" fill="red"></circle>
+    </svg>
+    <svg width="400" height="60">
+      <ellipse cx="145" cy="25" rx="15" r="25" fill="grey"></ellipse>
+    </svg>
+    <svg width="400" height="60">
+      <line
+        x1="185"
+        y1="5"
+        x2="230"
+        y2="40"
+        stroke="blue"
+        stroke-width="5"
+      ></line>
+    </svg>
+  </svg>
+  <svg width="400" height="60">
+    <text
+      x="260"
+      y="25"
+      font-size = "20px"
+      fill = "orange"
+      text-anchor = "end"
+    >Text SVG</text>
+  </svg>
+</svg>
+<svg width="190" height="160">
+  <path
+  d = "M10 80 C 40 10, 65 10, 95 80 S 150 150, 180 80" stroke = "black" fill = "transparent"/>
+</svg>
+<script src="main.js"></script>
+<svg height="210" width="500">
+  <polygon points="100,10 40,198 190,78 10,78 160,198"
+  style="fill:lime;stroke:purple;stroke-width:5;fill-rule:evenodd;" />
+</svg>
+<div>
+  <svg width="960px" height="400px">
+      <rect
+        id="my_rect" x="10" y="200"
+        width="200" height="30" stroke="black"
+        fill="#69b3a2" stroke-width="1"/>
+  </svg>
+  <!-- Create a button to trigger the transition -->
+<button onclick="triggerTransitionDelay()">Trigger transition</button>
+
+<!-- Create a svg area-->
+<svg id="dataviz_delay" width="400px" height="320px"></svg>
+<script src = "app.js"></script>
+  </body>
+</html>
