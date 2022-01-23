@@ -1,209 +1,184 @@
-<html lang="en">
-  <head>
-    <script src="https://d3js.org/d3.v6.min.js"></script>
-  </head>
-  <body>
-    <svg width=100% height=100%></svg>
-    <script>
-      console.log(d3); // test if d3 is loaded
-      // Add an SVG
-      // Add Rectangles
-      // Add Circles
-      // Add Lines
-      // Add Polygons
+<script src="https://d3js.org/d3.v6.min.js"></script>
+<svg width="1000" height="1000"></svg>
 
-      var bottomYValue = 0;
+<script>
 
-      d3.select("svg")
-        .append("text")
-        .attr("x", 20)
-        .attr("y", 40)
-        .attr("font-size", "40px")
-        .text("CS480X Assignment 1");
-      
-      var data = []
-      var count = 10;
-      for (var i = 0; i < count; i++) {
-        var x = (window.innerWidth/count)*i+50;
-        var y = d3.randomUniform(100, window.innerHeight*0.7)();
-        data.push({"x": x, "y": y});
+  d3.select("svg")
+      .append("text")
+      .attr("x", 20)
+      .attr("y", 40)
+      .attr("font-size", "40px")
+      .text("CS480X Assignment 1 - Covid Hospitalizations in Dec and March 2021");
 
-        if (y > bottomYValue) {
-          bottomYValue = y;
-        }
-      }
+  var vax_hos_dec = [[1, 97],[2, 79],[3, 62],[4, 54],[5, 73],[6, 73],[7, 45],[8, 57],[9, 56],[10,49],[11,53],[12,48],[13,60],[14,63],[15,67],[16,62],[17,59],[18,59],[19,54],[20,84],[21,108],[22,99],[23,85],[24,92],[25,86],[26,113],[27,159],[28,136],[29,123],[30,106],[31,78]];
+  var unvax_hos_dec = [[1, 250],[2, 200],[3, 237],[4, 172],[5, 181],[6, 234],[7, 228],[8, 207],[9, 176],[10,191],[11,179],[12,147],[13,173],[14,168],[15,148],[16,154],[17,159],[18,120],[19,132],[20,185],[21,140],[22,159],[23,167],[24,178],[25,167],[26,165],[27,203],[28,181],[29,165],[30,126],[31,95]];
+  var vax_hos_march = [[1, 0],[2, 3],[3, 2],[4, 2],[5, 2],[6, 2],[7, 2],[8, 2],[9, 1],[10,4],[11,6],[12,3],[13,5],[14,2],[15,6],[16,4],[17,2],[18,3],[19,3],[20,1],[21,4],[22,4],[23,3],[24,3],[25,4],[26,6],[27,3],[28,1],[29,2],[30,8],[31,5]];
+  var unvax_hos_march = [[1, 221],[2, 174],[3, 145],[4, 168],[5, 207],[6, 137],[7, 149],[8, 183],[9, 136],[10,163],[11,148],[12,129],[13,136],[14,91],[15,160],[16,148],[17,142],[18,132],[19,144],[20,84],[21,106],[22,158],[23,125],[24,113],[25,110],[26,127],[27,101],[28,117],[29,122],[30,111],[31,110]];
 
-      for (var i = 0; i < data.length; i++) {
-        if (i != data.length-1) {
-          d3.select("svg")
-            .append("line")
-            .attr("x1", data[i].x)
-            .attr("y1", data[i].y)
-            .attr("x2", data[i+1].x)
-            .attr("y2", data[i+1].y)
-            .style("stroke", "#349eeb")
-            .style("stroke-width", 3);
-        }
-      };
+  var svg = d3.select("svg");
+  var xScaleGraph1 = d3.scaleLinear().domain([0, 31]).range([0, 500])
+  var yScaleGraph1 = d3.scaleLinear().domain([0, 250]).range([500, 0]);
+  var g = svg.append("g").attr("transform", "translate(100, 100)");
 
-      d3.select("svg")
-        .selectAll("circle")
-        .data(data)
-        .enter().append("circle")
-        .attr("cx", function(d) { return d.x; })
-        .attr("cy", function(d) { return d.y; })
-        .attr("r", 10)
-        .style("fill", "#ff8c00");
+  svg.append('text')
+    .attr('x', 500/2 + 100)
+    .attr('y', 100)
+    .attr('text-anchor', 'middle')
+    .style('font-size', 20)
+    .text('Covid Hospitalizations in March vs December of 2021');
+  
+  svg.append('text')
+    .attr('x', 500/2+100)
+    .attr('y', 500-15+150)
+    .style('font-size', 20)
+    .text('Days');
+  
+  svg.append('text')
+    .attr('text-anchor', 'middle')
+    .attr('transform', 'translate(30, 350)rotate(-90)')
+    .style('font-size', 20)
+    .text('Hospitalizations');
 
-      var data2 = []
-      var count2 = 10;
-      for (var i = 0; i < count2; i++) {
-        var x = (window.innerWidth/count2)*i+50;
-        var y = d3.randomUniform(100, window.innerHeight*0.7)();
-        data2.push({"x": x, "y": y});
+  g.append("g").attr("transform", "translate(0, 500)").call(d3.axisBottom(xScaleGraph1));
+  g.append("g").call(d3.axisLeft(yScaleGraph1));
 
-        if (y > bottomYValue) {
-          bottomYValue = y;
-        }
-      }
+  var graphLines = d3.line().x(function(d) { return xScaleGraph1(d[0]); }).y(function(d) { return yScaleGraph1(d[1]); }) 
+  
+  // Vax Hospitalizations in Dec
+  svg.append("path")
+    .datum(unvax_hos_dec) 
+    .attr("class", "line") 
+    .attr("transform", "translate(100, 100)")
+    .attr("d", graphLines)
+    .style("fill", "none")
+    .style("stroke", "#03fc03")
+    .style("stroke-width", "2");
 
-      for (var i = 0; i < data2.length; i++) {
-        if (i != data2.length-1) {
-          d3.select("svg")
-            .append("line")
-            .attr("x1", data2[i].x)
-            .attr("y1", data2[i].y)
-            .attr("x2", data2[i+1].x)
-            .attr("y2", data2[i+1].y)
-            .style("stroke", "#10e333")
-            .style("stroke-width", 3);
-        }
-      };
+  svg.append("path")
+    .datum(vax_hos_dec) 
+    .attr("class", "line") 
+    .attr("transform", "translate(100, 100)")
+    .attr("d", graphLines)
+    .style("fill", "none")
+    .style("stroke", "#fc0303")
+    .style("stroke-width", "2");
 
-      d3.select("svg")
-        .selectAll("rect")
-        .data(data2)
-        .enter().append("rect")
-        .attr("x", function(d) { return d.x-10; })
-        .attr("y", function(d) { return d.y-10; })
-        .attr("width", 20)
-        .attr("height", 20)
-        .style("fill", "#00ffea");
+  svg.append('g')
+    .selectAll("circle")
+    .data(vax_hos_dec)
+    .enter()
+    .append("circle")
+    .attr("cx", function (d) { return xScaleGraph1(d[0]); })
+    .attr("cy", function (d) { return yScaleGraph1(d[1]); })
+    .attr("r", 5)
+    .attr("transform", "translate(100, 100)")
+    .style("fill", "#03fc03");
 
-      
-      var data3 = []
-      var count3 = 10;
-      for (var i = 0; i < count2; i++) {
-        var x = (window.innerWidth/count2)*i+50;
-        var y = d3.randomUniform(100, window.innerHeight*0.7)();
-        data3.push({"x": x, "y": y});
+  svg.append('g')
+    .selectAll("rect")
+    .data(unvax_hos_dec)
+    .enter()
+    .append("rect")
+    .attr("x", function (d) { return xScaleGraph1(d[0])-5; })
+    .attr("y", function (d) { return yScaleGraph1(d[1])-5; })
+    .attr("width", 10)
+    .attr("height", 10)
+    .attr("transform", "translate(100, 100)")
+    .style("fill", "#fc0303");
 
-        if (y < bottomYValue) {
-          bottomYValue = y;
-        }
-      }
+  // MARCH IS BELOW!!!!!!!!!!!!!!!!!!!
+  svg.append("path")
+    .datum(vax_hos_march) 
+    .attr("class", "line") 
+    .attr("transform", "translate(100, 100)")
+    .attr("d", graphLines)
+    .style("fill", "none")
+    .style("stroke", "#ff00e6")
+    .style("stroke-width", "2");
 
-      for (var i = 0; i < data3.length; i++) {
-        if (i != data3.length-1) {
-          d3.select("svg")
-            .append("line")
-            .attr("x1", data3[i].x)
-            .attr("y1", data3[i].y)
-            .attr("x2", data3[i+1].x)
-            .attr("y2", data3[i+1].y)
-            .style("stroke", "#ff0019")
-            .style("stroke-width", 3);
-        }
-      };
+  var polyPoints = []
+  var pendegonSide = [[-10, -10], [10, -10], [15, 5], [0, 20], [-15, 5]]
+  for (var i = 0; i < vax_hos_march.length; i++) {
+    var outputString = "";
+    for (var j = 0; j < pendegonSide.length; j++) {
+      var x = vax_hos_march[i][0] + (pendegonSide[j][0]*0.025);
+      var y = vax_hos_march[i][1] + (pendegonSide[j][1]*0.15);
+      outputString += xScaleGraph1(x.toString()) + "," + yScaleGraph1(y.toString()) + " "
+    }
+    polyPoints.push(outputString);
+  }
 
-      data3.push({"x": 30, "y": window.innerHeight-130+2});
+  svg.append('g')
+    .selectAll("polygon")
+    .data(polyPoints)
+    .enter()
+    .append("polygon")
+    .attr("points", function(d) { return d })
+    .attr("transform", "translate(100, 100)")
+    .style("fill", "#1900ff");
 
-      var polyPoints = []
-      var pendegonSide = [[-10, -10], [10, -10], [15, 5], [0, 20], [-15, 5]]
-      for (var i = 0; i < data3.length; i++) {
-        var outputString = "";
-        for (var j = 0; j < pendegonSide.length; j++) {
-          var x = data3[i].x - pendegonSide[j][0];
-          var y = data3[i].y - pendegonSide[j][1];
-          outputString += x.toString() + "," + y.toString() + " "
+  svg.append("path")
+    .datum(unvax_hos_march) 
+    .attr("class", "line") 
+    .attr("transform", "translate(100, 100)")
+    .attr("d", graphLines)
+    .style("fill", "none")
+    .style("stroke", "#00ccff")
+    .style("stroke-width", "2");
 
-          if (y > bottomYValue && i != data3.length-1) {
-            bottomYValue = y;
-          }
-        }
-        polyPoints.push(outputString);
-      }
+  var polyPoints2 = []
+  var triangleSide = [[-10, -10], [10, -10], [0, 20]]
+  for (var i = 0; i < unvax_hos_march.length; i++) {
+    var outputString = "";
+    for (var j = 0; j < triangleSide.length; j++) {
+      var x = unvax_hos_march[i][0] + (triangleSide[j][0]*0.025);
+      var y = unvax_hos_march[i][1] + (triangleSide[j][1]*0.15);
+      outputString += xScaleGraph1(x.toString()) + "," + yScaleGraph1(y.toString()) + " "
+    }
+    polyPoints2.push(outputString);
+  }
 
-      d3.select("svg")
-        .selectAll("polygon")
-        .data(polyPoints)
-        .enter().append("polygon")
-        .attr("points", function(d) { return d })
-        .style("fill", "#1900ff");
+  svg.append('g')
+    .selectAll("polygon")
+    .data(polyPoints2)
+    .enter()
+    .append("polygon")
+    .attr("points", function(d) { return d })
+    .attr("transform", "translate(100, 100)")
+    .style("fill", "#ff9900");
 
-        d3.select("svg")
-        .append("text")
-        .attr("x", 500)
-        .attr("y", window.innerHeight-50+2)
-        .attr("font-size", "20")
-        .text("Lines are the Red, Green, and Blue Lines");
+  d3.select("svg")
+    .append("text")
+    .attr("x", 650)
+    .attr("y", window.innerHeight-50+2)
+    .attr("font-size", "20")
+    .text("Lines are the Red, Green, and Blue Lines");
 
-      d3.select("svg")
-        .append("text")
-        .attr("x", 50)
-        .attr("y", window.innerHeight-130+2)
-        .attr("font-size", "20")
-        .text("->Polygon Points");
+  d3.select("svg")
+    .append("text")
+    .attr("x", 50)
+    .attr("y", window.innerHeight-180+2)
+    .attr("font-size", "20")
+    .text("Triangle Points Orange: Unvax Hospitalizations in March 2021");
 
-      /*d3.select("svg")
-        .append("polygon")
-        .attr("points", "40,806 60,806 65,821 50,836,")
-        .style("fill", "#1900ff");*/
+  d3.select("svg")
+    .append("text")
+    .attr("x", 50)
+    .attr("y", window.innerHeight-130+2)
+    .attr("font-size", "20")
+    .text("Pentagon Polygon Points Blue: Vax Hospitalizations in March 2021");
 
-      d3.select("svg")
-        .append("text")
-        .attr("x", 50)
-        .attr("y", window.innerHeight-80+2)
-        .attr("font-size", "20")
-        .text("-> Circle Points");
+  d3.select("svg")
+    .append("text")
+    .attr("x", 50)
+    .attr("y", window.innerHeight-80+2)
+    .attr("font-size", "20")
+    .text("Circle Points Green: Vax Hospitalizations December 2021");
 
-      d3.select("svg")
-        .append("circle")
-        .attr("cx", 20)
-        .attr("cy", window.innerHeight-80)
-        .attr("r", 10)
-        .style("fill", "#ff8c00");
-
-      d3.select("svg")
-        .append("text")
-        .attr("x", 50)
-        .attr("y", window.innerHeight-23)
-        .attr("font-size", "20")
-        .text("-> Rectangle Points");
-
-      d3.select("svg")
-        .append("rect")
-        .attr("x", 10)
-        .attr("y", window.innerHeight-40)
-        .attr("width", 20)
-        .attr("height", 20)
-        .style("fill", "#00ffea");
-
-      d3.select("svg")
-        .append("text")
-        .attr("x", window.innerWidth/2-100)
-        .attr("y", bottomYValue+100)
-        .attr("font-size", "20")
-        .text("Random X Values");
-
-      d3.select("svg")
-        .append("text")
-        .attr("x", window.innerHeight/2-100)
-        .attr("y", 0)
-        .attr("font-size", "20")
-        .attr('transform', 'rotate(90)')
-        .text("Random Y Values");
-    </script>
-  </body>
-</html>
-
+  d3.select("svg")
+    .append("text")
+    .attr("x", 50)
+    .attr("y", window.innerHeight-23)
+    .attr("font-size", "20")
+    .text("Rectangle Points Red: Unvax Hospitalizations December 2021");
+</script>
