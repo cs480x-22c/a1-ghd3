@@ -19,6 +19,7 @@ Links
 Technical Achievement Description
 ---
 
+![alt text](https://github.com/MilesGregg/a1-ghd3/blob/master/main.png?raw=true)
 
 
 Design Achievement Description
