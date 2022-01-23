@@ -116,6 +116,8 @@
         }
       };
 
+      data3.push({"x": 30, "y": window.innerHeight-130+2});
+
       var polyPoints = []
       var pendegonSide = [[-10, -10], [10, -10], [15, 5], [0, 20], [-15, 5]]
       for (var i = 0; i < data3.length; i++) {
@@ -125,7 +127,7 @@
           var y = data3[i].y - pendegonSide[j][1];
           outputString += x.toString() + "," + y.toString() + " "
 
-          if (y > bottomYValue) {
+          if (y > bottomYValue && i != data3.length-1) {
             bottomYValue = y;
           }
         }
@@ -139,8 +141,48 @@
         .enter().append("polygon")
         .attr("points", function(d) { return d })
         .style("fill", "#1900ff");
+      d3.select("svg")
+        .append("text")
+        .attr("x", 50)
+        .attr("y", window.innerHeight-130+2)
+        .attr("font-size", "20")
+        .text("->Polygon Points");
 
-      console.log(bottomYValue);
+      console.log(window.innerHeight-130+2);
+
+      /*d3.select("svg")
+        .append("polygon")
+        .attr("points", "40,806 60,806 65,821 50,836,")
+        .style("fill", "#1900ff");*/
+
+      d3.select("svg")
+        .append("text")
+        .attr("x", 50)
+        .attr("y", window.innerHeight-80+2)
+        .attr("font-size", "20")
+        .text("-> Circle Points");
+
+      d3.select("svg")
+        .append("circle")
+        .attr("cx", 20)
+        .attr("cy", window.innerHeight-80)
+        .attr("r", 10)
+        .style("fill", "#ff8c00");
+
+      d3.select("svg")
+        .append("text")
+        .attr("x", 50)
+        .attr("y", window.innerHeight-23)
+        .attr("font-size", "20")
+        .text("-> Rectangle Points");
+
+      d3.select("svg")
+        .append("rect")
+        .attr("x", 10)
+        .attr("y", window.innerHeight-40)
+        .attr("width", 20)
+        .attr("height", 20)
+        .style("fill", "#00ffea");
 
       d3.select("svg")
         .append("text")
@@ -156,7 +198,6 @@
         .attr("font-size", "20")
         .attr('transform', 'rotate(90)')
         .text("Random Y Values");
-
     </script>
   </body>
 </html>
