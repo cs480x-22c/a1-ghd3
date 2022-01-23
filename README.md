@@ -26,7 +26,7 @@ For the techical achievement for this assignment I was successfully able to get 
 Design Achievement Description
 ---
 
-For the design achievement I was able to make a accurate graph that represents very important data for people to see. I wanted to see the Covid Hospitalizations for the two completely different months of 2021. Designing the graph I made four different shapes for each statisic I am trying to show. The four statistics I'm trying to show are Vax and Unax Hospitlizations in March 2021 and Vax and Unax Hospitlizations in December 2021. For the different colors in my graph I was able to use Google Color Picker to choose different colors for different shpaes and lines. 
+For the design achievement I was able to make a accurate graph that represents very important data for people to see. I wanted to see the Covid Hospitalizations for the two completely different months of 2021. Designing the graph I made four different shapes for each statisic I am trying to show. The four statistics I'm trying to show are Vax and Unvax Hospitlizations in March 2021 and Vax and Unvax Hospitlizations in December 2021. For the different colors in my graph I was able to use Google Color Picker to choose different colors for different shpaes and lines. 
 
 ![alt text](https://github.com/MilesGregg/a1-ghd3/blob/master/color_picker.png?raw=true)
 
