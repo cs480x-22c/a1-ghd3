@@ -1,10 +1,24 @@
-<script src="https://d3js.org/d3.v6.min.js"></script>
+<html>
+  <head>
+  </head>
+  <body>
+    <script src="https://d3js.org/d3.v6.min.js"></script>
 
-<script>
-  console.log(d3); // test if d3 is loaded
-  // Add an SVG
-  // Add Rectangles
-  // Add Circles
-  // Add Lines
-  // Add Polygons
-</script>
+    <script>
+      console.log(d3); // test if d3 is loaded
+      // Add an SVG
+      d3.xml("cat.svg").then(data => {
+        d3.select("#svg-container").node().append(data.documentElement)
+      });
+
+      // Add Rectangles
+      // Add Circles
+      // Add Lines
+      // Add Polygons
+    </script>
+
+
+    <div id="svg-container"></div>
+  </body>
+</html>
+
