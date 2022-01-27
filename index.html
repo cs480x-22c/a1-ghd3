@@ -1,16 +1,24 @@
+<!DOCTYPE html>
 <html>
   <head>
   </head>
   <body>
-    <script src="https://d3js.org/d3.v6.min.js"></script>
+    <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
 
     <script>
       console.log(d3); // test if d3 is loaded
       // Add an SVG
-      d3.xml("cat.svg").then(data => {
-        d3.select("#svg-container").node().append(data.documentElement)
-      });
 
+      d3.text("xOPvPn01.svg", function(error, externalSVGText) {
+         if (error) {console.log(error); return;}
+
+         chart_div.html(externalSVGText);
+
+         svg = chart_div.select("svg");
+
+         do_stuff();
+      });
+  
       // Add Rectangles
       // Add Circles
       // Add Lines
