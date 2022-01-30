@@ -9,13 +9,17 @@
       <svg width="300" height="300" class="cat"></svg>
     </div>
 
+    <div style="width: 400px; text-align: center;">
+      <button onclick="bedtime()"> Bedtime</button>
+    </div>
+
+
     <script>
       console.log(d3); // test if d3 is loaded
       var width = 300;
       var height = 300;
       var svg = d3.select("#svgcontainer").append("svg").attr("width", width).attr("height", height);
 
-      // var curveData = [{ x: 200, y: 230 }, { x: 360, y: 100 }];
       var curveData = [{ x: 360, y: 100 }, { x: 200, y: 230 }];
       var edge = d3.select('svg').append('g');
       var diagonal = d3.svg.diagonal()
@@ -37,7 +41,7 @@
       .append('path')
       .attr('class', 'link')
       .attr('d', diagonal)
-      .attr('stroke', 'orange')
+      .attr('stroke', '#f0aa54')
       .attr('stroke-width', 8)
       .attr('fill', 'none');
 
@@ -46,7 +50,7 @@
       .append("polygon")
       .attr('points', '166,65, 163,86, 193,85')
       .style('stroke', 'black')
-      .style('fill', 'orange');
+      .style('fill', '#f0aa54');
 
       cat
       .append("polygon")
@@ -58,7 +62,7 @@
       .append("polygon")
       .attr('points', '232,65, 210,86, 237,85')
       .style('stroke', 'black')
-      .style('fill', 'orange');
+      .style('fill', '#f0aa54');
 
       cat
       .append("polygon")
@@ -72,7 +76,7 @@
       .attr("cy", 210)
       .attr("rx", 20)
       .attr("ry", 40)
-      .attr("fill", "orange")
+      .attr("fill", "#f0aa54")
       .style("stroke", "black");
 
       cat
@@ -81,7 +85,7 @@
       .attr("cy", 245)
       .attr("rx", 25)
       .attr("ry", 10)
-      .attr("fill", "orange")
+      .attr("fill", "#f0aa54")
       .style("stroke", "black");
 
       cat
@@ -90,7 +94,7 @@
       .attr("cy", 210)
       .attr("rx", 20)
       .attr("ry", 40)
-      .attr("fill", "orange")
+      .attr("fill", "#f0aa54")
       .style("stroke", "black");
 
       cat
@@ -99,7 +103,7 @@
       .attr("cy", 190)
       .attr("rx", 50)
       .attr("ry", 60)
-      .attr("fill", "orange")
+      .attr("fill", "#f0aa54")
       .style("stroke", "black");
 
       cat
@@ -108,7 +112,7 @@
       .attr("cy", 190)
       .attr("rx", 30)
       .attr("ry", 40)
-      .attr("fill", "yellow")
+      .attr("fill", "#e6d9ca")
       .style("stroke", "black");
 
       cat
@@ -116,30 +120,7 @@
       .attr('cx', 200)
       .attr('cy', 120)
       .attr('r', 50)
-      .attr('fill', 'orange')
-      .style('stroke', 'black');
-
-      var grad = cat.append("defs")
-          .append("linearGradient").attr("id", "grad")
-              .attr("x1", "0%").attr("x2", "0%").attr("y1", "100%").attr("y2", "0%");
-
-        grad.append("stop").attr("offset", "60%").style("stop-color", "white");
-        grad.append("stop").attr("offset", "40%").style("stop-color", "orange");
-
-      cat
-      .append("circle")
-      .attr("r",10)
-      .attr("cx",180)
-      .attr("cy",110)
-      .style("stroke","black")
-      .style("fill","url(#grad)");
-
-      cat
-      .append("circle")
-      .attr('cx', 220)
-      .attr('cy', 110)
-      .attr('r', 10)
-      .attr('fill', 'url(#grad)')
+      .attr('fill', '#f0aa54')
       .style('stroke', 'black');
 
       cat
@@ -182,26 +163,10 @@
 
       cat
       .append("circle")
-      .attr('cx', 180)
-      .attr('cy', 113)
-      .attr('r', 3)
-      .attr('fill', 'black')
-      .style('stroke', 'black');
-
-      cat
-      .append("circle")
-      .attr('cx', 220)
-      .attr('cy', 113)
-      .attr('r', 3)
-      .attr('fill', 'black')
-      .style('stroke', 'black');
-
-      cat
-      .append("circle")
       .attr('cx', 185)
       .attr('cy', 245)
       .attr('r', 11)
-      .attr('fill', 'orange')
+      .attr('fill', '#f0aa54')
       .style('stroke', 'black');
 
       cat
@@ -209,7 +174,7 @@
       .attr('cx', 215)
       .attr('cy', 245)
       .attr('r', 11)
-      .attr('fill', 'orange')
+      .attr('fill', '#f0aa54')
       .style('stroke', 'black');
 
       cat
@@ -218,15 +183,61 @@
       .attr("cy", 245)
       .attr("rx", 25)
       .attr("ry", 10)
-      .attr("fill", "orange")
+      .attr("fill", "#f0aa54")
       .style("stroke", "black");
+
+      var grad = cat.append("defs")
+          .append("linearGradient").attr("id", "grad")
+              .attr("x1", "0%").attr("x2", "0%").attr("y1", "100%").attr("y2", "0%");
+
+        grad.append("stop").attr("offset", "60%").style("stop-color", "white");
+        grad.append("stop").attr("offset", "40%").style("stop-color", "#f0aa54");
+
+      var eye1 = cat.append("circle")
+      .attr("r",10)
+      .attr("cx",180)
+      .attr("cy",110)
+      .style("stroke","black")
+      .style('background', 'url(#grad)')
+      .attr("fill","url(#grad)");
+
+      var eye2 = cat.append('circle')
+      .attr('cx', 220)
+      .attr('cy', 110)
+      .attr('r', 10)
+      .attr('fill', 'url(#grad)')
+      .style('stroke', 'black');
+
+      var pup1 = cat.append("circle")
+      .attr('cx', 180)
+      .attr('cy', 113)
+      .attr('r', 3)
+      .attr('fill', 'black')
+      .style('stroke', 'black');
+
+      var pup2 = cat.append("circle")
+      .attr('cx', 220)
+      .attr('cy', 113)
+      .attr('r', 3)
+      .attr('fill', 'black')
+      .style('stroke', 'black');
+
+      function bedtime() {
+        d3.selectAll("svg > *").remove();
+        //var svg = d3.select("#svgcontainer").append("svg").attr("width", 300).attr("height", 300);
+        var cat = d3.select("svg.cat").append("svg");
+
+        cat
+        .append("ellipse")
+        .attr("cx", 200)
+        .attr("cy", 190)
+        .attr("rx", 60)
+        .attr("ry", 50)
+        .attr("fill", "#f0aa54")
+        .style("stroke", "black");
+
+      }
      
-      
-      // Add an SVG
-      // Add Rectangles
-      // Add Circles
-      // Add Lines
-      // Add Polygons
     </script>
   </body>
 </html>
