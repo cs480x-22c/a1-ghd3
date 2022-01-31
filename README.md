@@ -4,10 +4,10 @@ Assignment 1 - Hello World: GitHub and d3
 This is a project using d3.js to generate a cat graphic and a little mouse that moves back and forth on the screen. To do this, I first created the awake cat design using a variety of different primitive svg shapes, such as: lines, polygons, circles, ellipses, and rectangles, in different colors. To make the cat's eyes half-closed, I used the following code snippet: https://stackoverflow.com/questions/17511614/half-filled-circle-with-d3-js to fill a circle in two different colors. I also added a button below the cat that is labeled 'bedtime!' to tell the cat that it is time for bed. Clicking this button generates a graphic of the cat sleeping. You click the button again (labeled 'wake!' this time) to wake the cat up again. I also made a tiny mouse using the basic shapes and used d3 to animate him moving back and forth on the page.
 
 Here is a picture of the page when the cat is awake:
-![Awake Cat](/Awake.jpg?raw=true)
+![Awake Cat](https://github.com/mcaten/a1-ghd3/blob/master/Awake.JPG?raw=true)
 
 And here is a picture of the page when the cat is asleep:
-![Asleep Cat](/Sleep.jpg?raw=true)
+![Asleep Cat](https://github.com/mcaten/a1-ghd3/blob/master/Sleep.JPG?raw=true)
 
 Submission Details
 ---
