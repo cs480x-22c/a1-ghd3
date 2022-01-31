@@ -1,10 +1,455 @@
-<script src="https://d3js.org/d3.v6.min.js"></script>
+<!DOCTYPE html>
+<html>
+  <head> 
+    <h1 style="text-align: center; font-family: Tahoma, sans-serif;">Project #1</h1>
+  </head>
+  <body style="background: #f2ecda;">
+    <script src="https://d3js.org/d3.v6.min.js" charset="utf-8"></script>
 
-<script>
-  console.log(d3); // test if d3 is loaded
-  // Add an SVG
-  // Add Rectangles
-  // Add Circles
-  // Add Lines
-  // Add Polygons
-</script>
+    <div id="svgcontainer">
+      <svg width="300" height="300" class="cat"></svg>
+      <svg width="600" height="300" class="mouse"></svg>
+    </div>
+
+    <div style="width: 400px; text-align: center">
+      <button id="catButton" onclick="changeCat()">Bedtime!</button>
+    </div>
+
+    <script>
+      var state = 1;
+      console.log(d3); // test if d3 is loaded
+      var width = 300;
+      var height = 300;
+      var svg = d3
+        .select("#svgcontainer")
+        .append("svg")
+        .attr("width", width)
+        .attr("height", height);
+      var cat = d3.select("svg.cat").append("svg");
+
+      var mouse = d3.select("svg.mouse").append("svg")
+
+      mouse
+      .append("ellipse")
+      .attr("cx", 100)
+      .attr("cy", 220)
+      .attr("rx", 30)
+      .attr("ry", 20)
+      .attr("fill", "#abaaa7")
+      .style("stroke", "black")
+
+      mouse
+      .append("ellipse")
+      .attr("cx", 115)
+      .attr("cy", 225)
+      .attr("rx", 5)
+      .attr("ry", 5)
+      .attr("fill", "pink")
+      .style("stroke", "black")
+
+      mouse
+      .append("ellipse")
+      .attr("cx", 119)
+      .attr("cy", 213)
+      .attr("rx", 2)
+      .attr("ry", 2)
+      .attr("fill", "black")
+      .style("stroke", "black")
+
+      mouse
+      .append("ellipse")
+      .attr("cx", 110)
+      .attr("cy", 213)
+      .attr("rx", 2)
+      .attr("ry", 2)
+      .attr("fill", "black")
+      .style("stroke", "black")
+
+      mouse
+      .append("ellipse")
+      .attr("cx", 102)
+      .attr("cy", 205)
+      .attr("rx", 4)
+      .attr("ry", 4)
+      .attr("fill", "#abaaa7")
+      .style("stroke", "black")
+
+      mouse
+      .append("ellipse")
+      .attr("cx", 123)
+      .attr("cy", 205)
+      .attr("rx", 4)
+      .attr("ry", 4)
+      .attr("fill", "#abaaa7")
+      .style("stroke", "black")
+
+      mouse
+      .append("line")
+      .attr("x1", 70)
+      .attr("y1", 220)
+      .attr("x2", 55)
+      .attr("y2", 200)
+      .style("stroke", "black")
+
+      function mouseRun(duration) {
+        mouse
+          .transition()
+          .ease(d3.easeCubic)
+          .on("start", function repeat() {
+            d3.active(this)
+              .attr("x", 100)
+              .transition()
+              .duration(duration)
+              .attr("x", 400)
+              .transition()
+              .duration(duration)
+              .attr("x", 100)
+              .on("start", repeat);
+          });
+      }
+
+      function awake() {
+        cat.selectAll("*").remove();
+        document.getElementById("catButton").innerHTML = "Bedtime!";
+        var curveData = [
+          { x: 360, y: 100 },
+          { x: 200, y: 230 },
+        ];
+       cat
+       .append("ellipse")
+       .attr("transform", "rotate(45)")
+       .attr("cx", 240)
+       .attr("cy", 10)
+       .attr("rx", 80)
+       .attr("ry", 5)
+       .attr("fill", "#f0aa54")
+       .style("stroke", "black")
+
+          //var cat = d3.select("svg.cat").append("svg");
+        cat
+          .append("polygon")
+          .attr("points", "166,65, 163,86, 193,85")
+          .style("stroke", "black")
+          .style("fill", "#f0aa54");
+
+        cat
+          .append("polygon")
+          .attr("points", "169,72, 167,88, 185,85")
+          .style("stroke", "black")
+          .style("fill", "pink");
+
+        cat
+          .append("polygon")
+          .attr("points", "232,65, 210,86, 237,85")
+          .style("stroke", "black")
+          .style("fill", "#f0aa54");
+
+        cat
+          .append("polygon")
+          .attr("points", "230,72, 213,86, 233,85")
+          .style("stroke", "black")
+          .style("fill", "pink");
+
+        cat
+          .append("ellipse")
+          .attr("cx", 155)
+          .attr("cy", 210)
+          .attr("rx", 20)
+          .attr("ry", 40)
+          .attr("fill", "#f0aa54")
+          .style("stroke", "black");
+
+        cat
+          .append("ellipse")
+          .attr("cx", 145)
+          .attr("cy", 245)
+          .attr("rx", 25)
+          .attr("ry", 10)
+          .attr("fill", "#f0aa54")
+          .style("stroke", "black");
+
+        cat
+          .append("ellipse")
+          .attr("cx", 245)
+          .attr("cy", 210)
+          .attr("rx", 20)
+          .attr("ry", 40)
+          .attr("fill", "#f0aa54")
+          .style("stroke", "black");
+
+        cat
+          .append("ellipse")
+          .attr("cx", 200)
+          .attr("cy", 190)
+          .attr("rx", 50)
+          .attr("ry", 60)
+          .attr("fill", "#f0aa54")
+          .style("stroke", "black");
+
+        cat
+          .append("ellipse")
+          .attr("cx", 200)
+          .attr("cy", 190)
+          .attr("rx", 30)
+          .attr("ry", 40)
+          .attr("fill", "#ffd6a3")
+          .style("stroke", "black");
+
+        cat
+          .append("circle")
+          .attr("cx", 200)
+          .attr("cy", 120)
+          .attr("r", 50)
+          .attr("fill", "#f0aa54")
+          .style("stroke", "black");
+
+        cat
+          .append("polygon")
+          .attr("points", "190,140, 200,150, 210,140")
+          .style("stroke", "black")
+          .style("fill", "pink");
+
+        cat
+          .append("line")
+          .attr("x1", 217)
+          .attr("y1", 140)
+          .attr("x2", 227)
+          .attr("y2", 135)
+          .style("stroke", "black");
+
+        cat
+          .append("line")
+          .attr("x1", 217)
+          .attr("y1", 140)
+          .attr("x2", 227)
+          .attr("y2", 145)
+          .style("stroke", "black");
+
+        cat
+          .append("line")
+          .attr("x1", 183)
+          .attr("y1", 140)
+          .attr("x2", 173)
+          .attr("y2", 135)
+          .style("stroke", "black");
+
+        cat
+          .append("line")
+          .attr("x1", 183)
+          .attr("y1", 140)
+          .attr("x2", 173)
+          .attr("y2", 145)
+          .style("stroke", "black");
+
+        cat
+          .append("circle")
+          .attr("cx", 185)
+          .attr("cy", 245)
+          .attr("r", 11)
+          .attr("fill", "#f0aa54")
+          .style("stroke", "black");
+
+        cat
+          .append("circle")
+          .attr("cx", 215)
+          .attr("cy", 245)
+          .attr("r", 11)
+          .attr("fill", "#f0aa54")
+          .style("stroke", "black");
+
+        cat
+          .append("ellipse")
+          .attr("cx", 255)
+          .attr("cy", 245)
+          .attr("rx", 25)
+          .attr("ry", 10)
+          .attr("fill", "#f0aa54")
+          .style("stroke", "black");
+
+        var grad = cat
+          .append("defs")
+          .append("linearGradient")
+          .attr("id", "grad")
+          .attr("x1", "0%")
+          .attr("x2", "0%")
+          .attr("y1", "100%")
+          .attr("y2", "0%");
+
+        grad.append("stop").attr("offset", "60%").style("stop-color", "white");
+        grad
+          .append("stop")
+          .attr("offset", "40%")
+          .style("stop-color", "#f0aa54");
+
+        var eye1 = cat
+          .append("circle")
+          .attr("r", 10)
+          .attr("cx", 180)
+          .attr("cy", 110)
+          .style("stroke", "black")
+          .style("background", "url(#grad)")
+          .attr("fill", "url(#grad)");
+
+        var eye2 = cat
+          .append("circle")
+          .attr("cx", 220)
+          .attr("cy", 110)
+          .attr("r", 10)
+          .attr("fill", "url(#grad)")
+          .style("stroke", "black");
+
+        var pup1 = cat
+          .append("circle")
+          .attr("cx", 180)
+          .attr("cy", 113)
+          .attr("r", 3)
+          .attr("fill", "black")
+          .style("stroke", "black");
+
+        var pup2 = cat
+          .append("circle")
+          .attr("cx", 220)
+          .attr("cy", 113)
+          .attr("r", 3)
+          .attr("fill", "black")
+          .style("stroke", "black");
+      }
+
+      function bedtime() {
+        cat.selectAll("*").remove();
+        //var svg = d3.select("#svgcontainer").append("svg").attr("width", 300).attr("height", 300);
+        document.getElementById("catButton").innerHTML = "Wake!";
+
+        cat
+          .append("ellipse")
+          .attr("cx", 200)
+          .attr("cy", 190)
+          .attr("rx", 70)
+          .attr("ry", 45)
+          .attr("fill", "#f0aa54")
+          .style("stroke", "black");
+
+        cat
+          .append("polygon")
+          .attr("transform", "translate(-35, 93)")
+          .attr("points", "166,65, 163,86, 193,85")
+          .style("stroke", "black")
+          .style("fill", "#f0aa54");
+
+        cat
+          .append("polygon")
+          .attr("transform", "translate(-35, 93)")
+          .attr("points", "169,72, 167,88, 185,85")
+          .style("stroke", "black")
+          .style("fill", "pink");
+
+        cat
+          .append("polygon")
+          .attr("transform", "translate(-55, 93)")
+          .attr("points", "232,65, 210,86, 237,85")
+          .style("stroke", "black")
+          .style("fill", "#f0aa54");
+
+        cat
+          .append("polygon")
+          .attr("transform", "translate(-55, 93)")
+          .attr("points", "230,72, 213,86, 233,85")
+          .style("stroke", "black")
+          .style("fill", "pink");
+
+        cat
+          .append("ellipse")
+          .attr("cx", 155)
+          .attr("cy", 200)
+          .attr("rx", 35)
+          .attr("ry", 35)
+          .attr("fill", "#f0aa54")
+          .style("stroke", "black");
+
+        cat
+          .append("ellipse")
+          .attr("cx", 141)
+          .attr("cy", 190)
+          .attr("rx", 8)
+          .attr("ry", 8)
+          .attr("fill", "#f0aa54")
+          .style("stroke", "black");
+
+        cat
+          .append("ellipse")
+          .attr("cx", 168)
+          .attr("cy", 190)
+          .attr("rx", 8)
+          .attr("ry", 8)
+          .attr("fill", "#f0aa54")
+          .style("stroke", "black");
+
+        cat
+          .append("rect")
+          .attr("x", 130)
+          .attr("y", 181)
+          .attr("width", 50)
+          .attr("height", 8)
+          .attr("fill", "#f0aa54");
+
+        cat
+          .append("polygon")
+          .attr("transform", "translate(-48, 70)")
+          .attr("points", "190,140, 200,150, 210,140")
+          .style("stroke", "black")
+          .style("fill", "pink");
+
+        cat
+          .append("line")
+          .attr("transform", "translate(-48, 70)")
+          .attr("x1", 217)
+          .attr("y1", 140)
+          .attr("x2", 227)
+          .attr("y2", 135)
+          .style("stroke", "black");
+
+        cat
+          .append("line")
+          .attr("transform", "translate(-48, 70)")
+          .attr("x1", 217)
+          .attr("y1", 140)
+          .attr("x2", 227)
+          .attr("y2", 145)
+          .style("stroke", "black");
+
+        cat
+          .append("line")
+          .attr("transform", "translate(-48, 70)")
+          .attr("x1", 183)
+          .attr("y1", 140)
+          .attr("x2", 173)
+          .attr("y2", 135)
+          .style("stroke", "black");
+
+        cat
+          .append("line")
+          .attr("transform", "translate(-48, 70)")
+          .attr("x1", 183)
+          .attr("y1", 140)
+          .attr("x2", 173)
+          .attr("y2", 145)
+          .style("stroke", "black");
+      }
+
+      awake()
+      mouseRun(2000)
+
+      function changeCat() {
+        if(state == 0) {
+          state = 1
+          awake()
+        }
+
+        else{
+          state = 0
+          bedtime()
+        }
+      }
+    </script>
+  </body>
+</html>

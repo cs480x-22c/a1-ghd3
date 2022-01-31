@@ -1,86 +1,34 @@
 Assignment 1 - Hello World: GitHub and d3  
 ===
 
-This is a starting project to make sure you can write and host a webpage that generates graphics using d3. 
+This is a project using d3.js to generate a cat graphic and a little mouse that moves back and forth on the screen. To do this, I first created the awake cat design using a variety of different primitive svg shapes, such as: lines, polygons, circles, ellipses, and rectangles, in different colors. To make the cat's eyes half-closed, I used the following code snippet: https://stackoverflow.com/questions/17511614/half-filled-circle-with-d3-js to fill a circle in two different colors. I also added a button below the cat that is labeled 'bedtime!' to tell the cat that it is time for bed. Clicking this button generates a graphic of the cat sleeping. You click the button again (labeled 'wake!' this time) to wake the cat up again. I also made a tiny mouse using the basic shapes and used d3 to animate him moving back and forth on the page.
 
-The primary goal is to be able to generate graphics primitives (circles, rectangles, lines, polygons) at different locations on the screen with different colors. 
+Here is a picture of the page when the cat is awake:
+![Awake Cat](https://github.com/mcaten/a1-ghd3/blob/master/Awake.JPG?raw=true)
 
-The secondary goal is to introduce you to coding on GitHub, including creating a gh-pages branch to host your visualizations.
-
-You may write everything from scratch, or start with demo programs from books or the web. 
-If you do start with code that you found, you **must identify** the source of the code in your README and, most importantly, make non-trivial changes to the code to make it your own so you really learn what you're doing. 
-
-For example, you could download one of the d3.js examples, read it through so you understand what it's doing, and then change the appearance of the graphical output to use different color schemes, different primitive shapes, different layouts of the primitives, and so on.
-
-Resources
----
-
-If you need a JavaScript/HTML/CSS refresher, see [JavaScript Codeacademy](https://www.codecademy.com/en/tracks/javascript) or find one of your choosing on the web.
-
-If you need a Git/GitHub refreseher, some possible resources include [Getting Started with GitHub](https://help.github.com/categories/bootcamp/), the [GitHub Guides](https://guides.github.com/) (especially the ones on Hello World, and Understanding the GitHub Flow, and Forking Projects), and [CodeSchool's Try Git Course](https://www.codeschool.com/courses/try-git).
-
-Requirements
----
-
-1. Your project should contain at least four kinds of graphics primitives (circles, rectangles, lines, polygons) in different colors. 
-2. Your document should identify the source of the code if you start with code that you found. 
-3. Your code should be forked from the GitHub repo and linked using GitHub pages. See the "GitHub Details" section below for detailed instructions on how to do this.
-
-GitHub Details
----
-
-- Fork the GitHub Repository for Assignment 1. You now have a copy associated with your username.
-- Make changes to index.html to fulfill the project requirements. 
-- Make sure your "main" branch matches your "gh-pages" branch. See the GitHub Guides referenced above if you need help.
-- Edit the README.md with a link to your gh-pages site "http://YourUsernameGoesHere.github.io/01-ghd3/index.html".
+And here is a picture of the page when the cat is asleep:
+![Asleep Cat](https://github.com/mcaten/a1-ghd3/blob/master/Sleep.JPG?raw=true)
 
 Submission Details
 ---
-- To submit, make a [Pull Request](https://help.github.com/articles/using-pull-requests/) on the original repository.
-- Note: name your pull request using the following scheme: 
-```
-a1-your Gh username-your first name-your lastname
+Link: https://mcaten.github.io/a1-ghd3/
 
-```
-
-Vis Details
+Design Achievements
 ---
+For the design achievements, I designed the color of the cat using a html color-picker instead of using simple built-in colors. In addition, I designed three separate complex graphics from scratch using d3. I also implemented a button on the page that changes the svg on the screen and also changes text based on the state of the cat (asleep or awake). Per the assignment requirements, I used basic svg shapes such as lines, polygons, circles, and rectangles to create the cat and mouse as seen on the screen. Also to save time with coordinates of shapes, I used transforms to translate shapes from the awake cat (that I created first) into a different location on the screen for the sleeping cat, since many of the shapes are the exact same. Finally, I used d3 gradients to make the eyes on the cat appear half-closed when the cat is awake. I used the gradient to half-fill the circles (code inspiration: https://stackoverflow.com/questions/17511614/half-filled-circle-with-d3-js)
 
-For this project you should use d3.js. 
-You can learn from examples on the [d3.js](http://d3js.org) site or start from scratch.
-
-See the [Using d3js](https://github.com/mbostock/d3/wiki#using) documentation for how to run your own local server.
-
-Creative solutions are welcome! In the past I've seen recreations of paintings, interactives, and more.
-
-Go beyond the minimum requirements of this project.
-Experiment with other aspects of the [d3 API](https://github.com/mbostock/d3/wiki/API-Reference) and [d3 Tutorials](https://github.com/mbostock/d3/wiki/Tutorials). 
-Try making the elements interactive, for example, or animate them.
-
-Grading
+Technical Achievements
 ---
+For the technical achievements, I animated the mouse on the screen. I used d3 to animate the mouse by creating a mouseRun() function that uses transitions to move the coordinates of the mouse back and forth. This function uses .ease(d3.easeCubic) to smooth the animation and give the mouse a frantic running effect. It also uses the animation duration to make the mouse take 2 seconds to run from one side of the screen to another. I also added a listener for the event starting to make the animation loop infinitely (code from: https://stackoverflow.com/questions/23232929/looping-transition-in-d3). In addition, I used two functions to draw the cat being asleep and awake, and clears the svg on the screen to draw the cat each time each of these functions are called (code from: https://stackoverflow.com/questions/22452112/nvd3-clear-svg-before-loading-new-chart). To also accomplish this with the press of a button, I used a variable that keeps track of the state of the cat (asleep or awake) so the cat can go back and forth between being asleep and being awake. 
+ 
+Sources
+---
+https://www.tutorialspoint.com/d3js/d3js_introduction_to_svg.htm (basic shapes tutorial)\
+https://www.tutorialspoint.com/d3js/d3js_svg_transformation.htm (transformations tutorial)\
+https://www.tutorialspoint.com/d3js/d3js_transition.htm (transitions tutorial)\
+https://www.tutorialspoint.com/d3js/d3js_animation.htm (animations tutorial)\
+https://stackoverflow.com/questions/17511614/half-filled-circle-with-d3-js (gradient)\
+https://stackoverflow.com/questions/23232929/looping-transition-in-d3 (looping animation)\
+https://stackoverflow.com/questions/22452112/nvd3-clear-svg-before-loading-new-chart (clear svg)
 
-Grades are on a 120 point scale. 
-96 points will be graded for functionality: the program does what the assignment requests with an informative README. 
-
-We will use Google Chrome to view submissions. 
-Be sure to test your code there.
-
-Below are some, but not necessarily all, of the key points we will consider during grading:
-
-- Circles and Rectangles  
-- Lines  
-- Polygons  
-- Different colors  
-- README Quality
-    - A description of what you have created. 1-2 screenshots are recommended for the README.  
-    - A working link to the hosted files (usually the gh-pages 'live' url)  
-    - Section for Technical and Design Achievements
-
-Technical Achievement Desription -- 12  
-Design Achievement Description -- 12
-
-Remember, it is up to *you* to define what constitutes a technical and design achievements.
-Be ambitious as these are designed to allow you to shape your learning.
-These are the only way to move from B to A territory.
 
