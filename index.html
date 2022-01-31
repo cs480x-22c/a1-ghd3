@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html>
-  <head> </head>
-  <body>
+  <head> 
+    <h1 style="text-align: center; font-family: Tahoma, sans-serif;">Project #1</h1>
+  </head>
+  <body style="background: #f2ecda;">
     <script src="http://d3js.org/d3.v6.min.js" charset="utf-8"></script>
 
     <div id="svgcontainer">
@@ -106,6 +108,10 @@
           });
       }
 
+      function blink(duration) {
+
+      }
+
       function awake() {
         cat.selectAll("*").remove();
         document.getElementById("catButton").innerHTML = "Bedtime!";
@@ -190,7 +196,7 @@
           .attr("cy", 190)
           .attr("rx", 30)
           .attr("ry", 40)
-          .attr("fill", "#e6d9ca")
+          .attr("fill", "#ffd6a3")
           .style("stroke", "black");
 
         cat
@@ -311,10 +317,6 @@
           .attr("r", 3)
           .attr("fill", "black")
           .style("stroke", "black");
-
-        
-        
-
       }
 
       function bedtime() {
@@ -439,7 +441,7 @@
       }
 
       awake()
-      mouseRun(3000)
+      mouseRun(2000)
 
       function changeCat() {
         if(state == 0) {
