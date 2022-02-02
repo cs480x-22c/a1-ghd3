@@ -1,10 +1,182 @@
 <script src="https://d3js.org/d3.v6.min.js"></script>
-
+<style>
+  svg{
+      background-color: black;
+  }
+  polygon{
+      stroke: yellow;
+  }
+  path{
+      fill: darkgray;
+  }
+</style>
+<body>
 <script>
-  console.log(d3); // test if d3 is loaded
-  // Add an SVG
-  // Add Rectangles
-  // Add Circles
-  // Add Lines
-  // Add Polygons
+    var svgWidth = 500;
+    var svgHeight = 500;
+
+    //tree design from https://codepen.io/merlijn34/pen/ZOKRBZ
+    var polygon = "160.7,403.2 160.7,403.2 205.1,403.2 205.1,403.2 365.9,403.2 283.2,320.6 352,320.6 267.3,235.8 323.8,235.8 253.2,165.1 290.9,165.1 182.9,57.2 74.9,165.1 112.7,165.1 42,235.8 98.6,235.8 13.8,320.6 82.6,320.6 0,403.2";
+    var lines = [[250, 350, 250, 400], [250, 350, 250, 400], [225, 400, 250, 380], [275, 400, 250, 380]];
+
+    var pColor = "darkgreen";
+    var mouseDownColor = "green";
+    var brickColor = "gray";
+    var starC="white";
+
+    // Add an SVG
+    var svg = d3.select("body")
+        .append("svg")
+        .attr("width", svgWidth)
+        .attr("height", svgHeight)
+
+    // Mountain background
+    var areaGenerator = d3.area().y0(500);
+    var points = [[0, 330],[100, 450],[200, 342],[300, 450],[400, 300],[500, 150]];
+    var area = areaGenerator(points);
+    d3.select('svg')
+        .append('path')
+        .attr('d', area);
+
+    // Add Polygons
+    svg.selectAll('polygon')
+        .data(polygon)
+        .enter().append('polygon')
+        .attr('points', polygon)
+        .attr('fill', pColor)
+        .on('mouseover', function(){
+            d3.select(this).attr('stroke-width', 10);
+        })
+        .on('mouseout', function(){
+            d3.select(this).attr('stroke-width', 0);
+        })
+        .on('mousedown', function(){
+            d3.select(this).attr('fill', mouseDownColor);
+            removeLine();
+            removeLine();
+            addLine([225, 350, 250, 380]);
+            addLine([275, 400, 250, 380]);
+        })
+        .on('mouseup', function(){
+            d3.select(this).attr('fill', pColor);
+            removeLine();
+            removeLine();
+            addLine([225, 400, 250, 380]);
+            addLine([275, 350, 250, 380]);
+        });
+
+    // Add Rectangles
+    var rectangle = svg.append("rect")
+        .attr("x", 0)
+        .attr("y", 400)
+        .attr("width", 500)
+        .attr("height", 100)
+        .style("fill", brickColor);
+
+
+    // Add Circles
+    var circle = svg.append("circle")
+        .attr("cx", 250)
+        .attr("cy", 350)
+        .attr("r", 15);
+    
+        var star1 = svg.append("circle")
+        .attr("cx", 50)
+        .attr("cy", 50)
+        .attr("r", 1)
+        .style("fill", starC);
+
+        var star2 = svg.append("circle")
+        .attr("cx", 30)
+        .attr("cy", 175)
+        .attr("r", 1)
+        .style("fill", starC);
+
+        var star3 = svg.append("circle")
+        .attr("cx", 90)
+        .attr("cy", 90)
+        .attr("r", 2)
+        .style("fill", starC);
+
+        var star4 = svg.append("circle")
+        .attr("cx", 150)
+        .attr("cy", 40)
+        .attr("r", 1)
+        .style("fill", starC);
+
+        var star5 = svg.append("circle")
+        .attr("cx", 275)
+        .attr("cy", 70)
+        .attr("r", 2)
+        .style("fill", starC);
+
+        var star6 = svg.append("circle")
+        .attr("cx", 450)
+        .attr("cy", 130)
+        .attr("r", 1)
+        .style("fill", starC);
+
+        var star7 = svg.append("circle")
+        .attr("cx", 350)
+        .attr("cy", 300)
+        .attr("r", 2)
+        .style("fill", starC);
+
+        var star8 = svg.append("circle")
+        .attr("cx", 370)
+        .attr("cy", 260)
+        .attr("r", 1)
+        .style("fill", starC);
+
+        var star9 = svg.append("circle")
+        .attr("cx", 400)
+        .attr("cy", 150)
+        .attr("r", 2)
+        .style("fill", starC);
+
+    // Add Lines
+    var d3Lines = svg.selectAll('line')
+        .data(lines)
+        .enter().append('line')
+        .attr('x1', function(d) {return d[0];})
+        .attr('y1', function(d) {return d[1];})
+        .attr('x2', function(d) {return d[2];})
+        .attr('y2', function(d) {return d[3];})
+        .attr('stroke', 'black')
+        .attr('stroke-width', 2);
+
+    
+    // Update arm
+    const plot = (lines, svg) => {
+        const line = svg
+            .selectAll('line')
+            .data(lines);
+
+        line
+            .enter()
+            .append('line')
+            .attr('x1', function(d) {return d[0];})
+            .attr('y1', function(d) {return d[1];})
+            .attr('x2', function(d) {return d[2];})
+            .attr('y2', function(d) {return d[3];})
+            .attr("stroke-width", 2)
+            .attr("stroke", "black");
+
+        line
+            .exit()
+            .remove();
+    };
+
+    const addLine = ([x1, y1, x2, y2]) => {
+        lines.push([x1, y1, x2, y2]);
+        plot(lines, svg);
+    };
+
+    const removeLine = () => {
+        lines.pop();
+        plot(lines, svg);
+    };
+
 </script>
+</body>
+
