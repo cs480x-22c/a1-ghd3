@@ -1,10 +1,64 @@
-<script src="https://d3js.org/d3.v6.min.js"></script>
+<!DOCTYPE html>
+<html lang="en">
 
-<script>
-  console.log(d3); // test if d3 is loaded
-  // Add an SVG
-  // Add Rectangles
-  // Add Circles
-  // Add Lines
-  // Add Polygons
-</script>
+<head>
+    <meta charset="UTF-8">
+    <!-- load d3-->
+    <script src="https://d3js.org/d3.v6.js"></script>
+    <title>D3 homework 1</title>
+    <div>
+
+    </div>
+
+    <script>
+        // var width = 600
+        //     height = 400
+
+        // test if d3 is loaded
+        console.log(d3)
+            // Add an SVG
+        var svg = d3.select("body")
+            .append("svg")
+            .attr("width", 600)
+            .attr("height", 600);
+        // Add Rectangles
+        var rect = svg.append("rect")
+            .attr("width", 150)
+            .attr("height", 100)
+            // Add Circles
+        var circle = svg.append("circle")
+            .attr("cx", 250)
+            .attr("cy", 250)
+            .attr("r", 50)
+            .attr("fill", "black")
+            // Add Lines
+        var line = svg.append("line")
+            .attr("x1", 0)
+            .attr("y1", 150)
+            .attr("x2", 200)
+            .attr("y2", 200)
+            .attr("stroke", "red")
+            .attr("stroke-width", 30);
+        // Add Polygons
+        //do i need like a proper dataset for this? probably
+        var dataP = [
+                [50, 50],
+                [50, 150],
+                [150, 150],
+                [150, 50],
+                [100, 100],
+                [125, 125]
+            ]
+            //guess its just easier to put the points in manual
+        var poly = svg.append("polygon")
+            .attr("points", "200,10 250,190 160,210")
+            .style("fill", "green")
+            .style("stroke", "black")
+            .style("strokeWidth", "10px");
+
+        var poly2 = svg.append("polygon")
+            .attr("points", dataP)
+            .style("fill", "green")
+            .style("stroke", "black")
+            .style("strokeWidth", "10px");
+    </script>
